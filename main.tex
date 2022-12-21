@@ -7,19 +7,16 @@
 % Pengaturan ukuran spasi
 \usepackage[singlespacing]{setspace}
 
+% Pengaturan caption untuk tabel
+\usepackage{caption}
+
 % Judul dokumen
 \title{Proposal Tugas Akhir ITS}
-\author{Daffa, Muhammad}
-
-% Pengaturan format bahasa
-\usepackage[indonesian]{babel}
-  \addto{\captionsindonesian}{\renewcommand{\bibname}{Daftar Pustaka}}
+\author{Musk, Elon Reeve}
 
 % Pengaturan detail pada file PDF
 \usepackage[pdfauthor={\@author},bookmarksnumbered,pdfborder={0 0 0}]{hyperref}
 
-% Pengaturan jenis karakter
-\usepackage[utf8]{inputenc}
 
 % Pengaturan ukuran indentasi
 \setlength{\parindent}{2em}
@@ -27,13 +24,16 @@
 % Package lainnya
 \usepackage{changepage}
 \usepackage{etoolbox} % Mengubah fungsi default
-\usepackage{apacite} % APA-style citation
+
+% Pengaturan jenis karakter
+\usepackage[utf8]{inputenc}
+
+\usepackage[style=apa, backend=biber]{biblatex}
 \usepackage{enumitem} % Pembuatan list
 \usepackage{lipsum} % Pembuatan template kalimat
 \usepackage{graphicx} % Input gambar
 \usepackage{longtable} % Pembuatan tabel
 \usepackage[table,xcdraw]{xcolor} % Pewarnaan tabel
-\usepackage[numbers]{natbib} % Pengaturan kutipan artikel
 \usepackage{eso-pic} % Untuk menggunakan background image di halaman
 \usepackage{txfonts} % Font times
 \usepackage{changepage} % Pembuatan teks kolom
@@ -41,6 +41,24 @@
 \usepackage{multirow} % Pembuatan baris ganda
 \usepackage{tabularx} % Untuk mengatur kolom, seperti grid pada CSS
 \usepackage{wrapfig}
+
+% Pengaturan format daftar isi, daftar gambar, dan daftar tabel
+\usepackage{tocloft}
+\setlength{\cftsecindent}{0cm}
+\setlength{\cftsubsecindent}{2em}
+\setlength{\cftbeforechapskip}{1.5ex}
+\setlength{\cftbeforesecskip}{1.5ex}
+\setlength{\cftbeforetoctitleskip}{0cm}
+\setlength{\cftbeforeloftitleskip}{0cm}
+\setlength{\cftbeforelottitleskip}{0cm}
+\renewcommand{\cftsecfont}{\normalfont\bfseries}% membuat judul section pada daftar isi menjadi bold
+\renewcommand{\cftsecpagefont}{\normalfont\bfseries}% membuat nomor section daftar isi menjadi bold
+\renewcommand{\cfttoctitlefont}{\hfill\Large\bfseries} % command untuk membuat heading bold dan besar
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\cftloftitlefont}{\hfill\Large\bfseries}
+\renewcommand{\cftafterloftitle}{\hfill}
+\renewcommand{\cftlottitlefont}{\hfill\Large\bfseries}
+\renewcommand{\cftafterlottitle}{\hfill}
 
 % Definisi untuk "Hati ini sengaja dikosongkan"
 \patchcmd{\cleardoublepage}{\hbox{}}{
@@ -67,6 +85,19 @@
 \titlespacing{\section}{0ex}{3ex}{1.5ex}
 \titlespacing{\subsection}{0ex}{3ex}{1.5ex}
 \titlespacing{\subsubsection}{0ex}{0.5ex}{0ex}
+\setcounter{secnumdepth}{3} % Untuk memberi penomoran pada \subsubsection
+
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+
+% Mengganti figure dan table menjadi gambar dan tabel
+\renewcommand{\figurename}{Gambar}
+\renewcommand{\tablename}{Tabel}
+
+\input{pustaka/tanda-hubung.tex}
+
+% Menambahkan resource daftar pustaka
+\addbibresource{pustaka/pustaka.bib}
 
 % Isi keseluruhan dokumen
 \begin{document}
@@ -92,7 +123,12 @@
   \input{lainnya/lembar-pengesahan-en.tex}
   \newpage
 
-  \newgeometry{top=0cm}
+  % Abstrak
+  \input{lainnya/abstrak.tex}
+  \newpage
+
+  \input{lainnya/abstrak-en.tex}
+  \newpage
 
   \begin{spacing}{1.5}
     % Daftar isi
@@ -114,8 +150,6 @@
     \newpage
   \end{spacing}
 
-  \restoregeometry
-
   % Nomor halaman isi dimulai dari sini
   \pagenumbering{arabic}
 
@@ -135,11 +169,10 @@
   \section{DAFTAR PUSTAKA}
   \renewcommand\refname{}
   \vspace{2ex}
-  \bibliographystyle{apacite}
   \renewcommand{\bibname}{}
   \begingroup
     \def\chapter*#1{}
-    \bibliography{pustaka/pustaka.bib}
+    \printbibliography
   \endgroup
 
 
