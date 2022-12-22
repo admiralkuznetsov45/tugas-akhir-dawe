@@ -167,14 +167,18 @@
 
   % Daftar pustaka
   \section{DAFTAR PUSTAKA}
-  \renewcommand\refname{}
+  \renewcommand\refname{
+\end{thebibliography}
+  }
   \vspace{2ex}
   \renewcommand{\bibname}{
+    
   }
   \begingroup
-    \def\chapter*#1{}
+    \def\chapter*#1{
+    }
+
     \printbibliography
-    \cite{@Newton1687}
   \endgroup
 
 
