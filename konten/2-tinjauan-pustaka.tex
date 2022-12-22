@@ -1,16 +1,22 @@
 \section{TINJAUAN PUSTAKA}
 
 % Ubah konten-konten berikut sesuai dengan isi dari tinjauan pustaka
-\subsection{Penelitian Terkait}
+
+\subsubsection{Penelitian Terkait}
 \begin{figure} [ht] \centering
     % Nama dari file gambar yang diinputkan
-    \includegraphics[scale=0.7]{gambar/contoh.png}
+    \includegraphics[scale=0.6]{gambar/contoh.png}
     % Keterangan gambar yang diinputkan
     \caption{Hasil Ujicoba Sementara}
     % Label referensi dari gambar yang diinputkan
     \label{fig:Ujicoba Sementara}
   \end{figure}
-Berdasarkan Penelitian yang sudah dilakukan H. Y. Chang yang berjudul "Semaphore Flag Recognition Using Convolutional Neural Network" , Telah dilakukan ujicoba menggunakan Metode Convolutional Neural Network untuk membuat sistem identifikasi pose bendera semaphore . Didalam penelitian ini , Kami memanfaatkan fitur skeleton yang bersumber dari MediaPipe untuk membantu melakukan identifikasi pose dan juga menggunaan Convolutional Neural Network untuk melakukan training model
+
+Berdasarkan Penelitian yang sudah dilakukan H. Y. Chang yang berjudul "Semaphore Flag Recognition Using Convolutional Neural Network" , Telah dilakukan ujicoba menggunakan Metode Convolutional Neural Network untuk membuat sistem identifikasi pose bendera semaphore menggunakan dataset sebesar gambar bendera semaphore untuk melakukan klasifikasi dari berbagai macam gambar untuk kedalam huruf-huruf alfabet . 
+
+Telah dilakukan penelitan juga mengenai implementasi dari estimasi pose manusia MediaPipe yang berjudul "Pose Estimation with MediaPipe Human Pose: A Comparative Study" dari Lei Feng, Haifeng Chen, dan Zhiwei Peng menjelaskan bahwa model yang dilatih menggunakan MediaPipe Human Pose mencapai akurasi yang lebih tinggi daripada metode lain dan menunjukkan kinerja generalisasi yang baik pada berbagai macam kumpulan data.MediaPipe Human Pose relatif efisien dalam hal sumber daya komputasi dan dapat dengan mudah diintegrasikan ke dalam sistem lain.
+
+Melalui penelitian ini , Kami memanfaatkan fitur skeleton yang bersumber dari MediaPipe untuk membantu melakukan identifikasi pose dan juga menggunaan Convolutional Neural Network untuk melakukan training model agar bisa membuat prediksi tentang huruf semaphore apa yang diperagakan oleh pose tubuh manusia yang terdeteksi
 
 \subsection{Teori/Konsep Dasar}
 
@@ -32,3 +38,9 @@ CNN menggunakan operasi konvolusi untuk memproses data yang memiliki struktur sp
 Bendera Semaphore adalah sebuah sistem komunikasi yang menggunakan posisi dari dua bendera untuk mengirimkan pesan. Bendera Semaphore pertama kali dikembangkan pada abad ke-18 oleh seorang ahli matematika Prancis bernama Claude Chappe sebagai cara untuk mengirimkan pesan telegraf tanpa menggunakan kabel.
 
 Bendera Semaphore menggunakan dua bendera yang dapat digerakkan ke posisi yang berbeda, yang masing-masing mewakili sebuah huruf dari alfabet atau angka. Setiap posisi bendera menunjukkan sebuah karakter yang dapat ditransmisikan kepada penerima pesan. Bendera Semaphore biasanya digunakan untuk mengirimkan pesan jarak jauh, misalnya antar kapal atau antar kota.
+
+\subsubsection{Estimasi Pose}
+
+Estimasi pose merujuk pada proses menghitung pose 3D (posisi dan orientasi) sebuah benda atau orang dari gambar 2D atau video. Ini adalah masalah penting dalam computer vision dan memiliki banyak aplikasi, seperti realitas tambahan, video surveillance, dan robotics
+
+Estimasi pose melibatkan ekstraksi fitur dari gambar atau video, seperti keypoints atau landmarks, dan menggunakan fitur-fitur tersebut untuk mengestimasi pose benda atau orang. Ada banyak teknik dan pendekatan yang dapat digunakan untuk estimasi pose, termasuk pendekatan berbasis model, pendekatan berbasis template, dan pendekatan berbasis machine learning.

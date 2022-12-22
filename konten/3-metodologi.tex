@@ -4,12 +4,12 @@
 
 \subsection{Metode yang digunakan}
 
-Penelitian ini mengikuti metode untuk pengerjaan nya menguki sesuai yang sudah dirancang sebagai berikut
+Untuk mencapai tujuan penelitian kami , maka penelitian ini mengikuti metode dalam pengerjaannya sesuai yang sudah dirancang sebagai berikut
 
 % Contoh input gambar dengan format *.jpg
 \begin{figure} [ht] \centering
   % Nama dari file gambar yang diinputkan
-  \includegraphics[scale=0.7]{gambar/Metodologi_TA.jpg}
+  \includegraphics[scale=0.7]{gambar/Metodologi_TA_Baru.jpg}
   % Keterangan gambar yang diinputkan
   \caption{\emph{Blueprint} Metodologi Pengerjaan}
   % Label referensi dari gambar yang diinputkan
@@ -22,11 +22,12 @@ Pada tahapan ini , Kamera Webcam akan melakukan deteksi terhadap gestur yang dip
 \subsubsection{Membuat Model}
 \begin{figure} [ht] \centering
   % Nama dari file gambar yang diinputkan
-  \includegraphics[scale=0.7]{gambar/humanpose.jpg}
+  \includegraphics[scale=0.3]{gambar/humanpose.jpg}
   % Keterangan gambar yang diinputkan
   \caption{Model Human Pose dari MediaPipe}
   % Label referensi dari gambar yang diinputkan
-  \label{fig:Blueprint}
+  \label{fig:hasil}
+
 \end{figure}
 Berikutnya dilakukan pembuatan model HumanPose dengan memanfaatkan MediaPipe . Hal ini bertujuan untuk membantu melakukan identifikasi bagian-bagian tubuh manusia dalam citra atau video dalam rangka memperkuat akurasi 
 
@@ -37,7 +38,7 @@ Selanjutnya dilakukan proses pembelajaran yang digunakan untuk  kemampuan jaring
 Setelah dilakukan nya training model sebelumnya menggunakan metode Convolutional Neural Network yang dibantu dengan Estimasi Pose yang dibantu oleh MediaPipe . Klasifikasi ini bertujuan untuk membagi suatu objek ke dalam kelas-kelas tertentu berdasarkan fitur yang dimilikinya
 
 \subsubsection{Hasil Klasifikasi Huruf}
-Setelah dilakukan klasifikasi pose semaphore maka didapatkan hasil huruf untuk dikenali
+Setelah dilakukan klasifikasi pose dari masing-masing huruf semaphore , Sistem saat ini sudah bisa melakukan prediksi huruf semaphore berbasis pose yang diperagakan oleh tubuh manusia  
 % Contoh penggunaan referensi dari gambar yang diinputkan
 % Pada \emph{blueprint} yang tertera di Gambar \ref{fig:Blueprint}. \lipsum[12]
 
@@ -64,11 +65,11 @@ Setelah dilakukan klasifikasi pose semaphore maka didapatkan hasil huruf untuk d
     \G & \G & \G & \G & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w \\
     \hline
 
-    Pengolahan data &
+    Pembuatan Model Deep Learning &
     \w & \w & \w & \w & \G & \G & \G & \G & \w & \w & \w & \w & \w & \w & \w & \w \\
     \hline
 
-    Analisa data &
+    Ujicoba Program &
     \w & \w & \w & \w & \w & \w & \w & \w & \G & \G & \G & \G & \w & \w & \w & \w \\
     \hline
 
