@@ -4,12 +4,12 @@
 
 \subsection{Metode yang digunakan}
 
-Untuk mencapai tujuan penelitian kami , maka penelitian ini mengikuti metode dalam pengerjaannya sesuai yang sudah dirancang sebagai berikut
+Untuk mencapai tujuan penelitian kami , maka penelitian ini mengikuti metode dalam pengerjaannya sesuai yang sudah dirancang ssuai yang tertera di Gambar 3.1
 
 % Contoh input gambar dengan format *.jpg
 \begin{figure} [ht] \centering
   % Nama dari file gambar yang diinputkan
-  \includegraphics[scale=0.7]{gambar/Metodologi_TA_Baru.jpg}
+  \includegraphics[scale=0.5]{gambar/Metodologi_TA_Baru.jpg}
   % Keterangan gambar yang diinputkan
   \caption{\emph{Blueprint} Metodologi Pengerjaan}
   % Label referensi dari gambar yang diinputkan
@@ -32,7 +32,7 @@ Pada tahapan ini , Kamera Webcam akan melakukan deteksi terhadap gestur yang dip
 Berikutnya dilakukan pembuatan model HumanPose dengan memanfaatkan MediaPipe . Hal ini bertujuan untuk membantu melakukan identifikasi bagian-bagian tubuh manusia dalam citra atau video dalam rangka memperkuat akurasi 
 
 \subsubsection{Training Model}
-Selanjutnya dilakukan proses pembelajaran yang digunakan untuk  kemampuan jaringan untuk mengenali dan memprediksi pola dan fitur yang relevan dari input yang diberikan. Training Model menggun
+Selanjutnya dilakukan proses pembelajaran yang digunakan untuk  kemampuan jaringan untuk mengenali dan memprediksi pola dan fitur yang relevan dari input yang diberikan. Training Model menggunakan Convolutional Neural Network
 
 \subsubsection{Klasifikasi}
 Setelah dilakukan nya training model sebelumnya menggunakan metode Convolutional Neural Network yang dibantu dengan Estimasi Pose yang dibantu oleh MediaPipe . Klasifikasi ini bertujuan untuk membagi suatu objek ke dalam kelas-kelas tertentu berdasarkan fitur yang dimilikinya
@@ -44,9 +44,10 @@ Setelah dilakukan klasifikasi pose dari masing-masing huruf semaphore , Sistem s
 
 \subsection{Bahan dan peralatan yang digunakan}
 
-\lipsum[13]
+Peralatan yang digunakan pada kali ini adalah Komputer untuk melakukan pemograman dan ujicoba dari sistem yang telah dibuat , Lalu ada WebCam yang berfungsi sebagai alat untuk menangkap pose yang diperagakan . Bahasa pemograman yang digunakan dalam penelitian ini adalah Python yang dibantu dengan Library MediaPipe
 
 \subsection{Urutan pelaksanaan penelitian}
+Sesuai yang tertera sebelumnya , Awalnya dilakukan pengambilan dataset melalui citra video lalu dilanjutkan dengan pembuatan model deep learning berikutnya dilakukan ujicoba sistem serta diakhiri dengan melakukan evaluasi penelitian
 
 % Ubah tabel berikut sesuai dengan isi dari rencana kerja
 \newcommand{\w}{}
