@@ -1,5 +1,5 @@
 % Pengaturan ukuran teks dan bentuk halaman dua sisi
-\documentclass[12pt]{report}
+\documentclass[12pt]{book}
 
 % Pengaturan ukuran halaman dan margin
 \usepackage[a4paper,top=30mm,left=30mm,right=20mm,bottom=25mm]{geometry}
@@ -43,16 +43,14 @@
 \usepackage{wrapfig}
 
 % Pengaturan format daftar isi, daftar gambar, dan daftar tabel
-\usepackage{tocloft}
-\setlength{\cftsecindent}{0cm}
+\usepackage[titles]{tocloft}
+\setlength{\cftsecindent}{2em}
 \setlength{\cftsubsecindent}{2em}
 \setlength{\cftbeforechapskip}{1.5ex}
 \setlength{\cftbeforesecskip}{1.5ex}
 \setlength{\cftbeforetoctitleskip}{0cm}
 \setlength{\cftbeforeloftitleskip}{0cm}
 \setlength{\cftbeforelottitleskip}{0cm}
-\renewcommand{\cftsecfont}{\normalfont\bfseries}% membuat judul section pada daftar isi menjadi bold
-\renewcommand{\cftsecpagefont}{\normalfont\bfseries}% membuat nomor section daftar isi menjadi bold
 \renewcommand{\cfttoctitlefont}{\hfill\Large\bfseries} % command untuk membuat heading bold dan besar
 \renewcommand{\cftaftertoctitle}{\hfill}
 \renewcommand{\cftloftitlefont}{\hfill\Large\bfseries}
@@ -78,17 +76,18 @@
 
 % Pengaturan format judul bab
 \usepackage{titlesec}
-\renewcommand{\thesection}{\arabic{section}}
-\titleformat{\chapter}[display]{\bfseries\Large}{BAB \centering\Roman{chapter}}{0ex}{\vspace{0ex}\centering}
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+\titleformat{\chapter}[hang]{\centering\bfseries\large}{BAB\ \arabic{chapter}\ }{0ex}{\vspace{0ex}\centering}
 \titleformat*{\section}{\large\bfseries}
 \titleformat*{\subsection}{\normalsize\bfseries}
-\titlespacing{\section}{0ex}{3ex}{1.5ex}
-\titlespacing{\subsection}{0ex}{3ex}{1.5ex}
+\titlespacing{\chapter}{0ex}{0ex}{4ex}
+\titlespacing{\section}{0ex}{1ex}{0ex}
+\titlespacing{\subsection}{0ex}{0.5ex}{0ex}
 \titlespacing{\subsubsection}{0ex}{0.5ex}{0ex}
 \setcounter{secnumdepth}{3} % Untuk memberi penomoran pada \subsubsection
 
-\counterwithin{figure}{section}
-\counterwithin{table}{section}
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
 
 % Mengganti figure dan table menjadi gambar dan tabel
 \renewcommand{\figurename}{Gambar}
@@ -111,43 +110,35 @@
   \newcommand\covercontents{sampul/konten-id.tex}
   \input{sampul/sampul-luar.tex}
 
-  % Sampul Bahasa Inggris
-  \renewcommand\covercontents{sampul/konten-en.tex}
-  \input{sampul/sampul-luar.tex}
-
   % Lembar pengesahan
   \input{lainnya/lembar-pengesahan.tex}
-  \newpage
-
-  % Lembar pengesahan
-  \input{lainnya/lembar-pengesahan-en.tex}
-  \newpage
+  \cleardoublepage
 
   % Abstrak
   \input{lainnya/abstrak.tex}
-  \newpage
+  \cleardoublepage
 
   \input{lainnya/abstrak-en.tex}
-  \newpage
+  \cleardoublepage
 
   \begin{spacing}{1.5}
     % Daftar isi
     \renewcommand*\contentsname{DAFTAR ISI}
     \addcontentsline{toc}{chapter}{\contentsname}
     \tableofcontents
-    \newpage
+    \cleardoublepage
 
     % Daftar gambar
     \renewcommand*\listfigurename{DAFTAR GAMBAR}
     \addcontentsline{toc}{chapter}{\listfigurename}
     \listoffigures
-    \newpage
+    \cleardoublepage
 
     % Daftar tabel
     \renewcommand*\listtablename{DAFTAR TABEL}
     \addcontentsline{toc}{chapter}{\listtablename}
     \listoftables
-    \newpage
+    \cleardoublepage
   \end{spacing}
 
   % Nomor halaman isi dimulai dari sini
@@ -155,29 +146,28 @@
 
   % Konten pendahuluan
   \input{konten/1-pendahuluan.tex}
+  \cleardoublepage
 
   % Konten tinjauan pustaka
   \input{konten/2-tinjauan-pustaka.tex}
+  \cleardoublepage
 
   % Konten metodologi
   \input{konten/3-metodologi.tex}
+  \cleardoublepage
 
   % Konten lainnya
   \input{konten/4-lainnya.tex}
+  \cleardoublepage
 
   % Daftar pustaka
-  \section{DAFTAR PUSTAKA}
-  \renewcommand\refname{
-\end{thebibliography}
-  }
+  \chapter*{DAFTAR PUSTAKA}
+  \addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
+  \renewcommand\refname{}
   \vspace{2ex}
-  \renewcommand{\bibname}{
-    
-  }
+  \renewcommand{\bibname}{}
   \begingroup
-    \def\chapter*#1{
-    }
-
+    \def\chapter*#1{}
     \printbibliography
   \endgroup
 

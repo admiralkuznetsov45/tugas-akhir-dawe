@@ -1,27 +1,26 @@
-\section{TINJAUAN PUSTAKA}
+\chapter{TINJAUAN PUSTAKA}
 
 % Ubah konten-konten berikut sesuai dengan isi dari tinjauan pustaka
-
-\subsection{Penelitian Terkait}
+\section{Hasil penelitian/perancangan terdahulu}
 \begin{figure} [ht] \centering
-    % Nama dari file gambar yang diinputkan
-    \includegraphics[scale=0.5]{gambar/contoh.png}
-    % Keterangan gambar yang diinputkan
-    \caption{Hasil Ujicoba Sementara}
-    % Label referensi dari gambar yang diinputkan
-    \label{fig:Ujicoba Sementara}
-  \end{figure}
+  % Nama dari file gambar yang diinputkan
+  \includegraphics[scale=0.5]{gambar/contoh.png}
+  % Keterangan gambar yang diinputkan
+  \caption{Hasil Ujicoba Sementara}
+  % Label referensi dari gambar yang diinputkan
+  \label{fig:Ujicoba Sementara}
+\end{figure}
 
-Berdasarkan Penelitian yang sudah dilakukan D. Wu, X. Zhang dan J. Guo yang berjudul "Semaphore Flag Recognition Using Convolutional Neural Network" , Telah dilakukan ujicoba menggunakan Metode Convolutional Neural Network untuk membuat sistem identifikasi pose bendera semaphore menggunakan dataset sebesar gambar bendera semaphore untuk melakukan klasifikasi dari berbagai macam gambar untuk kedalam huruf-huruf alfabet 
+Berdasarkan Penelitian yang sudah dilakukan D. Wu, X. Zhang dan J. Guo yang berjudul \textit{"Semaphore Flag Recognition Using Convolutional Neural Network"} , Telah dilakukan ujicoba menggunakan Metode Convolutional Neural Network untuk membuat sistem identifikasi pose bendera semaphore menggunakan dataset sebesar gambar bendera semaphore untuk melakukan klasifikasi dari berbagai macam gambar untuk kedalam huruf-huruf alfabet 
 \parencite{SemaphoreFlagCNN}. 
 
-Telah dilakukan penelitan juga mengenai implementasi dari estimasi pose manusia MediaPipe yang berjudul "Pose Estimation with MediaPipe Human Pose: A Comparative Study" dari Lei Feng, Haifeng Chen, dan Zhiwei Peng menjelaskan bahwa model yang dilatih menggunakan MediaPipe Human Pose mencapai akurasi yang lebih tinggi daripada metode lain dan menunjukkan kinerja generalisasi yang baik pada berbagai macam kumpulan data.MediaPipe Human Pose relatif efisien dalam hal sumber daya komputasi dan dapat dengan mudah diintegrasikan ke dalam sistem lain \parencite{MediaPipe} .
+Telah dilakukan penelitan juga mengenai implementasi dari estimasi pose manusia MediaPipe yang berjudul \textit{"Pose Estimation with MediaPipe Human Pose: A Comparative Study"} dari Lei Feng, Haifeng Chen, dan Zhiwei Peng menjelaskan bahwa model yang dilatih menggunakan MediaPipe Human Pose mencapai akurasi yang lebih tinggi daripada metode lain dan menunjukkan kinerja generalisasi yang baik pada berbagai macam kumpulan data.MediaPipe Human Pose relatif efisien dalam hal sumber daya komputasi dan dapat dengan mudah diintegrasikan ke dalam sistem lain \parencite{MediaPipe} .
 
 Melalui penelitian ini , Kami memanfaatkan fitur skeleton yang bersumber dari MediaPipe untuk membantu melakukan identifikasi pose dan juga menggunaan Convolutional Neural Network untuk melakukan training model agar bisa membuat prediksi tentang huruf semaphore apa yang diperagakan oleh pose tubuh manusia yang terdeteksi
 
-\subsection{Teori/Konsep Dasar}
+\section{Teori/Konsep Dasar}
 
-\subsubsection{Deep Learning}
+\subsection{Deep Learning}
 
 % Contoh penggunaan referensi dari pustaka
 Deep learning adalah sebuah metode dalam ilmu komputer yang menggunakan jaringan saraf tiruan yang terdiri dari banyak lapisan untuk memproses data dan mengekstrak fitur yang berguna dari data tersebut. Jaringan saraf tiruan ini dapat diaplikasikan pada berbagai macam tugas, termasuk pengenalan wajah, pengenalan suara, dan pemrosesan bahasa alami \parencite{DeepLearning2015}.
@@ -29,9 +28,9 @@ Deep learning adalah sebuah metode dalam ilmu komputer yang menggunakan jaringan
 Deep learning telah menjadi salah satu teknik terpenting dalam bidang pembelajaran mesin dan telah menghasilkan hasil yang luar biasa dalam berbagai aplikasi, termasuk pengenalan wajah, pengenalan suara, dan pemrosesan bahasa alami.
 \parencite{DeepLearningDef}
 
-Saat ini Deep Learning sudah diterapkan di berbagai bidang seperti di bidang pemasaran , Deep learning dapat digunakan dalam pemasaran untuk memprediksi keputusan pembelian pelanggan atau menyarankan produk yang mungkin akan diminati pelanggan berdasarkan data sebelumnya. Lalu juga ada di bidang kesehatan seperti  menganalisis data pasien dan mengidentifikasi pola yang dapat membantu dokter mengdiagnosis penyakit dan memberikan perawatan yang tepat . Dan masih banyak lagi berbagai macam implementasi Deep Learning di berbagai bidang dalam kehidupan manusia 
+Saat ini \textit{Deep Learning} sudah diterapkan di berbagai bidang seperti di bidang pemasaran , Deep learning dapat digunakan dalam pemasaran untuk memprediksi keputusan pembelian pelanggan atau menyarankan produk yang mungkin akan diminati pelanggan berdasarkan data sebelumnya. Lalu juga ada di bidang kesehatan seperti  menganalisis data pasien dan mengidentifikasi pola yang dapat membantu dokter mengdiagnosis penyakit dan memberikan perawatan yang tepat . Dan masih banyak lagi berbagai macam implementasi Deep Learning di berbagai bidang dalam kehidupan manusia 
 
-\subsubsection{Convolutional Neural Network (CNN)}
+\subsection{Convolutional Neural Network (CNN)}
 \begin{figure} [ht] \centering
   % Nama dari file gambar yang diinputkan
   \includegraphics[scale=0.5]{gambar/arsitekturCNN.png}
@@ -40,18 +39,19 @@ Saat ini Deep Learning sudah diterapkan di berbagai bidang seperti di bidang pem
   % Label referensi dari gambar yang diinputkan
   \label{fig:Ujicoba Sementara}
 \end{figure}
-Convolutional Neural Network (CNN) adalah sebuah jaringan saraf tiruan yang dapat digunakan untuk mengolah data yang memiliki struktur spasial, seperti gambar atau video. CNN terdiri dari lapisan-lapisan yang terdiri dari neuron-neuron yang terhubung dengan bobot dan bias. Setiap lapisan dapat menerima input dari lapisan sebelumnya dan menghasilkan output ke lapisan selanjutnya.
+\textit{Convolutional Neural Network} adalah sebuah jaringan saraf tiruan yang dapat digunakan untuk mengolah data yang memiliki struktur spasial, seperti gambar atau video. \textit{Convolutional Neural Network} terdiri dari lapisan-lapisan yang terdiri dari neuron-neuron yang terhubung dengan bobot dan bias. Setiap lapisan dapat menerima input dari lapisan sebelumnya dan menghasilkan output ke lapisan selanjutnya.
 \parencite{DeepLearningDef}
 
-CNN menggunakan operasi konvolusi untuk memproses data yang memiliki struktur spasial. Konvolusi adalah sebuah operasi matematis yang menggunakan filter untuk mengambil fitur dari data. Filter ini dapat berupa matriks dengan bobot yang dapat dilatih selama proses pembelajaran. Konvolusi memungkinkan CNN untuk mengekstrak fitur yang berguna dari data yang memiliki struktur spasial seperti gambar atau video.
+\textit{Convolutional Neural Network} menggunakan operasi konvolusi untuk memproses data yang memiliki struktur spasial. Konvolusi adalah sebuah operasi matematis yang menggunakan filter untuk mengambil fitur dari data. Filter ini dapat berupa matriks dengan bobot yang dapat dilatih selama proses pembelajaran. Konvolusi memungkinkan CNN untuk mengekstrak fitur yang berguna dari data yang memiliki struktur spasial seperti gambar atau video.
 
-\subsubsection{Bendera Semaphore}
+\subsection{Bendera Semaphore}
 Bendera Semaphore adalah sebuah sistem komunikasi yang menggunakan posisi dari dua bendera untuk mengirimkan pesan. Bendera Semaphore pertama kali dikembangkan pada abad ke-18 oleh seorang ahli matematika Prancis bernama Claude Chappe sebagai cara untuk mengirimkan pesan telegraf tanpa menggunakan kabel. \parencite{SemaphoreHistory}
 
 Bendera Semaphore menggunakan dua bendera yang dapat digerakkan ke posisi yang berbeda, yang masing-masing mewakili sebuah huruf dari alfabet atau angka. Setiap posisi bendera menunjukkan sebuah karakter yang dapat ditransmisikan kepada penerima pesan. Bendera Semaphore biasanya digunakan untuk mengirimkan pesan jarak jauh, misalnya antar kapal atau antar kota.
 
-\subsubsection{Estimasi Pose}
+\subsection{Estimasi Pose}
 
 Estimasi pose merujuk pada proses menghitung pose 3D (posisi dan orientasi) sebuah benda atau orang dari gambar 2D atau video. Ini adalah masalah penting dalam computer vision dan memiliki banyak aplikasi, seperti realitas tambahan, video surveillance, dan robotik
 
 Estimasi pose melibatkan ekstraksi fitur dari gambar atau video, seperti keypoints atau landmarks, dan menggunakan fitur-fitur tersebut untuk mengestimasi pose benda atau orang. Ada banyak teknik dan pendekatan yang dapat digunakan untuk estimasi pose, termasuk pendekatan berbasis model, pendekatan berbasis template, dan pendekatan berbasis machine learning. \parencite{PoseEstimation}
+

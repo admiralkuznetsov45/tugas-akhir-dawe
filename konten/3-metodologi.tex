@@ -1,8 +1,8 @@
-\section{METODOLOGI}
+\chapter{METODOLOGI}
 
 % Ubah konten-konten berikut sesuai dengan isi dari metodologi
 
-\subsection{Metode yang digunakan}
+\section{Metode yang digunakan}
 
 Untuk mencapai tujuan penelitian kami , maka penelitian ini mengikuti metode dalam pengerjaannya sesuai yang sudah dirancang ssuai yang tertera di Gambar 3.1
 
@@ -16,10 +16,10 @@ Untuk mencapai tujuan penelitian kami , maka penelitian ini mengikuti metode dal
   \label{fig:Blueprint}
 \end{figure}
 
-\subsubsection{Input Citra Video}
+\subsection{Input Citra Video}
 Pada tahapan ini , Kamera Webcam akan melakukan deteksi terhadap gestur yang diperagakan . Disini digunakan Library OpenCV dalam rangka untuk membantu menangkap frame yang terdapat di Video 
 
-\subsubsection{Membuat Model}
+\subsection{Membuat Model}
 \begin{figure} [ht] \centering
   % Nama dari file gambar yang diinputkan
   \includegraphics[scale=0.3]{gambar/humanpose.jpg}
@@ -29,24 +29,24 @@ Pada tahapan ini , Kamera Webcam akan melakukan deteksi terhadap gestur yang dip
   \label{fig:hasil}
 
 \end{figure}
-Berikutnya dilakukan pembuatan model HumanPose dengan memanfaatkan MediaPipe . Hal ini bertujuan untuk membantu melakukan identifikasi bagian-bagian tubuh manusia dalam citra atau video dalam rangka memperkuat akurasi 
+Berikutnya dilakukan pembuatan model dataset pose tubuh manusia dengan memanfaatkan MediaPipe . Hal ini bertujuan untuk membantu melakukan identifikasi bagian-bagian tubuh manusia dalam citra atau video dalam rangka memperkuat akurasi 
 
-\subsubsection{Training Model}
+\subsection{Training Model}
 Selanjutnya dilakukan proses pembelajaran yang digunakan untuk  kemampuan jaringan untuk mengenali dan memprediksi pola dan fitur yang relevan dari input yang diberikan. Training Model menggunakan Convolutional Neural Network
 
-\subsubsection{Klasifikasi}
+\subsection{Klasifikasi}
 Setelah dilakukan nya training model sebelumnya menggunakan metode Convolutional Neural Network yang dibantu dengan Estimasi Pose yang dibantu oleh MediaPipe . Klasifikasi ini bertujuan untuk membagi suatu objek ke dalam kelas-kelas tertentu berdasarkan fitur yang dimilikinya
 
-\subsubsection{Hasil Klasifikasi Huruf}
+\subsection{Hasil Klasifikasi Huruf}
 Setelah dilakukan klasifikasi pose dari masing-masing huruf semaphore , Sistem saat ini sudah bisa melakukan prediksi huruf semaphore berbasis pose yang diperagakan oleh tubuh manusia  
 % Contoh penggunaan referensi dari gambar yang diinputkan
 % Pada \emph{blueprint} yang tertera di Gambar \ref{fig:Blueprint}. \lipsum[12]
 
-\subsection{Bahan dan peralatan yang digunakan}
+\section{Bahan dan peralatan yang digunakan}
 
 Peralatan yang digunakan pada kali ini adalah Komputer untuk melakukan pemograman dan ujicoba dari sistem yang telah dibuat , Lalu ada WebCam yang berfungsi sebagai alat untuk menangkap pose yang diperagakan . Bahasa pemograman yang digunakan dalam penelitian ini adalah Python yang dibantu dengan Library MediaPipe
 
-\subsection{Urutan pelaksanaan penelitian}
+\section{Urutan pelaksanaan penelitian}
 Sesuai yang tertera sebelumnya , Awalnya dilakukan pengambilan dataset melalui citra video lalu dilanjutkan dengan pembuatan model deep learning berikutnya dilakukan ujicoba sistem serta diakhiri dengan melakukan evaluasi penelitian
 
 % Ubah tabel berikut sesuai dengan isi dari rencana kerja
@@ -64,7 +64,7 @@ Sesuai yang tertera sebelumnya , Awalnya dilakukan pengambilan dataset melalui c
     \hline
 
     % Gunakan \G untuk mengisi sel dan \w untuk mengosongkan sel
-    Pengambilan data &
+    Pengambilan dataset &
     \G & \G & \G & \G & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w & \w \\
     \hline
 
