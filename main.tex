@@ -1,3 +1,4 @@
+\input{pustaka/init.tex}
 % Pengaturan ukuran teks dan bentuk halaman dua sisi
 \documentclass[12pt]{book}
 
@@ -12,11 +13,20 @@
 
 % Judul dokumen
 \title{Proposal Tugas Akhir ITS}
-\author{Musk, Elon Reeve}
+\author{Caesario, Muhammad Abyan Farhan }
+
+% Pengaturan format bahasa
+\usepackage[indonesian]{babel}
 
 % Pengaturan detail pada file PDF
 \usepackage[pdfauthor={\@author},bookmarksnumbered,pdfborder={0 0 0}]{hyperref}
 
+% Pengaturan jenis karakter
+\usepackage[utf8]{inputenc}
+%\usepackage[style=ieee]{biblatex}
+
+% Pengaturan Warna Karakter
+%\usepackage {xcolor}
 
 % Pengaturan ukuran indentasi
 \setlength{\parindent}{2em}
@@ -28,7 +38,11 @@
 % Pengaturan jenis karakter
 \usepackage[utf8]{inputenc}
 
-\usepackage[style=apa, backend=biber]{biblatex}
+%\input{pustaka/tanda-hubung.tex}
+
+
+\usepackage{csquotes}
+\usepackage[style=ieee, backend=bibtex]{biblatex}
 \usepackage{enumitem} % Pembuatan list
 \usepackage{lipsum} % Pembuatan template kalimat
 \usepackage{graphicx} % Input gambar
@@ -41,11 +55,15 @@
 \usepackage{multirow} % Pembuatan baris ganda
 \usepackage{tabularx} % Untuk mengatur kolom, seperti grid pada CSS
 \usepackage{wrapfig}
+\usepackage{placeins}
+\usepackage{amsmath}
+
 
 % Pengaturan format daftar isi, daftar gambar, dan daftar tabel
 \usepackage[titles]{tocloft}
 \setlength{\cftsecindent}{2em}
-\setlength{\cftsubsecindent}{2em}
+\setlength{\cftsubsecindent}{4em}
+\setlength{\cftsubsubsecindent}{4em}
 \setlength{\cftbeforechapskip}{1.5ex}
 \setlength{\cftbeforesecskip}{1.5ex}
 \setlength{\cftbeforetoctitleskip}{0cm}
@@ -93,33 +111,53 @@
 \renewcommand{\figurename}{Gambar}
 \renewcommand{\tablename}{Tabel}
 
-\input{pustaka/tanda-hubung.tex}
-
 % Menambahkan resource daftar pustaka
 \addbibresource{pustaka/pustaka.bib}
+\bibliography{pustaka.bib}
 
 % Isi keseluruhan dokumen
 \begin{document}
+
   % Nomor halaman pembuka dimulai dari sini
-  \pagenumbering{roman}
+  %\pagenumbering{roman}
 
   % Atur ulang penomoran halaman
-  \setcounter{page}{1}
-
+  %\setcounter{page}{1}
+  
+  %Sampul Cover utama
+  \input{sampul/sampul-luar.tex}
+  \cleardoublepage
   % Sampul Bahasa Indonesia
   \newcommand\covercontents{sampul/konten-id.tex}
-  \input{sampul/sampul-luar.tex}
+  \input{sampul/sampul-luar-in.tex}
+  \cleardoublepage
+  % Sampul Bahasa Inggris
+  \newcommand\covercontents{sampul/konten-en.tex}
+  \input{sampul/sampul-luar-en.tex}
+  \cleardoublepage
+  
+   % Lembar Keaslian
+   \input{lainnya/pernyataan-keaslian.tex}
+   \cleardoublepage
+   \input{lainnya/pernyataan-keaslian-en.tex}
 
+  % Nomor halaman pembuka dimulai dari sini
+  \pagenumbering{roman}
   % Lembar pengesahan
   \input{lainnya/lembar-pengesahan.tex}
   \cleardoublepage
-
+  \input{lainnya/lembar-pengesahan-en.tex}
+  \cleardoublepage
   % Abstrak
   \input{lainnya/abstrak.tex}
   \cleardoublepage
-
   \input{lainnya/abstrak-en.tex}
   \cleardoublepage
+
+  % Kata pengantar
+  \input{lainnya/kata-pengantar.tex}
+  \cleardoublepage
+
 
   \begin{spacing}{1.5}
     % Daftar isi
@@ -146,30 +184,38 @@
 
   % Konten pendahuluan
   \input{konten/1-pendahuluan.tex}
-  \cleardoublepage
+  %\cleardoublepage
 
   % Konten tinjauan pustaka
   \input{konten/2-tinjauan-pustaka.tex}
-  \cleardoublepage
+ %\cleardoublepage
 
   % Konten metodologi
   \input{konten/3-metodologi.tex}
-  \cleardoublepage
+  %\cleardoublepage
 
   % Konten lainnya
   \input{konten/4-lainnya.tex}
-  \cleardoublepage
+  %\cleardoublepage
 
+  % Konten lainnya
+	\input{konten/5-Kesimpulan dan saran.tex}
+	
   % Daftar pustaka
-  \chapter*{DAFTAR PUSTAKA}
-  \addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
-  \renewcommand\refname{}
-  \vspace{2ex}
-  \renewcommand{\bibname}{}
-  \begingroup
-    \def\chapter*#1{}
-    \printbibliography
-  \endgroup
+\chapter*{DAFTAR PUSTAKA}  
+%\bibliographystyle{99}
 
+\addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
+\renewcommand\refname{}
+\vspace{2ex}
+\renewcommand{\bibname}{}
+\begingroup
+\def\chapter*#1{}
+\nocite{*}
+\printbibliography
+%\DaftarPustaka
+\endgroup
+
+\input{konten/DaftarRiwayatHidup.tex}
 
 \end{document}
