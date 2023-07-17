@@ -10,7 +10,7 @@ Penelitian sebelumnya meneliti bagaimana deteksi objek berbasis \textit{YOLO (Yo
 \section{Bendera Semaphore}
 
 \begin{center}
-	\includegraphics[width=1\linewidth]{gambar/bener/Semaphore-Pose.jpg}
+	\includegraphics[width=0.9\linewidth]{gambar/bener/Semaphore-Pose.jpg}
 	\captionof{figure}{Bendera Semaphore}
 	\label{fig:BenderaSemaphore}
 \end{center}
@@ -32,14 +32,14 @@ Setelah itu, dilakukan pencocokan atau pembandingan antara fitur-fitur yang terd
 Estimasi pose melibatkan ekstraksi fitur dari gambar atau video, seperti \textit{keypoints} atau \textit{landmarks}, dan menggunakan fitur-fitur tersebut untuk mengestimasi pose benda atau orang. Ada banyak teknik dan pendekatan yang dapat digunakan untuk estimasi pose, termasuk pendekatan berbasis model, pendekatan berbasis template, dan pendekatan berbasis \textit{Deep Learning}. \cite{Toshev_2014_CVPR}
 
 \section{MediaPipe}
-\begin{figure} [ht] \centering
+\begin{center}
   % Nama dari file gambar yang diinputkan
-  \includegraphics[scale=0.2]{gambar/humanpose.jpg}
+  \includegraphics[width=0.8\linewidth]{gambar/humanpose.jpg}
   % Keterangan gambar yang diinputkan
   \captionof{figure}{Arsitektur CNN}
   % Label referensi dari gambar yang diinputkan
   \label{fig:Pose Tubuh dari MediaPipe}
-\end{figure}
+\end{center}
 
 \textit{MediaPipe} merupakan sebuah \textit{framework} yang dikembangkan oleh tim \textit{Google Research} dengan tujuan memproses input sensori seperti video dan audio. \textit{Framework} ini menyediakan kemudahan dan kecepatan dalam menggabungkan komponen-komponen persepsi yang ada maupun baru menjadi prototipe dan mengembangkannya menjadi aplikasi canggih yang dapat dijalankan di berbagai tempat. \cite{lugaresi2019mediapipe}
 
@@ -55,7 +55,7 @@ Dengan menggabungkan semua fitur dan kemampuan yang dimiliki oleh \textit{MediaP
 \textit{Deep Learning} adalah teknik dalam \textit{Machine Learning} yang memungkinkan model komputasi untuk belajar representasi data dengan berbagai tingkat abstraksi. Metode ini telah meningkatkan secara dramatis kemampuan dalam pengenalan suara, pengenalan objek visual, deteksi objek, dan banyak domain lainnya seperti penemuan obat dan genomika. Deep Learning menemukan struktur yang rumit dalam set data besar dengan menggunakan algoritma \textit{backpropagation} untuk menunjukkan bagaimana mesin harus mengubah parameter internal yang digunakan untuk menghitung representasi di setiap lapisan dari representasi di lapisan sebelumnya. \textit{Deep convolutional nets} telah membawa terobosan dalam pemrosesan gambar, video, suara, dan audio, sedangkan recurrent nets telah menerangi data sekuensial seperti teks dan suara \cite{patterson2017deep}
 
 \begin{center}
-	\includegraphics[width=0.7\linewidth]{gambar/bener/ArsitekturDeeplearning.png}
+	\includegraphics[width=1.0\linewidth]{gambar/bener/ArsitekturDeeplearning.png}
 	\captionof{figure}{Deep Learning Layers}
 	\label{fig:Deep Learning secara umum}
 \end{center}  
@@ -71,17 +71,18 @@ Selain \textit{CNN}, ada juga variasi seperti \textit{Recurrent Neural Network (
 Selain itu, ada juga arsitektur Deep Learning seperti \textit{Generative Adversarial Networks (GANs)} yang digunakan untuk menghasilkan data baru yang menyerupai data latihan. \textit{GAN} terdiri dari dua jaringan saraf, yaitu generator yang menghasilkan data sintetis dan discriminator yang membedakan antara data sintetis dan data asli. GAN telah digunakan dalam bidang seperti generasi gambar, sintesis suara, dan augmentasi data.
 
 \subsection{Convolutional Neural Network (CNN)}
-\begin{figure} [ht] \centering
+\begin{center}
   % Nama dari file gambar yang diinputkan
-  \includegraphics[scale=0.7]{gambar/bener/ArsitekturCNNSederhana.png}
+  \includegraphics[width=1.0\linewidth]{gambar/bener/Arsitektur_CNN_Umum.png}
   % Keterangan gambar yang diinputkan
   \captionof{figure}{Arsitektur CNN}
   % Label referensi dari gambar yang diinputkan
   \label{fig:Arsitektur Umum Convolutional Neural Network}
-\end{figure}
+\end{center}
+
 \textit{Convolutional Neural Network} merupakan sebuah jenis jaringan saraf tiruan yang sangat efektif dalam mengolah dan menganalisis data dengan struktur spasial, seperti gambar atau video. Arsitektur \textit{CNN} terdiri dari berbagai lapisan yang terdiri dari kumpulan neuron yang saling terhubung melalui bobot dan bias. \cite{wu2017introduction}
 
-Salah satu komponen penting dalam \textit{CNN} adalah operasi konvolusi. Konvolusi melibatkan proses berulang di mana setiap bagian kecil dari input dikenakan pada filter, yang merupakan matriks bobot, untuk menghasilkan fitur-fitur lokal yang relevan. Dalam konteks pengolahan gambar, konvolusi memungkinkan \textit{CNN} untuk secara efektif mendeteksi berbagai pola dan fitur visual seperti tepi, sudut, atau tekstur dalam gambar. Operasi konvolusi ini memungkinkan \textit{CNN} untuk memahami struktur spasial data input dengan cara yang sangat efisien.\cite{koushik2016understanding}
+Salah satu komponen penting dalam \textit{CNN} adalah operasi konvolusi. Konvolusi melibatkan proses berulang di mana setiap bagian kecil dari input dikenakan pada \textit{filter}, yang merupakan matriks bobot, untuk menghasilkan fitur-fitur lokal yang relevan. Dalam konteks pengolahan gambar, konvolusi memungkinkan \textit{CNN} untuk secara efektif mendeteksi berbagai pola dan fitur visual seperti tepi, sudut, atau tekstur dalam gambar. Operasi konvolusi ini memungkinkan \textit{CNN} untuk memahami struktur spasial data input dengan cara yang sangat efisien.\cite{koushik2016understanding}
 
 Selain konvolusi, \textit{CNN} juga menggunakan operasi maxpooling. \textit{Maxpooling} bertujuan untuk mengurangi dimensi spasial dari setiap fitur yang dihasilkan oleh lapisan konvolusi. Dalam operasi \textit{maxpooling}, blok-blok input yang tumpang tindih diambil nilai maksimumnya, sehingga informasi yang relevan tetap terjaga sementara dimensi data dikurangi. Hal ini membantu dalam mengurangi kompleksitas komputasional dan jumlah parameter yang dibutuhkan oleh jaringan, sambil tetap mempertahankan informasi penting tentang fitur-fitur yang terdeteksi.
 
@@ -90,6 +91,15 @@ Lapisan terakhir dalam arsitektur \textit{CNN} biasanya merupakan lapisan \texti
 Dengan menggabungkan konvolusi, \textit{maxpooling}, dan \textit{lapisan dense} dalam arsitektur \textit{CNN}, jaringan ini mampu melakukan ekstraksi fitur secara hierarkis, di mana setiap lapisan berkontribusi dalam memperoleh representasi yang semakin abstrak dan informatif dari data input. Inilah yang membuat \textit{CNN} menjadi alat yang sangat efektif dalam berbagai tugas pengolahan gambar dan video, dari pengenalan wajah hingga analisis citra medis.
 
 \subsubsection{ResNet50v2}
+\begin{center}
+  % Nama dari file gambar yang diinputkan
+  \includegraphics[width=1.1\linewidth]{gambar/bener/Arsitektur_ModelCNNResNet50V2_Dasar.png}
+  % Keterangan gambar yang diinputkan
+  \captionof{figure}{Arsitektur CNN ResNet50V2}
+  % Label referensi dari gambar yang diinputkan
+  \label{fig:Arsitektur ResNet50V2}
+\end{center}
+
 \textit{ResNet50V2} adalah salah satu model arsitektur jaringan saraf konvolusi \textit{(Convolutional Neural Network/CNN)} yang merupakan versi modifikasi dari \textit{ResNet50}. \textit{ResNet} sendiri merupakan singkatan dari \textit{"Residual Network"} yang dikembangkan oleh Kaiming He dan timnya pada tahun 2015. \textit{ResNet50V2} adalah salah satu varian dari arsitektur ResNet yang memiliki 50 lapisan (layers) dan menggunakan teknik yang disebut \textit{"skip connections"} atau \textit{"residual connections"} untuk mengatasi masalah pemudaran gradien \textit{(vanishing gradient)} yang sering terjadi pada jaringan saraf yang lebih dalam. \cite{rahimzadeh2020modified}
 
 \textit{Skip connections} dalam \textit{ResNet50V2} memungkinkan aliran informasi yang lebih mudah melalui lapisan-lapisan jaringan, dengan cara mengalirkan input langsung ke lapisan-lapisan mendalam atau menambahkan input ke output lapisan tersebut. Hal ini membantu dalam pembelajaran representasi fitur yang lebih baik, mengurangi kemungkinan pemudaran gradien, dan mempercepat pelatihan jaringan.
@@ -101,18 +111,18 @@ Selain itu, \textit{ResNet50V2} juga menggunakan beberapa teknik lainnya seperti
 \subsubsection{Xception}
 \textit{Xception} adalah arsitektur jaringan saraf tiruan yang dikembangkan oleh Google Brain dan diperkenalkan oleh François Chollet, pencipta Keras, pada tahun 2017. Xception, yang merupakan singkatan dari \textit{"Extreme Inception"}, adalah variasi dari arsitektur \textit{Inception} yang menggantikan operasi konvolusi standar dalam modul \textit{Inception} dengan konvolusi yang dapat dipisahkan secara mendalam. \textit{Xception} memiliki 36 lapisan dan sekitar 4,3 juta parameter. \textit{Xception} dirancang untuk bekerja dengan gambar berwarna (3 saluran warna) dan mengambil gambar berukuran 299x299 piksel sebagai input.. \cite{chollet2017xception}
 
-\begin{figure} [ht] \centering
+\begin{center}
   % Nama dari file gambar yang diinputkan
-  \includegraphics[scale=0.7]{gambar/bener/konsep-separable-convolutions.png}
+  \includegraphics[width=1.0\linewidth]{gambar/bener/Arsitektur_CNNXception.png}
   % Keterangan gambar yang diinputkan
-  \captionof{figure}{Arsitektur CNN}
+  \captionof{figure}{Arsitektur CNN Xception}
   % Label referensi dari gambar yang diinputkan
-  \label{fig:Konsep Separable Convolutions dari Xception}
-\end{figure}
+  \label{fig:Arsitektur Xception}
+\end{center}
 
 Arsitektur ini bergantung pada konsep konvolusi yang dapat dipisahkan secara mendalam. Struktur arsitektur Xception terdiri dari tiga modul utama, yaitu \textit{entry flow, middle flow}, dan \textit{exit flow}. \textit{Entry flow} terdiri dari konvolusi normal diikuti oleh konvolusi yang dapat dipisahkan secara mendalam. \textit{Middle flow} terdiri dari 8 \textit{miniblock}, masing-masing terdiri dari 3 konvolusi yang dapat dipisahkan secara mendalam. Terakhir, \textit{exit flow} terdiri dari konvolusi yang dapat dipisahkan secara mendalam, \textit{feature flattening}, dan \textit{output}.
 
-Konsep konvolusi yang dapat dipisahkan secara mendalam adalah untuk mengurangi jumlah perkalian matriks dalam jaringan, sehingga mengurangi ukuran model. Konvolusi yang dapat dipisahkan secara mendalam melakukan konvolusi dalam dua langkah. Langkah pertama, juga disebut konvolusi depthwise, menggunakan 1 filter untuk setiap lapisan input. Output dari langkah ini akan berukuran tinggi x lebar x kedalaman dari gambar asli, asalkan padding digunakan selama konvolusi. Output dari konvolusi depthwise akan menjadi input dari konvolusi \textit{pointwise}. Dalam konvolusi \textit{pointwise}, ukuran filter adalah 1x1xkedalaman, di mana kedalaman adalah kedalaman input sebelumnya. Untuk menghasilkan beberapa fitur, lebih dari satu filter digunakan dalam proses ini.
+Konsep konvolusi yang dapat dipisahkan secara mendalam adalah untuk mengurangi jumlah perkalian matriks dalam jaringan, sehingga mengurangi ukuran model. Konvolusi yang dapat dipisahkan secara mendalam melakukan konvolusi dalam dua langkah. Langkah pertama, juga disebut konvolusi depthwise, menggunakan 1 \textit{filter} untuk setiap lapisan input. Output dari langkah ini akan berukuran tinggi x lebar x kedalaman dari gambar asli, asalkan padding digunakan selama konvolusi. Output dari konvolusi depthwise akan menjadi input dari konvolusi \textit{pointwise}. Dalam konvolusi \textit{pointwise}, ukuran \textit{filter} adalah 1x1xkedalaman, di mana kedalaman adalah kedalaman input sebelumnya. Untuk menghasilkan beberapa fitur, lebih dari satu \textit{filter} digunakan dalam proses ini.
 \cite{rismiyati2020xception}
 
 

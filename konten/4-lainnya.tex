@@ -4,24 +4,26 @@ Pada bab ini dibahas mengenai pengujian dari aplikasi yang telah dikembangkan un
 \section{Dataset}
 Dalam penelitian ini, dilakukan pengujian terhadap dataset citra yang terdiri dari 26 huruf alfabet yang umum digunakan sehari-hari. Dataset tersebut digunakan untuk melatih dan menguji model dalam mengenali huruf-huruf tersebut. Setiap huruf alfabet direpresentasikan oleh 1000 citra dalam dataset yang digunakan. Pengujian dilakukan untuk mengukur performa dan keakuratan model dalam mengenali huruf-huruf tersebut.
 
-\begin{center}[h]
+\begin{figure}[!hbt]
+	\centering
 	\includegraphics[width=0.7\linewidth]{gambar/citra_dataset.png}
 	\captionof{figure}{Dataset Sebelum Ekstraksi}
 	\label{fig:Datasetraw}
-\end{center}
+\end{figure}
 
 Dataset awal yang terdiri dari gambar dan skeleton yang dikombinasikan, yang awalnya diperoleh melalui MediaPipe, akan melalui proses ekstraksi. Proses ekstraksi dilakukan menggunakan program yang telah dikembangkan, menghasilkan skeleton dengan latar belakang hitam. Hasil ekstraksi ini dapat dilihat dalam Gambar \ref{fig:Datasetekstark}.
 
-\begin{center}[h]
+\begin{figure}[!hbt]
+	\centering
 	\includegraphics[width=0.7\linewidth]{gambar/tugas-akhir-dawe.png}
 	\captionof{figure}{Ekstraksi dari Dataset awal}
 	\label{fig:Datasetekstark}
-\end{center}
+\end{figure}
 Dataset yang telah diekstrak ini dijadikan sebagai input dari model-model deep learning pada penelitian ini untuk training dan validasi. 
 
 \begin{table}[htbp]
 	\centering
-	\captionof{figure}{Dataset}
+	\captionof{table}{Daftar Dataset}
 	\label{tab:datasethuruf}
 	\begin{tabular}{|c|c|c|c|c|}
 		\hline
@@ -46,45 +48,47 @@ Adapun huruf yang digunakan sebagai dataset bisa dilihat pada tabel \ref{tab:dat
 
 Pada awalnya, fungsi ini menerima parameter JumlahKelas yang mengindikasikan jumlah kelas dalam dataset yang digunakan. Kemudian, dilakukan inisialisasi input layer dengan ukuran (128, 128, 3) yang sesuai dengan dimensi gambar pada dataset.
 
-Selanjutnya, dilakukan serangkaian operasi Conv2D (Convolutional 2D) dan MaxPooling2D. Pertama, terdapat tiga layer Conv2D yang masing-masing memiliki 32 neuron dengan filter berukuran 3x3. Aktivasi ReLU (Rectified Linear Unit) digunakan untuk mengaktifkan neuron-neuron tersebut. Padding 'same' juga diterapkan agar ukuran output tetap sama dengan input. Setelah setiap layer Conv2D, dilakukan MaxPooling2D dengan ukuran pooling 2x2 dan padding 'same' untuk melakukan downsampling dan mengurangi dimensi data.
+Selanjutnya, dilakukan serangkaian operasi \textit{Conv2D}  dan \textit{MaxPooling2D}. Pertama, terdapat tiga layer \textit{Conv2D} yang masing-masing memiliki 32 \textit{neuron} dengan \textit{filter} berukuran 3x3. Aktivasi \textit{ReLU}  digunakan untuk mengaktifkan \textit{neuron}-\textit{neuron} tersebut. \textit{Padding} 'same' juga diterapkan agar ukuran output tetap sama dengan input. Setelah setiap layer \textit{Conv2D}, dilakukan \textit{MaxPooling2D} dengan ukuran \textit{pooling} 2x2 dan \textit{padding} 'same' untuk melakukan \textit{downsampling} dan mengurangi dimensi data.
 
-Selanjutnya, dilakukan layer Conv2D lagi dengan 16 neuron dan filter berukuran 3x3, diikuti oleh MaxPooling2D dengan ukuran pooling 2x2 dan padding 'same'. Langkah ini bertujuan untuk mengekstraksi fitur-fitur yang lebih kompleks dari data.
+Selanjutnya, dilakukan layer \textit{Conv2D} lagi dengan 16 \textit{neuron} dan \textit{filter} berukuran 3x3, diikuti oleh \textit{MaxPooling2D} dengan ukuran \textit{pooling} 2x2 dan \textit{padding} 'same'. Langkah ini bertujuan untuk mengekstraksi fitur-fitur yang lebih kompleks dari data.
 
-Setelah melalui serangkaian operasi Conv2D dan MaxPooling2D, data kemudian diflatten menjadi vektor satu dimensi menggunakan layer Flatten. Hal ini diperlukan agar data dapat dimasukkan ke dalam layer Dense yang merupakan layer fully connected.
+Setelah melalui serangkaian operasi \textit{Conv2D} dan \textit{MaxPooling2D}, data kemudian diflatten menjadi vektor satu dimensi menggunakan layer Flatten. Hal ini diperlukan agar data dapat dimasukkan ke dalam layer \textit{Dense} yang merupakan layer \textit{fully connected}.
 
-Selanjutnya, data melewati layer Dense dengan 16 neuron yang menggunakan aktivasi ReLU. Tujuan dari layer ini adalah untuk mempelajari pola-pola yang lebih kompleks dari data yang telah diekstraksi sebelumnya. Untuk mencegah overfitting, dilakukan juga layer Dropout dengan tingkat dropout sebesar 0.2.
+Selanjutnya, data melewati layer \textit{Dense} dengan 16 \textit{neuron} yang menggunakan aktivasi \textit{ReLU}. Tujuan dari layer ini adalah untuk mempelajari pola-pola yang lebih kompleks dari data yang telah diekstraksi sebelumnya. Untuk mencegah overfitting, dilakukan juga layer Dropout dengan tingkat dropout sebesar 0.2.
 
-Selanjutnya, data melewati layer Dense kembali dengan 16 neuron dan aktivasi ReLU. Layer ini bertujuan untuk memperkuat pembelajaran fitur-fitur yang relevan.
+Selanjutnya, data melewati layer \textit{Dense} kembali dengan 16 \textit{neuron} dan aktivasi \textit{ReLU}. Layer ini bertujuan untuk memperkuat pembelajaran fitur-fitur yang relevan.
 
-Terakhir, data melewati layer Dense dengan jumlah neuron sesuai dengan JumlahKelas yang digunakan. Aktivasi softmax digunakan untuk mendapatkan probabilitas kelas pada output layer. Model CNN ini kemudian dikompilasi menggunakan mean squared error (MSE) sebagai loss function dan optimizer Adam. Metrik akurasi juga digunakan untuk mengevaluasi performa model. Pada skenario ini menggunakan 30 epoch 
+Terakhir, data melewati layer \textit{Dense} dengan jumlah \textit{neuron} sesuai dengan JumlahKelas yang digunakan. Aktivasi \textit{softmax} digunakan untuk mendapatkan probabilitas kelas pada output layer. Model CNN ini kemudian dikompilasi menggunakan \textit{mean squared error} sebagai \textit{loss} function dan optimizer \textit{Adam}. Metrik akurasi juga digunakan untuk mengevaluasi performa model. Pada skenario ini menggunakan 30\textit{ epoch} 
 
 \subsection*{Performa dan Fungsionalitas Model CNN Skenario Pertama}
 
-Grafik akurasi dari Model CNN Pertama dapat dilihat pada Gambar \ref{fig:AkurasiCNN1}. Pertama ini merupakan dasar dari skenario-skenario lain yang digunakan dalam penelitian ini. Pada skenario ini, terdapat 4 layer Conv2D yang diikuti oleh Maxpooling, dengan jumlah neuron pada masing-masing layer Conv2D adalah 32, 32, 32, dan 16. Model CNN ini dilatih selama 30 epoch.
+Grafik akurasi dari Model CNN Pertama dapat dilihat pada Gambar \ref{fig:AkurasiCNN1}. Pertama ini merupakan dasar dari skenario-skenario lain yang digunakan dalam penelitian ini. Pada skenario ini, terdapat 4 layer \textit{Conv2D} yang diikuti oleh Maxpooling, dengan jumlah \textit{neuron} pada masing-masing layer \textit{Conv2D} adalah 32, 32, 32, dan 16. Model CNN ini dilatih selama 30\textit{ epoch}.
 
-Grafik loss dari Model CNN Pertama dapat dilihat pada Gambar \ref{fig:lossModelCNN1}. Loss function digunakan untuk mengukur sejauh mana prediksi model CNN ini mendekati nilai sebenarnya
+Grafik \textit{loss} dari Model CNN Pertama dapat dilihat pada Gambar \ref{fig:lossModelCNN1}. \textit{Loss} function digunakan untuk mengukur sejauh mana prediksi model CNN ini mendekati nilai sebenarnya
 
 Pertama ini menjadi landasan untuk pengembangan dan evaluasi skenario-skenario lain dalam penelitian ini. Dengan menggunakan skenario-skenario yang bervariasi, diharapkan dapat mengeksplorasi berbagai konfigurasi model CNN dan memperoleh hasil yang optimal untuk tugas klasifikasi yang diberikan.
 
-\begin{center}[h]
+\begin{figure}[!hbt]
+	\centering
 	\includegraphics[width=0.7\linewidth]{gambar/bener/Loss_ModelCNN.png}
 	\captionof{figure}{Loss Model CNN dengan epoch 30}
 	\label{fig:lossModelCNN1}
-\end{center}
-Gambar \ref{fig:lossModelCNN1}  menunjukkan perubahan loss model selama proses pelatihan 30 siklus (iterasi pelatihan). Kerugian digunakan untuk mengukur seberapa baik prediksi model kita didasarkan pada nilai sebenarnya dari tugas regresi, atau untuk mengukur perbedaan antara prediksi model dan entri yang benar dalam tugas klasifikasi.
+\end{figure}
+Gambar \ref{fig:lossModelCNN1}  menunjukkan perubahan \textit{loss} model selama proses pelatihan 30 siklus (iterasi pelatihan). Kerugian digunakan untuk mengukur seberapa baik prediksi model kita didasarkan pada nilai sebenarnya dari tugas regresi, atau untuk mengukur perbedaan antara prediksi model dan entri yang benar dalam tugas klasifikasi.
 
-Pada awal pelatihan (Epoch 1) loss memiliki nilai yang relatif tinggi yaitu sekitar 0,055. Hal ini menunjukkan bahwa model asli masih belum mampu membuat prediksi yang akurat.
+Pada awal pelatihan (Epoch 1) \textit{loss} memiliki nilai yang relatif tinggi yaitu sekitar 0,055. Hal ini menunjukkan bahwa model asli masih belum mampu membuat prediksi yang akurat.
 
 Namun seiring dengan kemajuan jaman dan pendidikan, kerugian tersebut berangsur-angsur berkurang dari jaman ke jaman. Semakin kecil nilai kerugian, semakin baik model kita membuat prediksi yang mendekati nilai sebenarnya atau label yang benar.
 
 Di akhir pelatihan (Epoch 30), kerugiannya sekitar 0,0044, menunjukkan bahwa model kami telah berhasil dipelajari dan mampu membuat prediksi yang cukup akurat. 
 
-\begin{center}[h]
+\begin{figure}[!hbt]
+	\centering
 	\includegraphics[width=0.7\linewidth]{gambar/bener/Accuracy_ModelCNN.png}
 	\captionof{figure}{Akurasi Model CNN dengan epoch 30}
 	\label{fig:AkurasiCNN1}
-\end{center}
-Gambar \ref{fig:AkurasiCNN1} menunjukkan perubahan akurasi model dan akurasi validasi selama proses pelatihan dalam 30 epoch
+\end{figure}
+Gambar \ref{fig:AkurasiCNN1} menunjukkan perubahan akurasi model dan akurasi validasi selama proses pelatihan dalam 30\textit{ epoch}
 
 Pada awal pelatihan (epoch 1), akurasi model relatif rendah, sekitar 50,94\%, sedangkan akurasi validasi cukup tinggi, sekitar 89,20\%. Hal ini menunjukkan bahwa model masih perlu diperbaiki dari segi kemampuan prediksi data pelatihan.
 
@@ -92,23 +96,23 @@ Namun, seiring dengan kemajuan zaman dan kemajuan pendidikan, akurasi model seca
 
 Grafik ini menunjukkan peningkatan performa model yang berkelanjutan. Keakuratan data pelatihan dan validasi yang ditingkatkan berarti model kami belajar dengan sukses dan dapat menghasilkan prediksi yang lebih akurat dari waktu ke waktu.  
 
-\begin{center}[h]
+\begin{figure}[!hbt]
+	\centering
 	\includegraphics[width=0.7\linewidth]{gambar/bener/ConfusionMatrix_ModelCNN.png}
-	\captionof{figure}{Tabel Confusion Matriks Model CNN dengan epoch 30}
+	\captionof{table}{Tabel Confusion Matriks Model CNN dengan epoch 30}
 	\label{fig:TabelModelCNN1}
-\end{center}
-Dalam kasus ini, matriks tersebut mencerminkan hasil dari deteksi huruf dalam suatu dataset. Terdapat 26 label huruf, yaitu A sampai Z. Diagonal utama dari matriks menunjukkan jumlah contoh yang diklasifikasikan dengan benar, di mana nilai-nilai tersebut merupakan \textit{True Positives (TP)} atau contoh yang benar-benar terdeteksi dengan benar untuk setiap huruf.
+\end{figure}
+Dalam kasus ini, matriks tersebut mencerminkan hasil dari deteksi huruf dalam suatu dataset. Terdapat 26 label huruf, yaitu A sampai Z. Diagonal utama dari matriks menunjukkan jumlah contoh yang diklasifikasikan dengan benar, di mana nilai-nilai tersebut merupakan \textit{True Positives } atau contoh yang benar-benar terdeteksi dengan benar untuk setiap huruf.
 
 Berdasarkan Gambar \ref{fig:TabelModelCNN1}, ditemukan bahwa akurasi deteksi dan label huruf K sebesar 578. Hal ini disebabkan oleh kesalahan dalam dataset label huruf K yang terdapat 185 data pelatihan yang seharusnya berisi huruf V. Kesalahan ini terjadi karena kesalahan dalam pengelompokan data ke dalam folder yang menyebabkan kesalahan dalam mengidentifikasi huruf K sebagai huruf V. Dalam deteksi tersebut, terdapat 65 kasus di mana huruf K salah terdeteksi sebagai huruf V, 19 kasus sebagai huruf G, 23 kasus sebagai huruf B, dan 61 kasus sebagai huruf S.
 
-Beberapa nilai di luar diagonal utama juga menunjukkan adanya kesalahan prediksi. Sebagai contoh, pada baris B dan kolom H terdapat 11 contoh yang seharusnya huruf B tetapi salah terklasifikasi sebagai huruf H (False Positives). Hal yang sama berlaku untuk kesalahan prediksi lainnya.
+Beberapa nilai di luar diagonal utama juga menunjukkan adanya kesalahan prediksi. Sebagai contoh, pada baris B dan kolom H terdapat 11 contoh yang seharusnya huruf B tetapi salah terklasifikasi sebagai huruf H \textit{False Positives}. Hal yang sama berlaku untuk kesalahan prediksi lainnya.
 
-Berikut merupakan tabel perhitungan F1-score, presisi, dan recall yang dapat dilihat pada Tabel \ref{tbl:TabelModelCNN} menggunakan Confusion Matrix pada Gambar \ref{fig:TabelModelCNN1}
+Berikut merupakan tabel perhitungan \textit{F1-score}, presisi, dan recall yang dapat dilihat pada Tabel \ref{tbl:TabelModelCNN} menggunakan \textit{Confusion Matrix} pada Gambar \ref{fig:TabelModelCNN1}
 
-\begin{center}[h]
-	\begin{table}[htbp]
+\begin{table}[!hbt]
 	\centering
-	\captionof{figure}{Tabel Model CNN Confusion Matrix}
+	\captionof{table}{Tabel Model CNN Confusion Matrix}
 	\label{tbl:TabelModelCNN}
 	\begin{tabular}{|c|c|c|c|c|}
 	\hline
@@ -143,59 +147,62 @@ Berikut merupakan tabel perhitungan F1-score, presisi, dan recall yang dapat dil
 	Z & 1.0000 & 0.9975 & 0.9987 & 0.9975 \\
 	\hline
 	\end{tabular}
-	\end{table}
-\end{center}
+\end{table}
 
-
-Untuk rata-rata metrik evaluasi, Accuracy mencapai 98.94\%, Recall mencapai 99.75\%, Precision mencapai 98.62\%, dan F1-score mencapai 99.13\%. Hal ini menunjukkan bahwa secara keseluruhan, model CNN memiliki performa yang sangat baik dalam mengklasifikasikan huruf-huruf dalam dataset.
+Untuk rata-rata metrik evaluasi, Accuracy mencapai 98.94\%, Recall mencapai 99.75\%, \textit{Precision} mencapai 98.62\%, dan \textit{F1-score} mencapai 99.13\%. Hal ini menunjukkan bahwa secara keseluruhan, model CNN memiliki performa yang sangat baik dalam mengklasifikasikan huruf-huruf dalam dataset.
 
 
 \section{Model CNN Kedua}
-Pada Model CNN Kedua , Dataset tersebut melewati beberapa lapisan untuk mengekstraksi fitur. Pertama, dataset melewati lapisan Conv2D dengan 32 neuron, filter 3x3, aktivasi ReLU, dan padding yang sama. Kemudian, dilakukan MaxPooling2D dengan ukuran pooling 2x2 dan padding yang sama.
+Pada Model CNN Kedua , Dataset tersebut melewati beberapa lapisan untuk mengekstraksi fitur. Pertama, dataset melewati lapisan \textit{Conv2D} dengan 32 \textit{neuron}, \textit{filter} 3x3, aktivasi \textit{ReLU}, dan \textit{padding} yang sama. Kemudian, dilakukan \textit{MaxPooling2D} dengan ukuran \textit{pooling} 2x2 dan \textit{padding} yang sama.
 
-Selanjutnya, dataset melewati lapisan Conv2D lain dengan 16 neuron, filter 3x3, aktivasi ReLU, dan padding yang sama sebanyak dua kali. Kemudian dilakukan lagi MaxPooling2D dengan ukuran pooling 2x2 dan padding yang sama. Dan diakhiri dengan dataset melewati lapisan Conv2D dengan 8 neuron , filter 3x3 , aktivasi ReLU dan padding yang sama sebanyak dua kali serta MaxPooling2D dengan ukuran pooling 2x2 
+Selanjutnya, dataset melewati lapisan \textit{Conv2D} lain dengan 16 \textit{neuron}, \textit{filter} 3x3, aktivasi \textit{ReLU}, dan \textit{padding} yang sama sebanyak dua kali. Kemudian dilakukan lagi \textit{MaxPooling2D} dengan ukuran \textit{pooling} 2x2 dan \textit{padding} yang sama. Dan diakhiri dengan dataset melewati lapisan \textit{Conv2D} dengan 8 \textit{neuron} , \textit{filter} 3x3 , aktivasi \textit{ReLU} dan \textit{padding} yang sama sebanyak dua kali serta \textit{MaxPooling2D} dengan ukuran \textit{pooling} 2x2 
 
-Setelah proses ekstraksi fitur, dataset kemudian masuk ke tahap klasifikasi. Pertama, dilakukan flattening untuk mengubah data menjadi vektor satu dimensi. Kemudian, data melewati lapisan Dense dengan 16 neuron dan aktivasi ReLU. Untuk mencegah overfitting, dilakukan dropout dengan dropout rate 0.2. Setelah itu, terdapat lapisan Dense lagi dengan 16 neuron dan aktivasi ReLU. Lapisan terakhir menggunakan Dense dengan jumlah neuron sesuai dengan jumlah kelas pada dataset (JumlahKelas) dan aktivasi softmax untuk menghasilkan output probabilitas kelas. Model CNN ini menggunakan fungsi loss mean squared error (mse) dan optimizer Adam dalam proses kompilasi
+Setelah proses ekstraksi fitur, dataset kemudian masuk ke tahap klasifikasi. Pertama, dilakukan flattening untuk mengubah data menjadi vektor satu dimensi. Kemudian, data melewati lapisan \textit{Dense} dengan 16 \textit{neuron} dan aktivasi \textit{ReLU}. Untuk mencegah overfitting, dilakukan dropout dengan dropout rate 0.2. Setelah itu, terdapat lapisan \textit{Dense} lagi dengan 16 \textit{neuron} dan aktivasi \textit{ReLU}. Lapisan terakhir menggunakan \textit{Dense} dengan jumlah \textit{neuron} sesuai dengan jumlah kelas pada dataset (JumlahKelas) dan aktivasi \textit{softmax} untuk menghasilkan output probabilitas kelas. Model CNN ini menggunakan fungsi \textit{loss} \textit{mean squared error} dan optimizer \textit{Adam} dalam proses kompilasi
 
-Grafik akurasi dari Model CNN Kedua tersedia di Gambar \ref{fig:AkurasiCNNKedua}. Dalam skenario ini, terdapat empat lapisan Conv2D yang diikuti oleh Maxpooling. Jumlah neuron dalam setiap lapisan Conv2D adalah 32, 16, 16, dan 8. Model CNN ini dilatih selama 30 epoch.
+Grafik akurasi dari Model CNN Kedua tersedia di Gambar \ref{fig:AkurasiCNNKedua}. Dalam skenario ini, terdapat empat lapisan \textit{Conv2D} yang diikuti oleh \textit{Maxpooling}. Jumlah \textit{neuron} dalam setiap lapisan \textit{Conv2D} adalah 32, 16, 16, dan 8. Model CNN ini dilatih selama 30\textit{ epoch}.
 
-Grafik loss dari Model CNN Kedua dapat ditemukan di Gambar \ref{fig:lossModelCNNKedua}. Loss function digunakan untuk mengukur sejauh mana prediksi model CNN mendekati nilai sebenarnya. Pada skenario ini, model CNN berhasil mengurangi loss secara signifikan selama proses pelatihan selama 30 epoch.
+Grafik \textit{loss} dari Model CNN Kedua dapat ditemukan di Gambar \ref{fig:lossModelCNNKedua}. \textit{Loss} function digunakan untuk mengukur sejauh mana prediksi model CNN mendekati nilai sebenarnya. Pada skenario ini, model CNN berhasil mengurangi \textit{loss} secara signifikan selama proses pelatihan selama 30\textit{ epoch}.
 
-\begin{center}[h]
+\begin{figure}[!hbt]
+	\centering
 	\includegraphics[width=0.7\linewidth]{gambar/bener/Loss_ModelCNN2.png}
 	\captionof{figure}{Loss Model CNN 2 dengan epoch 30}
 	\label{fig:lossModelCNNKedua}
-\end{center}
-Seperti terlihat pada \ref{fig:lossModelCNNKedua}, loss pada awal pelatihan (epoch 1) memiliki nilai yang relatif tinggi yaitu sekitar 0,056. Hal ini menunjukkan bahwa model asli masih belum mampu membuat prediksi yang akurat.
+\end{figure}
+
+Seperti terlihat pada \ref{fig:lossModelCNNKedua}, \textit{loss} pada awal pelatihan (epoch 1) memiliki nilai yang relatif tinggi yaitu sekitar 0,056. Hal ini menunjukkan bahwa model asli masih belum mampu membuat prediksi yang akurat.
 
 Namun seiring dengan kemajuan jaman dan pendidikan, kerugian tersebut berangsur-angsur berkurang dari jaman ke jaman. Semakin kecil nilai kerugian, semakin baik model kita membuat prediksi yang mendekati nilai sebenarnya atau label yang benar.
 
-Di akhir pelatihan (epoch 30), loss sekitar 0,00434, menunjukkan bahwa model kita telah berhasil dipelajari dan mampu membuat prediksi yang cukup akurat. Grafik ini menunjukkan proses pelatihan yang sukses, dengan kerugian terus menerus dan terus menurun dari musim ke musim. Ini menunjukkan bahwa model kami secara bertahap menangkap pola-pola penting dalam data dan meningkatkan prediktabilitas. 
+Di akhir pelatihan (epoch 30), \textit{loss} sekitar 0,00434, menunjukkan bahwa model kita telah berhasil dipelajari dan mampu membuat prediksi yang cukup akurat. Grafik ini menunjukkan proses pelatihan yang sukses, dengan kerugian terus menerus dan terus menurun dari musim ke musim. Ini menunjukkan bahwa model kami secara bertahap menangkap pola-pola penting dalam data dan meningkatkan prediktabilitas. 
 
-\begin{center}[h]
+\begin{figure}[!hbt]
+	\centering
 	\includegraphics[width=0.7\linewidth]{gambar/bener/Accuracy_ModelCNN2.png}
 	\captionof{figure}{Akurasi Model CNN 2 dengan epoch 30}
 	\label{fig:AkurasiCNNKedua}
-\end{center}
+\end{figure}
+
 Seperti terlihat pada Gambar \ref{fig:AkurasiCNNKedua}, akurasi model pada awal pelatihan (epoch 1) relatif rendah sekitar 43,85\%, sedangkan akurasi validasi cukup tinggi sekitar 84,17\%. Hal ini menunjukkan bahwa model asli masih perlu diperbaiki dalam hal kemampuan prediksi data pelatihan.
 
-Namun, seiring dengan berjalannya epoch dan pelatihan, Akurasi model secara bertahap meningkat dari zaman ke zaman. Akurasi konfirmasi juga meningkat dari waktu ke waktu. Pada akhir pelatihan (epoch 30), akurasi model sekitar 93,53\%, sedangkan akurasi validasi sekitar 97,20\%. Gambar 10 menunjukkan peningkatan berkelanjutan dalam kinerja model. Keakuratan data pelatihan dan validasi yang lebih baik berarti bahwa model kami belajar dengan sukses dan dapat membuat prediksi yang lebih akurat dari waktu ke waktu. 	
+Namun, seiring dengan berjalannya\textit{ epoch} dan pelatihan, Akurasi model secara bertahap meningkat dari zaman ke zaman. Akurasi konfirmasi juga meningkat dari waktu ke waktu. Pada akhir pelatihan (epoch 30), akurasi model sekitar 93,53\%, sedangkan akurasi validasi sekitar 97,20\%. Gambar 10 menunjukkan peningkatan berkelanjutan dalam kinerja model. Keakuratan data pelatihan dan validasi yang lebih baik berarti bahwa model kami belajar dengan sukses dan dapat membuat prediksi yang lebih akurat dari waktu ke waktu. 	
 
-\begin{center}[h]
+\begin{figure}[!hbt]
+	\centering
 	\includegraphics[width=0.7\linewidth]{gambar/bener/ConfusionMatrix_ModelCNN2.png}
-	\captionof{figure}{Tabel Confusion Matriks Model CNN Kedua dengan epoch 30}
+	\captionof{table}{Tabel Confusion Matriks Model CNN Kedua dengan epoch 30}
 	\label{fig:TabelModelCNNKedua}
-\end{center}
+\end{figure}
 Berdasarkan Gambar \ref{fig:lossModelCNNKedua}, dapat dilihat bahwa dalam kasus deteksi dan label huruf K, terdapat akurasi sebesar 583. Hal ini disebabkan oleh adanya kesalahan dalam memasukkan dataset ke dalam folder training, sehingga dataset label huruf K sebenarnya juga mencakup huruf V. Sebagai akibatnya, model mengalami kesulitan dalam membedakan antara huruf K dan huruf V saat melakukan deteksi.
 
-Dalam kasus ini, terdapat beberapa kesalahan deteksi yang menyebabkan nilai-nilai dalam confusion matrix menjadi signifikan. Sebagai contoh, terdapat 7 kasus di mana huruf K salah terdeteksi sebagai huruf C, 21 kasus sebagai huruf G, 2 kasus sebagai huruf B, 2 kasus sebagai kata "Akhir", 45 kasus sebagai huruf S, dan 133 kasus sebagai huruf V. Kesalahan ini terjadi karena perbedaan bentuk dan fitur antara huruf K dan huruf V yang mungkin sulit untuk dikenali oleh model.
+Dalam kasus ini, terdapat beberapa kesalahan deteksi yang menyebabkan nilai-nilai dalam \textit{Confusion Matrix} menjadi signifikan. Sebagai contoh, terdapat 7 kasus di mana huruf K salah terdeteksi sebagai huruf C, 21 kasus sebagai huruf G, 2 kasus sebagai huruf B, 2 kasus sebagai kata "Akhir", 45 kasus sebagai huruf S, dan 133 kasus sebagai huruf V. Kesalahan ini terjadi karena perbedaan bentuk dan fitur antara huruf K dan huruf V yang mungkin sulit untuk dikenali oleh model.
 
-Berikut merupakan tabel perhitungan F1-score, presisi, dan recall yang dapat dilihat pada Tabel \ref{tbl:ModelCNN2CONFUSIONMATRIX} menggunakan Confusion Matrix pada Gambar \ref{fig:TabelModelCNNKedua}
+Berikut merupakan tabel perhitungan \textit{F1-score}, presisi, dan recall yang dapat dilihat pada Tabel \ref{tbl:ModelCNN2CONFUSIONMATRIX} menggunakan \textit{Confusion Matrix} pada Gambar \ref{fig:TabelModelCNNKedua}
 
-\begin{center}[h]
-	\begin{table}[htbp]
+\begin{center}
+	\begin{table}[!hbt]
 	\centering
-	\captionof{figure}{Tabel Model CNN 2 Confusion Matrix}
+	\captionof{table}{Tabel Model CNN 2 Confusion Matrix}
 	\label{tbl:ModelCNN2CONFUSIONMATRIX}
 	\begin{tabular}{|c|c|c|c|c|}
 	\hline
@@ -237,55 +244,57 @@ Berdasarkan Tabel \ref{tbl:ModelCNN2CONFUSIONMATRIX}, model ini mencapai kinerja
 
 
 \section{Model CNN ResNet50v2}
-Pada Model CNN ResNet50v2, digunakan arsitektur ResNet50V2 sebagai model dasar. ResNet50V2 merupakan salah satu arsitektur jaringan saraf konvolusi yang terbukti efektif dalam pengenalan gambar.
+Pada Model CNN ResNet50v2, digunakan arsitektur \textit{ResNet50V2 }sebagai model dasar. \textit{ResNet50V2 }merupakan salah satu arsitektur jaringan saraf konvolusi yang terbukti efektif dalam pengenalan gambar.
 
-ResNet50V2 memiliki struktur yang dalam dengan total 50 lapisan. Arsitektur ini menggunakan blok residual untuk mengatasi masalah penurunan performa yang umum terjadi pada jaringan saraf konvolusi yang sangat dalam. Blok residual memanfaatkan koneksi lompatan (skip connection) untuk memperbaiki propagasi gradien, sehingga mengurangi penurunan performa saat jaringan semakin dalam . 
+\textit{ResNet50V2 }memiliki struktur yang dalam dengan total 50 lapisan. Arsitektur ini menggunakan blok residual untuk mengatasi masalah penurunan performa yang umum terjadi pada jaringan saraf konvolusi yang sangat dalam. Blok residual memanfaatkan koneksi lompatan (skip connection) untuk memperbaiki propagasi gradien, sehingga mengurangi penurunan performa saat jaringan semakin dalam . 
 
-Selanjutnya , hasil keluaran dari model diambil dan diproses menggunakan operasi Global Average Pooling 2D untuk menghasilkan vektor fitur global dari seluruh gambar . Vektor fitur tersebut kemudian melewati lapisan Dense dengan 16 neuron dan aktivasi ReLU. Untuk menghindari overfitting, dilakukan dropout dengan tingkat dropout sebesar 0.2. Kemudian, terdapat lapisan Dense lain dengan 16 neuron dan aktivasi ReLU. Lapisan terakhir menggunakan Dense dengan jumlah neuron sesuai dengan jumlah kelas pada dataset (JumlahKelas) dan aktivasi softmax untuk menghasilkan probabilitas kelas sebagai output . 
+Selanjutnya , hasil keluaran dari model diambil dan diproses menggunakan operasi Global Average \textit{pooling} 2D untuk menghasilkan vektor fitur global dari seluruh gambar . Vektor fitur tersebut kemudian melewati lapisan \textit{Dense} dengan 16 \textit{neuron} dan aktivasi \textit{ReLU}. Untuk menghindari overfitting, dilakukan dropout dengan tingkat dropout sebesar 0.2. Kemudian, terdapat lapisan \textit{Dense} lain dengan 16 \textit{neuron} dan aktivasi \textit{ReLU}. Lapisan terakhir menggunakan \textit{Dense} dengan jumlah \textit{neuron} sesuai dengan jumlah kelas pada dataset (JumlahKelas) dan aktivasi \textit{softmax} untuk menghasilkan probabilitas kelas sebagai output . 
 
-\subsection*{Performa dan Fungsionalitas Model CNN ResNet50v2 Skenario Pertama}
+\subsection*{Performa dan Fungsionalitas Model CNN \textit{ResNet50v2 }Skenario Pertama}
 
-Grafik akurasi dari Model CNN ResNet50V2 tersedia pada Gambar \ref{fig:AkurasiCNNResNet50V2}. Pada skenario ini, model CNN menggunakan arsitektur ResNet50V2 sebagai base model. Model CNN ini dilatih selama 30 epoch.
+Grafik akurasi dari Model CNN \textit{ResNet50V2 }tersedia pada Gambar \ref{fig:AkurasiCNNResNet50V2}. Pada skenario ini, model CNN menggunakan arsitektur \textit{ResNet50V2 }sebagai base model. Model CNN ini dilatih selama 30\textit{ epoch}.
 
-Grafik loss dari Model CNN ResNet50V2 dapat dilihat pada Gambar \ref{fig:lossModelCNNResNet50v2}. Loss function digunakan untuk mengukur sejauh mana prediksi model mendekati nilai sebenarnya. Pada skenario ini, model CNN berhasil mengurangi loss secara signifikan selama proses pelatihan selama 30 epoch.
+Grafik \textit{loss} dari Model CNN \textit{ResNet50V2 }dapat dilihat pada Gambar \ref{fig:lossModelCNNResNet50v2}. \textit{Loss} function digunakan untuk mengukur sejauh mana prediksi model mendekati nilai sebenarnya. Pada skenario ini, model CNN berhasil mengurangi \textit{loss} secara signifikan selama proses pelatihan selama 30\textit{ epoch}.
 
-\begin{center}[h]
+\begin{figure}[!hbt]
+	\centering
 	\includegraphics[width=0.7\linewidth]{gambar/bener/Loss_ModelCNNResNet50V2.png}
 	\captionof{figure}{Loss Model CNN ResNet50V2 dengan epoch 30}
 	\label{fig:lossModelCNNResNet50v2}
-\end{center}
+\end{figure}
 
-Menurut Gambar\ref{fig:lossModelCNNResNet50v2}, kerugian awal pada awal pelatihan (epoch 1) cukup tinggi, sekitar 0,0599. Namun, seiring bertambahnya jumlah epoch, kerugian secara bertahap berkurang. Hal ini menunjukkan bahwa model secara perlahan mengoptimalkan parameternya untuk meminimalkan perbedaan antara keluaran yang diprediksi dan keluaran aktual.
+Menurut Gambar\ref{fig:lossModelCNNResNet50v2}, kerugian awal pada awal pelatihan (epoch 1) cukup tinggi, sekitar 0,0599. Namun, seiring bertambahnya jumlah\textit{ epoch}, kerugian secara bertahap berkurang. Hal ini menunjukkan bahwa model secara perlahan mengoptimalkan parameternya untuk meminimalkan perbedaan antara keluaran yang diprediksi dan keluaran aktual.
 
-Dengan setiap epoch, kerugian berkurang, menunjukkan bahwa model lebih baik dalam mempelajari pola dalam data pelatihan. Di musim terakhir (Epoch 30), kerugian berkurang menjadi sekitar 0,0084, menunjukkan bahwa model mencapai akurasi yang baik dalam memprediksi kelas yang benar. Pengurangan kerugian ini menunjukkan bahwa model CNN Xception berhasil menghasilkan representasi fitur yang kuat dan mempelajari hubungan kompleks antara input gambar dan output kelas. Dengan kata lain, model ini mengenali pola pada gambar dan mengklasifikasikannya dengan akurasi tinggi.  
-\begin{center}[h]
+Dengan setiap\textit{ epoch}, kerugian berkurang, menunjukkan bahwa model lebih baik dalam mempelajari pola dalam data pelatihan. Di musim terakhir (Epoch 30), kerugian berkurang menjadi sekitar 0,0084, menunjukkan bahwa model mencapai akurasi yang baik dalam memprediksi kelas yang benar. Pengurangan kerugian ini menunjukkan bahwa model CNN \textit{Xception} berhasil menghasilkan representasi fitur yang kuat dan mempelajari hubungan kompleks antara input gambar dan output kelas. Dengan kata lain, model ini mengenali pola pada gambar dan mengklasifikasikannya dengan akurasi tinggi.  
+\begin{figure}[!hbt]
+	\centering
 	\includegraphics[width=0.7\linewidth]{gambar/bener/Accuracy_ModelResNet50V2.png}
 	\captionof{figure}{Akurasi Model CNN ResNet50V2 dengan epoch 30}
 	\label{fig:AkurasiCNNResNet50V2}
-\end{center}
-Berdasarkan Gambar \ref{fig:AkurasiCNNResNet50V2}, pada awal pelatihan (epoch 1), tingkat akurasi awal rendah, sekitar 0,3134, dan tingkat akurasi validasi sekitar 0,6519. Namun, seiring bertambahnya jumlah epoch, keakuratan data pelatihan dan data validasi secara bertahap meningkat.
+\end{figure}
+Berdasarkan Gambar \ref{fig:AkurasiCNNResNet50V2}, pada awal pelatihan (epoch 1), tingkat akurasi awal rendah, sekitar 0,3134, dan tingkat akurasi validasi sekitar 0,6519. Namun, seiring bertambahnya jumlah\textit{ epoch}, keakuratan data pelatihan dan data validasi secara bertahap meningkat.
 
-Akurasi meningkat pada setiap epoch, menunjukkan bahwa model semakin mampu mempelajari pola dari data pelatihan dan mentransfernya dengan baik ke data validasi. Pada epoch sebelumnya (epoch 30), akurasinya sekitar 86,8\% untuk data training dan 96,59\% untuk data validasi. Hal ini menunjukkan bahwa model mampu mengklasifikasikan citra dengan akurasi yang tinggi.  
+Akurasi meningkat pada setiap\textit{ epoch}, menunjukkan bahwa model semakin mampu mempelajari pola dari data pelatihan dan mentransfernya dengan baik ke data validasi. Pada\textit{ epoch} sebelumnya (epoch 30), akurasinya sekitar 86,8\% untuk data training dan 96,59\% untuk data validasi. Hal ini menunjukkan bahwa model mampu mengklasifikasikan citra dengan akurasi yang tinggi.  
 
-\begin{center}[h]
-	\includegraphics[width=0.7\linewidth]{gambar/bener/ConfusionMatrix_ModelCNNResNet50V2.png}
-	\captionof{figure}{Tabel Confusion Matriks Model CNN ResNet50V2 dengan epoch 30}
-	\label{fig:TabelModelCNNResNet50v2}
-\end{center}
-Dalam Tabel Confusion Matrix sesuai \ref{fig:TabelModelCNNResNet50v2}, terdapat beberapa hasil yang perlu diperhatikan. Beberapa kelas huruf memiliki nilai True Positives (TP) yang tinggi, di mana huruf-huruf tersebut diklasifikasikan dengan benar oleh model. Contohnya, huruf A, Akhir, D, E, F, dan G memiliki TP yang mendekati atau sama dengan 800, menunjukkan bahwa model berhasil mengklasifikasikan huruf-huruf tersebut dengan benar.
-
-Namun, terdapat beberapa kesalahan dalam prediksi model. Sebagai contoh, pada baris B dan kolom H, terdapat 80 contoh yang seharusnya adalah huruf B tetapi salah terklasifikasi sebagai huruf H (False Negatives). Hal yang sama berlaku untuk kesalahan prediksi pada beberapa kelas huruf lainnya seperti C, I, J, S, U, dan V.
-
-Beberapa nilai di luar diagonal utama juga menunjukkan adanya kesalahan prediksi. Misalnya, pada baris B dan kolom C terdapat 1 contoh yang seharusnya huruf B tetapi salah terklasifikasi sebagai huruf C (False Positives). Hal yang sama berlaku untuk kesalahan prediksi pada beberapa kelas huruf lainnya.
-
-Matriks juga menunjukkan bahwa beberapa kelas huruf menghadapi kesulitan dalam pengklasifikasian. Sebagai contoh, pada baris K dan kolom K, terdapat 773 contoh yang berhasil diklasifikasikan dengan benar sebagai huruf K (True Positives), tetapi juga terdapat beberapa kesalahan dalam pengklasifikasian, seperti 27 contoh yang salah terklasifikasi sebagai huruf V (False Positives).
-
-Berikut merupakan tabel perhitungan F1-score, presisi, dan recall yang dapat dilihat pada Tabel \ref{tbl:TabelModelCNNResNet50V2} menggunakan Confusion Matrix pada Gambar \ref{fig:TabelModelCNNResNet50v2}
-
-\begin{center}[h]
-	\begin{table}[htbp]
+\begin{figure}[!hbt]
 	\centering
-	\captionof{figure}{Tabel Confusion Matrix ResNet50V2}
+	\includegraphics[width=0.7\linewidth]{gambar/bener/ConfusionMatrix_ModelCNNResNet50V2.png}
+	\captionof{table}{Tabel Confusion Matriks Model CNN ResNet50V2 dengan epoch 30}
+	\label{fig:TabelModelCNNResNet50v2}
+\end{figure}
+Dalam Tabel \textit{Confusion Matrix} sesuai \ref{fig:TabelModelCNNResNet50v2}, terdapat beberapa hasil yang perlu diperhatikan. Beberapa kelas huruf memiliki nilai \textit{True Poqsitives } yang tinggi, di mana huruf-huruf tersebut diklasifikasikan dengan benar oleh model. Contohnya, huruf A, Akhir, D, E, F, dan G memiliki \textit{True Positives} yang mendekati atau sama dengan 800, menunjukkan bahwa model berhasil mengklasifikasikan huruf-huruf tersebut dengan benar.
+
+Namun, terdapat beberapa kesalahan dalam prediksi model. Sebagai contoh, pada baris B dan kolom H, terdapat 80 contoh yang seharusnya adalah huruf B tetapi salah terklasifikasi sebagai huruf H \textit{False Negatives} . Hal yang sama berlaku untuk kesalahan prediksi pada beberapa kelas huruf lainnya seperti C, I, J, S, U, dan V.
+
+Beberapa nilai di luar diagonal utama juga menunjukkan adanya kesalahan prediksi. Misalnya, pada baris B dan kolom C terdapat 1 contoh yang seharusnya huruf B tetapi salah terklasifikasi sebagai huruf C \textit{False Positives}. Hal yang sama berlaku untuk kesalahan prediksi pada beberapa kelas huruf lainnya.
+
+Matriks juga menunjukkan bahwa beberapa kelas huruf menghadapi kesulitan dalam pengklasifikasian. Sebagai contoh, pada baris K dan kolom K, terdapat 773 contoh yang berhasil diklasifikasikan dengan benar sebagai huruf K (True Positives), tetapi juga terdapat beberapa kesalahan dalam pengklasifikasian, seperti 27 contoh yang salah terklasifikasi sebagai huruf V \textit{False Positives}.
+
+Berikut merupakan tabel perhitungan \textit{F1-score}, presisi, dan recall yang dapat dilihat pada Tabel \ref{tbl:Tabel Confusion Matrix ResNet50V2} menggunakan \textit{Confusion Matrix} pada Gambar \ref{fig:TabelModelCNNResNet50v2}
+
+\begin{table}[!hbt]
+	\centering
+	\captionof{table}{Tabel Confusion Matrix ResNet50V2}
 	\label{tbl:Tabel Confusion Matrix ResNet50V2}
 	\begin{tabular}{|c|c|c|c|c|}
 	\hline
@@ -320,71 +329,74 @@ Berikut merupakan tabel perhitungan F1-score, presisi, dan recall yang dapat dil
 	Z & 0.9720 & 0.9563 & 0.9641 & 0.9563 \\
 	\hline
 	\end{tabular}
-	\end{table}
-\end{center}
+\end{table}
 
 Secara umum sesuai \ref{tbl:Tabel Confusion Matrix ResNet50V2}, model ini tampil cukup baik dalam mengklasifikasikan kelas yang berbeda. Dalam hal presisi, model ini mencapai presisi rata-rata 99.04\%, menunjukkan tingkat keberhasilan yang baik dalam mengklasifikasikan data dengan benar. Rata-rata skor F1 sebesar 99.38\% menunjukkan kemampuan model untuk memperhitungkan positif palsu dan negatif palsu. Mengenai tingkat recall, model ini mencapai tingkat recall rata-rata 98.08\%, menunjukkan tingkat keberhasilan yang tinggi dalam mengidentifikasi anggota yang positif. Akurasi rata-rata 98.08\% menunjukkan kemampuan model untuk mengklasifikasikan elemen positif dari semua elemen positif dengan benar. 
 
 
 \section{Model CNN Xception}
-Pada Model ini digunakan sebuah model CNN berbasis arsitektur Xception. Arsitektur Xception (Extreme Inception) adalah sebuah arsitektur jaringan saraf konvolusi yang dikembangkan oleh Francois Chollet. Arsitektur ini merupakan evolusi dari arsitektur Inception yang memperkenalkan konsep separable convolution.
+Pada Model ini digunakan sebuah model CNN berbasis arsitektur Xception. Arsitektur \textit{Xception} (Extreme Inception) adalah sebuah arsitektur jaringan saraf konvolusi yang dikembangkan oleh Francois Chollet. Arsitektur ini merupakan evolusi dari arsitektur Inception yang memperkenalkan konsep separable convolution.
 
-Arsitektur Xception memiliki struktur yang dalam dengan banyak lapisan konvolusi. Keunikan dari arsitektur ini terletak pada penggunaan operasi separable convolution, yang memisahkan operasi konvolusi menjadi dua tahap: konvolusi spasial dan konvolusi saluran. Hal ini memungkinkan pemodelan yang lebih efisien dan lebih akurat dalam mempelajari fitur-fitur dalam data gambar.
+Arsitektur \textit{Xception} memiliki struktur yang dalam dengan banyak lapisan konvolusi. Keunikan dari arsitektur ini terletak pada penggunaan operasi separable convolution, yang memisahkan operasi konvolusi menjadi dua tahap: konvolusi spasial dan konvolusi saluran. Hal ini memungkinkan pemodelan yang lebih efisien dan lebih akurat dalam mempelajari fitur-fitur dalam data gambar.
 
-Pada model CNN yang diimplementasikan dalam Tugas Akhir ini, dimulai dengan mengambil input gambar dengan dimensi 128x128x3. Kemudian, model Xception yang telah dilatih sebelumnya dengan menggunakan dataset ImageNet di-load sebagai model dasar. Lapisan-lapisan pada model dasar tersebut dibekukan (frozen) agar tidak mengalami perubahan bobot selama pelatihan model CNN ini.
+Pada model CNN yang diimplementasikan dalam Tugas Akhir ini, dimulai dengan mengambil input gambar dengan dimensi 128x128x3. Kemudian, model \textit{Xception} yang telah dilatih sebelumnya dengan menggunakan dataset ImageNet di-load sebagai model dasar. Lapisan-lapisan pada model dasar tersebut dibekukan (frozen) agar tidak mengalami perubahan bobot selama pelatihan model CNN ini.
 
-Selanjutnya, output dari model dasar diambil dan melewati beberapa lapisan tambahan. Pertama, dilakukan operasi flatten untuk mengubah output menjadi vektor satu dimensi. Kemudian, terdapat dua lapisan Dense dengan masing-masing 16 neuron dan aktivasi ReLU. Untuk mengurangi risiko overfitting, dilakukan dropout dengan tingkat dropout sebesar 0.2. Lapisan terakhir menggunakan Dense dengan jumlah neuron sesuai dengan jumlah kelas pada dataset (JumlahKelas) dan aktivasi softmax untuk menghasilkan probabilitas kelas sebagai output.
+Selanjutnya, output dari model dasar diambil dan melewati beberapa lapisan tambahan. Pertama, dilakukan operasi flatten untuk mengubah output menjadi vektor satu dimensi. Kemudian, terdapat dua lapisan \textit{Dense} dengan masing-masing 16 \textit{neuron} dan aktivasi \textit{ReLU}. Untuk mengurangi risiko overfitting, dilakukan dropout dengan tingkat dropout sebesar 0.2. Lapisan terakhir menggunakan \textit{Dense} dengan jumlah \textit{neuron} sesuai dengan jumlah kelas pada dataset (JumlahKelas) dan aktivasi \textit{softmax} untuk menghasilkan probabilitas kelas sebagai output.
 
-Model CNN Xception ini menggunakan fungsi loss mean squared error (mse) dan optimizer Adam dalam proses kompilasi.
+Model CNN \textit{Xception} ini menggunakan fungsi \textit{loss} \textit{mean squared error} dan optimizer \textit{Adam} dalam proses kompilasi.
 
-\subsection*{Performa dan Fungsionalitas Model CNN Xception Skenario Pertama}
+\subsection*{Performa dan Fungsionalitas Model CNN \textit{Xception} Skenario Pertama}
 
-Grafik tingkat akurasi dari Model CNN Xception dapat ditemukan pada Gambar \ref{fig:AkurasiCNNXception}. Pada eksperimen ini, model CNN menggunakan arsitektur Xception sebagai model dasar. Model CNN ini melalui proses pelatihan selama 30 epoch.
+Grafik tingkat akurasi dari Model CNN \textit{Xception} dapat ditemukan pada Gambar \ref{fig:akurasiModelCNNXception}. Pada eksperimen ini, model CNN menggunakan arsitektur \textit{Xception} sebagai model dasar. Model CNN ini melalui proses pelatihan selama 30\textit{ epoch}.
 
-Grafik tingkat kehilangan (loss) dari Model CNN Xception tersedia pada Gambar \ref{fig:lossModelCNNXception}. Loss function digunakan untuk mengukur seberapa dekat prediksi model dengan nilai sebenarnya. Dalam eksperimen ini, model CNN berhasil mengurangi tingkat kehilangan secara signifikan selama proses pelatihan selama 30 epoch.
+Grafik tingkat kehilangan (loss) dari Model CNN \textit{Xception} tersedia pada Gambar \ref{fig:lossModelCNNXception}. \textit{Loss} function digunakan untuk mengukur seberapa dekat prediksi model dengan nilai sebenarnya. Dalam eksperimen ini, model CNN berhasil mengurangi tingkat kehilangan secara signifikan selama proses pelatihan selama 30\textit{ epoch}.
 
-\begin{center}[h]
+\begin{figure}[!hbt]
+	\centering
 	\includegraphics[width=0.7\linewidth]{gambar/bener/Loss_ModelXception.png}
-	\captionof{figure}{Loss Model CNN Xception dengan epoch 30}
+	\captionof{figure}{\textit{Loss} Model CNN Xception dengan epoch 30}
 	\label{fig:lossModelCNNXception}
-\end{center}
-Berdasarkan Gambar \ref{fig:lossModelCNNXception}, nilai loss pada awal pelatihan (epoch 1) cukup tinggi yaitu sekitar 0,027. Hal ini menunjukkan bahwa model asli tidak dapat memberikan prediksi yang akurat.
+\end{figure}
 
-Namun, seiring dengan kemajuan zaman dan pendidikan, nilai loss tersebut berangsur-angsur berkurang. Semakin kecil nilai loss, semakin baik model mampu membuat prediksi yang mendekati nilai sebenarnya atau label yang benar.
+Berdasarkan Gambar \ref{fig:lossModelCNNXception}, nilai \textit{loss} pada awal pelatihan (epoch 1) cukup tinggi yaitu sekitar 0,027. Hal ini menunjukkan bahwa model asli tidak dapat memberikan prediksi yang akurat.
 
-Di akhir pelatihan (Epoch 30), nilai loss sekitar 0,0065, menunjukkan bahwa model berhasil dipelajari dan dapat membuat prediksi yang cukup akurat.  
+Namun, seiring dengan kemajuan zaman dan pendidikan, nilai \textit{loss} tersebut berangsur-angsur berkurang. Semakin kecil nilai \textit{loss}, semakin baik model mampu membuat prediksi yang mendekati nilai sebenarnya atau label yang benar.
 
-\begin{center}[h]
+Di akhir pelatihan (Epoch 30), nilai \textit{loss} sekitar 0,0065, menunjukkan bahwa model berhasil dipelajari dan dapat membuat prediksi yang cukup akurat.  
+
+\begin{figure}[!hbt]
+	\centering
 	\includegraphics[width=0.7\linewidth]{gambar/bener/Accuracy_ModelXception.png}
 	\captionof{figure}{Akurasi Model CNN Xception dengan epoch 30}
 	\label{fig:akurasiModelCNNXception}
-\end{center}
+\end{figure}
 Berdasarkan Gambar 14 , Pada awal pelatihan (Epoch 1), akurasi model relatif rendah, sekitar 34.20\%, sementara akurasi validasi sekitar 58.07\%. Ini menunjukkan bahwa model awal memiliki kinerja yang rendah dan perlu ditingkatkan.
 
-Namun, seiring dengan berjalannya epoch dan pelatihan, akurasi model secara bertahap meningkat dari epoch ke epoch. Akurasi validasi juga mengalami peningkatan seiring waktu. Pada akhir pelatihan (Epoch 30), akurasi model mencapai sekitar 88.36\%, sedangkan akurasi validasi mencapai sekitar 92.39\%.
+Namun, seiring dengan berjalannya\textit{ epoch} dan pelatihan, akurasi model secara bertahap meningkat dari\textit{ epoch} ke\textit{ epoch}. Akurasi validasi juga mengalami peningkatan seiring waktu. Pada akhir pelatihan (Epoch 30), akurasi model mencapai sekitar 88.36\%, sedangkan akurasi validasi mencapai sekitar 92.39\%.
 
-Grafik ini menggambarkan perbaikan performa model seiring berjalannya waktu. Terjadi peningkatan yang konsisten dalam akurasi model dan akurasi validasi dari epoch ke epoch.
+Grafik ini menggambarkan perbaikan performa model seiring berjalannya waktu. Terjadi peningkatan yang konsisten dalam akurasi model dan akurasi validasi dari\textit{ epoch} ke\textit{ epoch}.
 
-Sebagai bagian dari pengujian fungsionalitas Model CNN Xception, dilakukan perhitungan Confusion Matrix menggunakan dataset training sebanyak 21.600 data. Confusion Matrix adalah sebuah matriks yang menampilkan jumlah data yang diklasifikasikan secara benar dan salah dalam setiap kelas. Detail dari Confusion Matrix tersebut dapat ditemukan pada Gambar \ref{fig:TabelModelCNNResNet50v2}. Berdasarkan Confusion Matrix yang dihasilkan, dilakukan perhitungan beberapa metrik evaluasi seperti F1-score, presisi, dan recall. Metrik-metrik evaluasi ini memberikan gambaran tentang performa dan akurasi Model CNN dalam melakukan klasifikasi.
+Sebagai bagian dari pengujian fungsionalitas Model CNN Xception, dilakukan perhitungan \textit{Confusion Matrix} menggunakan dataset training sebanyak 21.600 data. \textit{Confusion Matrix} adalah sebuah matriks yang menampilkan jumlah data yang diklasifikasikan secara benar dan salah dalam setiap kelas. Detail dari \textit{Confusion Matrix} tersebut dapat ditemukan pada Gambar \ref{fig:TabelModelCNNResNet50v2}. Berdasarkan \textit{Confusion Matrix} yang dihasilkan, dilakukan perhitungan beberapa metrik evaluasi seperti \textit{F1-score}, presisi, dan \textit{recall}. Metrik-metrik evaluasi ini memberikan gambaran tentang performa dan akurasi Model CNN dalam melakukan klasifikasi.
 
-\begin{center}[h]
+\begin{figure}[!hbt]
+	\centering
 	\includegraphics[width=0.7\linewidth]{gambar/bener/ConfusionMatrix_ModelXception.png}
 	\captionof{figure}{Confusion Matrix Model CNN Xception dengan epoch 30}
 	\label{fig:confusionmatrixModelCNNXception}
-\end{center}
+\end{figure}
 
-Pada matriks tersebut, terdapat beberapa hasil yang perlu diperhatikan. Terlihat bahwa banyak kelas huruf yang berhasil diklasifikasikan dengan baik oleh model, seperti huruf A, Akhir, F, G, dan M, yang memiliki nilai True Positives (TP) yang tinggi. Sebaliknya, terdapat beberapa kesalahan prediksi pada beberapa kelas huruf, seperti pada huruf B, C, D, E, H, dan I, yang memiliki beberapa False Positives (FP) dan False Negatives (FN).
+Pada matriks tersebut, terdapat beberapa hasil yang perlu diperhatikan. Terlihat bahwa banyak kelas huruf yang berhasil diklasifikasikan dengan baik oleh model, seperti huruf A, Akhir, F, G, dan M, yang memiliki nilai \textit{True Positives } yang tinggi. Sebaliknya, terdapat beberapa kesalahan prediksi pada beberapa kelas huruf, seperti pada huruf B, C, D, E, H, dan I, yang memiliki beberapa False Positives dan False Negatives .
 
 Dalam kasus ini, beberapa kelas huruf menghadapi kesulitan dalam pengklasifikasian. Sebagai contoh, huruf H dan I memiliki jumlah FP yang cukup signifikan, yang menunjukkan kesulitan model dalam membedakan antara kelas tersebut dengan kelas lainnya. Selain itu, huruf B juga mengalami kesulitan dalam pengklasifikasian, ditandai dengan jumlah FN dan FP yang lebih tinggi dibandingkan dengan kelas huruf lainnya.
 
-Selain itu, terdapat pula beberapa kesalahan yang terjadi dalam prediksi. Misalnya, pada baris A dan kolom G, terdapat 9 contoh yang salah terklasifikasi sebagai huruf G (FP), sedangkan pada baris G dan kolom A, terdapat 4 contoh yang salah terklasifikasi sebagai huruf A (FP).
+Selain itu, terdapat pula beberapa kesalahan yang terjadi dalam prediksi. Misalnya, pada baris A dan kolom G, terdapat 9 contoh yang salah terklasifikasi sebagai huruf G, sedangkan pada baris G dan kolom A, terdapat 4 contoh yang salah terklasifikasi sebagai huruf A.
 
-Berikut merupakan tabel perhitungan F1-score, presisi, dan recall yang dapat dilihat pada Tabel \ref{tbl:TabelModelCNNXception} menggunakan Confusion Matrix pada Gambar \ref{fig:confusionmatrixModelCNNXception}
+Berikut merupakan tabel perhitungan \textit{F1-score}, presisi, dan recall yang dapat dilihat pada Tabel \ref{tbl:Tabel Confusion Matrix Xception} \textit{Xception} menggunakan \textit{Confusion Matrix} pada Gambar \ref{fig:confusionmatrixModelCNNXception}.
 
-\begin{center}[h]
-	\begin{table}[htbp]
+\begin{center}
+	\begin{table}[!hbt]
 	\centering
-	\captionof{figure}{Tabel Confusion Matrix Xception}
+	\captionof{table}{Tabel Confusion Matrix \textit{ Xception}}
 	\label{tbl:Tabel Confusion Matrix Xception}
 	\begin{tabular}{|c|c|c|c|c|}
 	\hline
@@ -419,25 +431,24 @@ Berikut merupakan tabel perhitungan F1-score, presisi, dan recall yang dapat dil
 	Z & 0.9900 & 0.9863 & 0.9881 & 0.9863 \\
 	\hline
 	\end{tabular}
-	\end{table}
+\end{table}
 \end{center}
 
-Berdasarkan \ref{tbl:Tabel Confusion Matrix Xception} , Rata-rata Precision, Recall, F1-Score, dan Accuracy dari model CNN yang dihasilkan dapat memberikan gambaran tentang kinerja keseluruhan model dalam mengklasifikasikan huruf dan kata yang diuji. Dari analisis tabel, ditemukan bahwa rata-rata Precision sebesar 98.77\%, yang menunjukkan bahwa model memiliki kemampuan yang baik dalam mengidentifikasi kelas dengan benar. Selain itu, rata-rata Recall sebesar 98.72\% mengindikasikan kemampuan model dalam menemukan kembali sampel positif dari suatu kelas. Rata-rata F1-Score sebesar 98.73\% menggambarkan keseimbangan antara Precision dan Recall, menghasilkan pengukuran keseluruhan yang baik. Terakhir, rata-rata Accuracy sebesar 98.78\% menunjukkan tingkat keseluruhan ketepatan model dalam mengklasifikasikan keseluruhan sampel dengan benar.
+Berdasarkan \ref{tbl:Tabel Confusion Matrix Xception} , Rata-rata \textit{Precision}, Recall, \textit{F1-Score}, dan \textit{Accuracy} dari model CNN yang dihasilkan dapat memberikan gambaran tentang kinerja keseluruhan model dalam mengklasifikasikan huruf dan kata yang diuji. Dari analisis tabel, ditemukan bahwa rata-rata \textit{Precision} sebesar 98.77\%, yang menunjukkan bahwa model memiliki kemampuan yang baik dalam mengidentifikasi kelas dengan benar. Selain itu, rata-rata Recall sebesar 98.72\% mengindikasikan kemampuan model dalam menemukan kembali sampel positif dari suatu kelas. Rata-rata \textit{F1-Score} sebesar 98.73\% menggambarkan keseimbangan antara \textit{Precision} dan Recall, menghasilkan pengukuran keseluruhan yang baik. Terakhir, rata-rata \textit{Accuracy} sebesar 98.78\% menunjukkan tingkat keseluruhan ketepatan model dalam mengklasifikasikan keseluruhan sampel dengan benar.
 
 
 \section{Hasil Waktu Pelatihan}
-Selain mendapatkan nilai akurasi , loss , tabel confusion matrix , F1-Score , Recall maupun Presisi . Di dalam penelitian ini juga didapatkan hasil dari lama waktu selama melakukan pelatihan model berbagai macam skenario dari setiap epoch yang berhasil dilewati 
+Selain mendapatkan nilai akurasi , \textit{loss} , tabel \textit{Confusion Matrix} , \textit{F1-Score} , Recall maupun Presisi . Di dalam penelitian ini juga didapatkan hasil dari lama waktu selama melakukan pelatihan model berbagai macam skenario dari setiap \textit{ epoch} yang berhasil dilewati 
 
-Berikut ini merupakan tabel yang memaparkan informasi terkait lama waktu pelatihan model per epoch dari masing-masing skenario yang telah diujicoba 
+Berikut ini merupakan tabel yang memaparkan informasi terkait lama waktu pelatihan model per\textit{ epoch} dari masing-masing skenario yang telah diujicoba 
 
-\begin{center}[h]
-	\begin{table}[htbp]
+\begin{table}[!hbt]
 	\centering
-	\captionof{figure}{Training Time (in seconds) for Epoch 1-30}
+	\captionof{table}{Durasi Pelatihan dalam detik untuk Epoch 1-30}
 	\label{tab:training_time}
-	\begin{tabular}{|c|c|c|c|c|}
+	\begin{tabular}{|c|c|c|c|c|} 
 	\hline
-	Epoch & CNN & CNN2 & Xception & ResNet50V2 \\
+	Epoch & CNN & CNN2 & Xception & ResNet50V2\\
 	\hline
 	1              & 18.89        & 19.64         & 212.01            & 200.52              \\
 	2              & 19.14        & 19.39         & 204.80            & 208.99              \\
@@ -471,14 +482,13 @@ Berikut ini merupakan tabel yang memaparkan informasi terkait lama waktu pelatih
 	30             & 22.35        & 19.54         & 187.09            & 162.61              \\ 
 	\hline
 	\end{tabular}
-	\end{table}
-\end{center}
+\end{table}
 
-Berdasarkan tabel di atas, dapat dilihat bahwa Model CNN memiliki waktu pelatihan yang relatif stabil selama 30 epoch, dengan rata-rata waktu pelatihan sekitar 19-22 detik per epoch. Model CNN2 juga memiliki pola waktu pelatihan yang serupa, dengan rata-rata waktu pelatihan sekitar 19-21 detik per epoch.
+Berdasarkan tabel di atas, dapat dilihat bahwa Model CNN memiliki waktu pelatihan yang relatif stabil selama 30\textit{ epoch}, dengan rata-rata waktu pelatihan sekitar 19-22 detik per\textit{ epoch}. Model CNN2 juga memiliki pola waktu pelatihan yang serupa, dengan rata-rata waktu pelatihan sekitar 19-21 detik per\textit{ epoch}.
 
-Di sisi lain, Model Xception dan Model ResNet50V2 memiliki waktu pelatihan yang lebih lama secara signifikan. Model Xception membutuhkan waktu pelatihan sekitar 185-213 detik per epoch, sementara Model ResNet50V2 membutuhkan waktu pelatihan sekitar 163-225 detik per epoch.
+Di sisi lain, Model \textit{Xception} dan Model \textit{ResNet50V2 }memiliki waktu pelatihan yang lebih lama secara signifikan. Model \textit{Xception} membutuhkan waktu pelatihan sekitar 185-213 detik per\textit{ epoch}, sementara Model \textit{ResNet50V2 }membutuhkan waktu pelatihan sekitar 163-225 detik per\textit{ epoch}.
 	
-Dapat disimpulkan bahwa Model CNN dan Model CNN2 memiliki waktu pelatihan yang lebih efisien dibandingkan dengan Model Xception dan Model ResNet50V2. Ini mungkin dikaitkan dengan perbedaan arsitektur dan kompleksitas model tersebut. Model CNN dan CNN2 mungkin lebih sederhana dan memiliki jumlah parameter yang lebih sedikit dibandingkan dengan Xception dan ResNet50V2, sehingga memungkinkan pelatihan yang lebih cepat.
+Dapat disimpulkan bahwa Model CNN dan Model CNN2 memiliki waktu pelatihan yang lebih efisien dibandingkan dengan Model \textit{Xception} dan Model ResNet50V2. Ini mungkin dikaitkan dengan perbedaan arsitektur dan kompleksitas model tersebut. Model CNN dan CNN2 mungkin lebih sederhana dan memiliki jumlah parameter yang lebih sedikit dibandingkan dengan \textit{Xception} dan ResNet50V2, sehingga memungkinkan pelatihan yang lebih cepat.
 
 \section{Ujicoba Deteksi}
 Dalam bagian ini , Telah dilakukan ujicoba perangkat lunak yang sudah dibuat dengan cara melakukan ujicoba langsung kepada orang yang mencoba . Dalam ujicoba kali ini diberikan contoh deteksi huruf vokal yaitu A,I,U,E,O dan membentuk kata seperti Bapak , Ibu dan Tante . Ujicoba ini dilakukan terhadap dua orang dengan mengambil jarak 100 cm dari Kamera
@@ -492,9 +502,9 @@ Hasil ujicoba akan memberikan pemahaman yang lebih mendalam tentang keefektifan 
 
 Setelah melalui serangkaian ujicoba, ModelCNN telah menunjukkan kinerjanya yang luar biasa dalam melakukan deteksi huruf dengan tingkat keberhasilan yang sangat baik. Salah satu kemampuan utamanya adalah mampu mengenali huruf-huruf dengan akurasi yang tinggi, bahkan dalam berbagai posisi dan pose yang berbeda
 
-\begin{table}[h]
+\begin{table}[!hbt]
 	\centering
-	\captionof{figure}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN Orang Pertama}
+	\captionof{table}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN Orang Pertama}
 	\label{tbl:Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN Orang Pertama}
 	\begin{tabular}{|c|c|c|}
 	\hline
@@ -518,135 +528,135 @@ Setelah melalui serangkaian ujicoba, ModelCNN telah menunjukkan kinerjanya yang 
 	\hline
 	% Lanjutkan baris tabel sesuai kebutuhan
 	\end{tabular}
-	\end{table}
-	
+\end{table}
 
-	\begin{table}[h]
-		\centering
-		\captionof{figure}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN Orang Pertama}
-		\begin{tabular}{|c|c|c|}
-			\hline
-			No & Huruf/Kata & Gambar Pose Model  \\
-			\hline
-			9 & Bapak & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufBapak_ModelCNN_Dawe.png} \\
-			\hline
-			10 & Ibu & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufIbu_ModelCNN_Dawe.png} \\
-			\hline
-			11 & Tante & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufTante_ModelCNN_Dawe.png} \\
-			\hline
-		\end{tabular}
-	\end{table}
+\begin{table}[!hbt]
+	\centering
+	\captionof{table}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN Orang Pertama}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		No & Huruf/Kata & Gambar Pose Model  \\
+		\hline
+		9 & Bapak & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufBapak_ModelCNN_Dawe.png} \\
+		\hline
+		10 & Ibu & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufIbu_ModelCNN_Dawe.png} \\
+		\hline
+		11 & Tante & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufTante_ModelCNN_Dawe.png} \\
+		\hline
+	\end{tabular}
+\end{table}
+
 \subsubsection*{Hasil Model CNN2 Orang Pertama}
 
 Dari hasil ujicoba yang dilakukan, ModelCNN2 telah berhasil dalam melakukan deteksi dengan tingkat keberhasilan yang baik. Salah satu kemampuan utama model ini adalah mampu mendeteksi huruf-huruf dengan akurasi yang tinggi
 
-\begin{table}[h]
-		\centering
-		\captionof{figure}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN2 Orang Pertama}
-		\label{tbl:Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN2 Orang Pertama}
-		\begin{tabular}{|c|c|c|}
+\begin{table}[!hbt]
+	\centering
+	\captionof{table}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN2 Orang Pertama}
+	\label{tbl:Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN2 Orang Pertama}
+	\begin{tabular}{|c|c|c|}
+	\hline
+	No & Huruf/Kata & Gambar Pose Model  \\
+	\hline
+	1 & A & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufA_ModelCNN2_Dawe.png} \\
+	\hline
+	2 & I & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufI_ModelCNN2_Dawe.png} \\
+	\hline
+	3 & U & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufU_ModelCNN2_Dawe.png} \\
+	\hline
+	4 & E & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufE_ModelCNN2_Dawe.png} \\
+	\hline
+	5 & O & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufO_ModelCNN2_Dawe.png} \\
+	\hline
+	6 & B & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufB_ModelCNN2_Dawe.png} \\
+	\hline
+	7 & K & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufK_ModelCNN2_Dawe.png} \\
+	\hline
+	8 & H & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufH_ModelCNN2_Dawe.png} \\
+	\hline
+	% Lanjutkan baris tabel sesuai kebutuhan
+	\end{tabular}
+\end{table}
+
+\begin{table}[!hbt]
+	\centering
+	\captionof{table}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN2 Orang Pertama}
+	\begin{tabular}{|c|c|c|}
 		\hline
 		No & Huruf/Kata & Gambar Pose Model  \\
 		\hline
-		1 & A & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufA_ModelCNN2_Dawe.png} \\
+		9 & Bapak & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufBapak_CNN2_Dawe.png} \\
 		\hline
-		2 & I & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufI_ModelCNN2_Dawe.png} \\
+		10 & Ibu & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufIbu_ModelCNN2_Dawe.png} \\
 		\hline
-		3 & U & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufU_ModelCNN2_Dawe.png} \\
+		11 & Tante & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufTante_ModelCNN2_Dawe.png} \\
 		\hline
-		4 & E & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufE_ModelCNN2_Dawe.png} \\
-		\hline
-		5 & O & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufO_ModelCNN2_Dawe.png} \\
-		\hline
-		6 & B & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufB_ModelCNN2_Dawe.png} \\
-		\hline
-		7 & K & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufK_ModelCNN2_Dawe.png} \\
-		\hline
-		8 & H & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufH_ModelCNN2_Dawe.png} \\
-		\hline
-		% Lanjutkan baris tabel sesuai kebutuhan
-		\end{tabular}
-		\end{table}
+	\end{tabular}
+\end{table}
 
-		\begin{table}[h]
-			\centering
-			\captionof{figure}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN2 Orang Pertama}
-			\begin{tabular}{|c|c|c|}
-				\hline
-				No & Huruf/Kata & Gambar Pose Model  \\
-				\hline
-				9 & Bapak & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufBapak_CNN2_Dawe.png} \\
-				\hline
-				10 & Ibu & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufIbu_ModelCNN2_Dawe.png} \\
-				\hline
-				11 & Tante & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufTante_ModelCNN2_Dawe.png} \\
-				\hline
-			\end{tabular}
-		\end{table}
+\subsubsection*{Hasil Model CNN \textit{ResNet50V2 }Orang Pertama}
 
-\subsubsection*{Hasil Model CNN ResNet50V2 Orang Pertama}
+Berdasarkan hasil ujicoba yang dilakukan, ModelCNN \textit{ResNet50V2 }telah menunjukkan kemampuannya yang sangat baik dalam melakukan deteksi huruf dengan tingkat keberhasilan yang tinggi. Salah satu keunggulan utama dari model ini adalah kemampuannya untuk mendeteksi huruf dengan akurat, bahkan dalam pose yang bervariasi. Dalam ujicoba tersebut, ModelCNN \textit{ResNet50V2 }berhasil mengatasi tantangan yang mungkin muncul akibat perubahan pose huruf, sehingga dapat mengenali huruf-huruf dengan presisi yang memuaskan
 
-Berdasarkan hasil ujicoba yang dilakukan, ModelCNN ResNet50V2 telah menunjukkan kemampuannya yang sangat baik dalam melakukan deteksi huruf dengan tingkat keberhasilan yang tinggi. Salah satu keunggulan utama dari model ini adalah kemampuannya untuk mendeteksi huruf dengan akurat, bahkan dalam pose yang bervariasi. Dalam ujicoba tersebut, ModelCNN ResNet50V2 berhasil mengatasi tantangan yang mungkin muncul akibat perubahan pose huruf, sehingga dapat mengenali huruf-huruf dengan presisi yang memuaskan
-
-	\begin{table}[h]
-		\centering
-		\captionof{figure}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN ResNet50V2 Orang Pertama}
-		\label{tbl:Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN ResNet50V2 Orang Pertama}
-		\begin{tabular}{|c|c|c|}
-		\hline
-		No & Huruf/Kata & Gambar Pose Model  \\
-		\hline
-		1 & A & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufA_ModelCNNResNet50V2_Dawe.png} \\
-		\hline
-		2 & I & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufI_ModelCNNResNet50V2_Dawe.png} \\
-		\hline
-		3 & U & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufU_ModelCNNResNet50V2_Dawe.png} \\
-		\hline
-		4 & E & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufE_ModelCNNResNet50V2_Dawe.png} \\
-		\hline
-		5 & O & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufO_ModelCNNResNet50V2_Dawe.png} \\
-		\hline
-		6 & B & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufB_ModelCNNResNet50V2_Dawe.png} \\
-		\hline
-		7 & K & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufK_ModelCNNResNet50V2_Dawe.png} \\
-		\hline
-		8 & H & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufH_ModelCNNResNet50V2_Dawe.png} \\
-		\hline
-		% Lanjutkan baris tabel sesuai kebutuhan
-		\end{tabular}
-		\end{table}
+\begin{table}[!hbt]
+	\centering
+	\captionof{table}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN \textit{ResNet50V2 }Orang Pertama}
+	\label{tbl:Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN ResNet50V2 Orang Pertama}
+	\begin{tabular}{|c|c|c|}
+	\hline
+	No & Huruf/Kata & Gambar Pose Model  \\
+	\hline
+	1 & A & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufA_ModelCNNResNet50V2_Dawe.png} \\
+	\hline
+	2 & I & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufI_ModelCNNResNet50V2_Dawe.png} \\
+	\hline
+	3 & U & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufU_ModelCNNResNet50V2_Dawe.png} \\
+	\hline
+	4 & E & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufE_ModelCNNResNet50V2_Dawe.png} \\
+	\hline
+	5 & O & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufO_ModelCNNResNet50V2_Dawe.png} \\
+	\hline
+	6 & B & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufB_ModelCNNResNet50V2_Dawe.png} \\
+	\hline
+	7 & K & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufK_ModelCNNResNet50V2_Dawe.png} \\
+	\hline
+	8 & H & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufH_ModelCNNResNet50V2_Dawe.png} \\
+	\hline
+	% Lanjutkan baris tabel sesuai kebutuhan
+	\end{tabular}
+\end{table}
 
 
-\subsubsection*{Hasil Model CNN Xception Orang Pertama}
-Berdasarkan eksperimen yang dilakukan, ModelCNN Xception telah berhasil dalam melakukan deteksi huruf dengan tingkat keberhasilan yang tinggi. Salah satu keunggulan utama dari model ini adalah kemampuannya dalam mengenali huruf dengan akurasi yang baik, bahkan ketika huruf tersebut berada dalam pose yang berbeda. Ujicoba tersebut telah menunjukkan bahwa ModelCNN Xception mampu mengatasi tantangan yang mungkin muncul akibat variasi pose huruf, sehingga memberikan hasil yang akurat dalam pengenalan huruf
+\subsubsection*{Hasil Model CNN \textit{Xception} Orang Pertama}
+Berdasarkan eksperimen yang dilakukan, ModelCNN \textit{Xception} telah berhasil dalam melakukan deteksi huruf dengan tingkat keberhasilan yang tinggi. Salah satu keunggulan utama dari model ini adalah kemampuannya dalam mengenali huruf dengan akurasi yang baik, bahkan ketika huruf tersebut berada dalam pose yang berbeda. Ujicoba tersebut telah menunjukkan bahwa ModelCNN \textit{Xception} mampu mengatasi tantangan yang mungkin muncul akibat variasi pose huruf, sehingga memberikan hasil yang akurat dalam pengenalan huruf
 
-		\begin{table}[h]
-			\centering
-			\captionof{figure}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN Xception Orang Pertama}
-			\label{tbl:Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN Xception Orang Pertama}
-			\begin{tabular}{|c|c|c|}
-			\hline
-			No & Huruf/Kata & Gambar Pose Model  \\
-			\hline
-			1 & A & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufA_ModelCNNXception_Dawe.png} \\
-			\hline
-			2 & I & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufI_ModelCNNXception_Dawe.png} \\
-			\hline
-			3 & U & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufU_ModelCNNXception_Dawe.png} \\
-			\hline
-			4 & E & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufE_ModelCNNXception_Dawe.png} \\
-			\hline
-			5 & O & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufO_ModelCNNXception_Dawe.png} \\
-			\hline
-			6 & B & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufB_ModelCNNXception_Dawe.png} \\
-			\hline
-			7 & K & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufK_ModelCNNXception_Dawe.png} \\
-			\hline
-			8 & H & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufH_ModelCNNXception_Dawe.png} \\
-			\hline
-			% Lanjutkan baris tabel sesuai kebutuhan
-			\end{tabular}
-			\end{table}
+\begin{table}[!hbt]
+	\centering
+	\captionof{table}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN Xception Orang Pertama}
+	\label{tbl:Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN Xception Orang Pertama}
+	\begin{tabular}{|c|c|c|}
+	\hline
+	No & Huruf/Kata & Gambar Pose Model  \\
+	\hline
+	1 & A & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufA_ModelCNNXception_Dawe.png} \\
+	\hline
+	2 & I & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufI_ModelCNNXception_Dawe.png} \\
+	\hline
+	3 & U & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufU_ModelCNNXception_Dawe.png} \\
+	\hline
+	4 & E & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufE_ModelCNNXception_Dawe.png} \\
+	\hline
+	5 & O & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufO_ModelCNNXception_Dawe.png} \\
+	\hline
+	6 & B & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufB_ModelCNNXception_Dawe.png} \\
+	\hline
+	7 & K & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufK_ModelCNNXception_Dawe.png} \\
+	\hline
+	8 & H & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufH_ModelCNNXception_Dawe.png} \\
+	\hline
+	% Lanjutkan baris tabel sesuai kebutuhan
+	\end{tabular}
+\end{table}
 
 
 \subsection{Orang Kedua}
@@ -659,9 +669,9 @@ Subjek kedua menjadi partisipan yang diuji dalam setiap percobaan menggunakan mo
 
 Berdasarkan percobaan yang dilakukan, ModelCNN telah menunjukkan kemampuannya yang baik dalam mengenali dan mendeteksi huruf dengan akurasi yang memuaskan.
 
-\begin{table}[h]
+\begin{table}[!hbt]
 	\centering
-	\captionof{figure}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN}
+	\captionof{table}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN}
 	\label{tbl:Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN Orang Kedua}
 	\begin{tabular}{|c|c|c|}
 	\hline
@@ -687,133 +697,133 @@ Berdasarkan percobaan yang dilakukan, ModelCNN telah menunjukkan kemampuannya ya
 	\end{tabular}
 	\end{table}
 
-	\begin{table}[h]
-		\centering
-		\captionof{figure}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN2}
-		\begin{tabular}{|c|c|c|}
-			\hline
-			No & Huruf/Kata & Gambar Pose Model  \\
-			\hline
-			9 & Bapak & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufBapak_ModelCNN_Fachry.png} \\
-			\hline
-			10 & Ibu & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufIbu_ModelCNN_Fachry.png} \\
-			\hline
-			11 & Tante & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufTante_ModelCNN_Fachry.png} \\
-			\hline
-		\end{tabular}
-	\end{table}
+\begin{table}[!hbt]
+	\centering
+	\captionof{table}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN2}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		No & Huruf/Kata & Gambar Pose Model  \\
+		\hline
+		9 & Bapak & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufBapak_ModelCNN_Fachry.png} \\
+		\hline
+		10 & Ibu & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufIbu_ModelCNN_Fachry.png} \\
+		\hline
+		11 & Tante & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufTante_ModelCNN_Fachry.png} \\
+		\hline
+	\end{tabular}
+\end{table}
 
 \subsubsection*{Hasil Model CNN2 Orang Kedua}
 
 Hasil ujicoba menunjukkan bahwa ModelCNN2 telah berhasil dalam melakukan deteksi huruf dengan tingkat keberhasilan yang baik.
 
-	\begin{table}[h]
-		\centering
-		\captionof{figure}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN2 Orang Kedua}
-		\label{tbl:Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN2 Orang Kedua}
-		\begin{tabular}{|c|c|c|}
+\begin{table}[!hbt]
+	\centering
+	\captionof{table}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN2 Orang Kedua}
+	\label{tbl:Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN2 Orang Kedua}
+	\begin{tabular}{|c|c|c|}
+	\hline
+	No & Huruf/Kata & Gambar Pose Model  \\
+	\hline
+	1 & A & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufA_ModelCNN2_Fachry.png} \\
+	\hline
+	2 & I & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufI_ModelCNN2_Fachry.png} \\
+	\hline
+	3 & U & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufU_ModelCNN2_Fachry.png} \\
+	\hline
+	4 & E & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufE_ModelCNN2_Fachry.png} \\
+	\hline
+	5 & O & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufO_ModelCNN2_Fachry.png} \\
+	\hline
+	6 & B & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufB_ModelCNN2_Fachry.png} \\
+	\hline
+	7 & K & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufK_ModelCNN2_Fachry.png} \\
+	\hline
+	8 & H & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufH_ModelCNN2_Fachry.png} \\
+	\hline
+	% Lanjutkan baris tabel sesuai kebutuhan
+	\end{tabular}
+\end{table}
+
+\begin{table}[!hbt]
+	\centering
+	\captionof{table}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN2 Orang Kedua}
+	\begin{tabular}{|c|c|c|}
 		\hline
 		No & Huruf/Kata & Gambar Pose Model  \\
 		\hline
-		1 & A & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufA_ModelCNN2_Fachry.png} \\
+		9 & Bapak & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufBapak_ModelCNN2_Fachry.png} \\
 		\hline
-		2 & I & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufI_ModelCNN2_Fachry.png} \\
+		10 & Ibu & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufIbu_ModelCNN2_Fachry.png} \\
 		\hline
-		3 & U & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufU_ModelCNN2_Fachry.png} \\
+		11 & Tante & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufTante_ModelCNN2_Fachry.png} \\
 		\hline
-		4 & E & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufE_ModelCNN2_Fachry.png} \\
-		\hline
-		5 & O & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufO_ModelCNN2_Fachry.png} \\
-		\hline
-		6 & B & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufB_ModelCNN2_Fachry.png} \\
-		\hline
-		7 & K & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufK_ModelCNN2_Fachry.png} \\
-		\hline
-		8 & H & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufH_ModelCNN2_Fachry.png} \\
-		\hline
-		% Lanjutkan baris tabel sesuai kebutuhan
-		\end{tabular}
-		\end{table}
+	\end{tabular}
+\end{table}
 
-		\begin{table}[h]
-			\centering
-			\captionof{figure}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN2 Orang Kedua}
-			\begin{tabular}{|c|c|c|}
-				\hline
-				No & Huruf/Kata & Gambar Pose Model  \\
-				\hline
-				9 & Bapak & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufBapak_ModelCNN2_Fachry.png} \\
-				\hline
-				10 & Ibu & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufIbu_ModelCNN2_Fachry.png} \\
-				\hline
-				11 & Tante & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufTante_ModelCNN2_Fachry.png} \\
-				\hline
-			\end{tabular}
-		\end{table}
+\subsubsection*{Hasil Model CNN \textit{ResNet50V2 }Orang Kedua}
 
-\subsubsection*{Hasil Model CNN ResNet50V2 Orang Kedua}
-
-Berdasarkan Hasil Ujicoba ,  ModelCNN ResNet50V2 terkendala di deteksi huruf A , I , U , E , O , B , K dan H karena tidak mengeluarkan huruf sama sekali
+Berdasarkan Hasil Ujicoba ,  ModelCNN \textit{ResNet50V2 }terkendala di deteksi huruf A , I , U , E , O , B , K dan H karena tidak mengeluarkan huruf sama sekali
 
 
-	\begin{table}[h]
-		\centering
-		\captionof{figure}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN ResNet50V2 Orang Kedua}
-		\label{tbl:Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN ResNet50V2 Orang Kedua}
-		\begin{tabular}{|c|c|c|}
-		\hline
-		No & Huruf/Kata & Gambar Pose Model  \\
-		\hline
-		1 & A & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufA_ModelCNNResNet50V2_Fachry.png} \\
-		\hline
-		2 & I & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufI_ModelCNNResNet50V2_Fachry.png} \\
-		\hline
-		3 & U & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufU_ModelCNNResNet50V2_Fachry.png} \\
-		\hline
-		4 & E & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufE_ModelCNNResNet50V2_Fachry.png} \\
-		\hline
-		5 & O & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufO_ModelCNNResNet50V2_Fachry.png} \\
-		\hline
-		6 & B & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufB_ModelCNNResNet50V2_Fachry.png} \\
-		\hline
-		7 & K & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufK_ModelCNNResNet50V2_Fachry.png} \\
-		\hline
-		8 & H & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufH_ModelCNNResNet50V2_Fachry.png} \\
-		\hline
-		% Lanjutkan baris tabel sesuai kebutuhan
-		\end{tabular}
-		\end{table}
+\begin{table}[!hbt]
+	\centering
+	\captionof{table}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN ResNet50V2 Orang Kedua}
+	\label{tbl:Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN ResNet50V2 Orang Kedua}
+	\begin{tabular}{|c|c|c|}
+	\hline
+	No & Huruf/Kata & Gambar Pose Model  \\
+	\hline
+	1 & A & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufA_ModelCNNResNet50V2_Fachry.png} \\
+	\hline
+	2 & I & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufI_ModelCNNResNet50V2_Fachry.png} \\
+	\hline
+	3 & U & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufU_ModelCNNResNet50V2_Fachry.png} \\
+	\hline
+	4 & E & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufE_ModelCNNResNet50V2_Fachry.png} \\
+	\hline
+	5 & O & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufO_ModelCNNResNet50V2_Fachry.png} \\
+	\hline
+	6 & B & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufB_ModelCNNResNet50V2_Fachry.png} \\
+	\hline
+	7 & K & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufK_ModelCNNResNet50V2_Fachry.png} \\
+	\hline
+	8 & H & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufH_ModelCNNResNet50V2_Fachry.png} \\
+	\hline
+	% Lanjutkan baris tabel sesuai kebutuhan
+	\end{tabular}
+\end{table}
 
 
-\subsubsection*{Hasil Model CNN Xception Orang Kedua}
+\subsubsection*{Hasil Model CNN \textit{Xception} Orang Kedua}
 
-Berdasarkan Hasil Ujicoba  , ModelCNN Xception sudah bisa melakukan deteksi dengan baik untuk huruf I , K , H , U dan E . Dan untuk huruf A masih meleset karena terbaca huruf G dan huruf O terbaca huruf D . Lalu untuk huruf B terbaca huruf H
+Berdasarkan Hasil Ujicoba  , ModelCNN \textit{Xception} sudah bisa melakukan deteksi dengan baik untuk huruf I , K , H , U dan E . Dan untuk huruf A masih meleset karena terbaca huruf G dan huruf O terbaca huruf D . Lalu untuk huruf B terbaca huruf H
 
 
-		\begin{table}[h]
-			\centering
-			\captionof{figure}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN Xception Orang Kedua}
-			\label{tbl:Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN Xception Orang Kedua}
-			\begin{tabular}{|c|c|c|}
-			\hline
-			No & Huruf/Kata & Gambar Pose Model  \\
-			\hline
-			1 & A & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufA_ModelCNNXception_Fachry.png} \\
-			\hline
-			2 & I & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufI_ModelCNNXception_Fachry.png} \\
-			\hline
-			3 & U & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufU_ModelCNNXception_Fachry.png} \\
-			\hline
-			4 & E & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufE_ModelCNNXception_Fachry.png} \\
-			\hline
-			5 & O & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufO_ModelXception_Fachry.png} \\
-			\hline
-			6 & B & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufB_ModelCNNXception_Fachry.png} \\
-			\hline
-			7 & K & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufK_ModelCNNXception_Fachry.png} \\
-			\hline
-			8 & H & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufH_ModelCNNXception_Fachry.png} \\
-			\hline
-			% Lanjutkan baris tabel sesuai kebutuhan
-			\end{tabular}
-			\end{table}
+\begin{table}[!hbt]
+	\centering
+	\captionof{table}{Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN Xception Orang Kedua}
+	\label{tbl:Tabel Contoh Huruf/Kata dan Gambar Pose Model CNN Xception Orang Kedua}
+	\begin{tabular}{|c|c|c|}
+	\hline
+	No & Huruf/Kata & Gambar Pose Model  \\
+	\hline
+	1 & A & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufA_ModelCNNXception_Fachry.png} \\
+	\hline
+	2 & I & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufI_ModelCNNXception_Fachry.png} \\
+	\hline
+	3 & U & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufU_ModelCNNXception_Fachry.png} \\
+	\hline
+	4 & E & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufE_ModelCNNXception_Fachry.png} \\
+	\hline
+	5 & O & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufO_ModelXception_Fachry.png} \\
+	\hline
+	6 & B & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufB_ModelCNNXception_Fachry.png} \\
+	\hline
+	7 & K & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufK_ModelCNNXception_Fachry.png} \\
+	\hline
+	8 & H & \includegraphics[width=0.2\textwidth]{gambar/bener/HurufH_ModelCNNXception_Fachry.png} \\
+	\hline
+	% Lanjutkan baris tabel sesuai kebutuhan
+	\end{tabular}
+\end{table}
