@@ -8,6 +8,7 @@ Pada penelitian-penelitian tersebut, pendekatan pasif digunakan dalam menganalis
 
 \section{Bendera Semaphore}
 \begin{figure}[hbt!]
+  \centering
 	\includegraphics[width=0.7\linewidth]{gambar/bener/Semaphore-Pose.jpg}
 	\captionof{figure}{Bendera Semaphore}
 	\label{fig:BenderaSemaphore}
@@ -29,6 +30,7 @@ Dalam beberapa tahun terakhir, metode estimasi pose telah menjadi fokus utama da
 \section{MediaPipe}
 \textit{MediaPipe} merupakan sebuah \textit{framework} yang sangat fleksibel dan efisien dalam mengelola dan memproses input sensori seperti video dan audio. Dikembangkan oleh tim \textit{Google Research}, \textit{MediaPipe} menyediakan beragam komponen persepsi yang dapat digabungkan dengan mudah dalam membuat prototipe dan mengembangkan aplikasi canggih yang dapat dijalankan di berbagai platform. Keunggulan \textit{MediaPipe} terletak pada kemampuannya mengoptimalkan penggunaan sumber daya dengan mengurangi latensi, menangani sinkronisasi data seri waktu, serta melakukan pengukuran kinerja dan konsumsi sumber daya. Dengan performa yang baik dan efisiensi dalam pemrosesan input sensori, \textit{MediaPipe} menjadi pilihan yang menarik bagi para pengembang aplikasi. Salah satu komponen unggulan dalam \textit{MediaPipe} adalah Estimasi Posisi Manusia (\textit{Human Pose Estimation}). Estimasi Pose Manusia merupakan teknik yang bertujuan mendeteksi dan mengidentifikasi posisi tubuh manusia dalam gambar atau video. Dengan menggunakan algoritma dan model yang ada dalam \textit{MediaPipe}, pengembang dapat dengan mudah mengintegrasikan kemampuan ini ke dalam aplikasi mereka. Estimasi Pose Manusia memungkinkan analisis lanjutan terhadap posisi tubuh manusia dalam video atau gambar, membuka peluang mengembangkan berbagai aplikasi yang melibatkan interaksi manusia. \cite{lugaresi2019mediapipe}
 \begin{figure}[hbt!]
+  \centering
   % Nama dari file gambar yang diinputkan
   \includegraphics[width=0.7\linewidth]{gambar/humanpose.jpg}
   % Keterangan gambar yang diinputkan
@@ -46,6 +48,7 @@ Titik-titik \textit{landmark} tersebut terdiri dari berbagai bagian tubuh, seper
 
 \section{Deep Learning}
 \begin{figure}[hbt!]
+  \centering
 	\includegraphics[width=0.9\linewidth]{gambar/bener/ArsitekturDeeplearning.png}
 	\captionof{figure}{Deep Learning Layers}
 	\label{fig:Deep Learning secara umum}
@@ -67,14 +70,15 @@ Contoh lainnya adalah \textit{Autoencoders}, yang merupakan jenis jaringan saraf
 Dalam industri keuangan, \textit{deep learning} telah digunakan dalam analisis data keuangan dan prediksi pasar. Model \textit{deep learning} dapat mengidentifikasi pola kompleks dari data pasar dan membantu investor atau trader dalam membuat keputusan investasi. Penerapan \textit{deep learning} juga ditemukan dalam aplikasi \textit{NLP (Natural Language Processing)}. Model \textit{deep learning} seperti \textit{Transformer} telah digunakan dalam penerjemahan bahasa, generasi teks, analisis sentimen, dan \textit{chatbot}. Selain itu, \textit{deep learning} juga telah diadopsi dalam berbagai aplikasi industri seperti manufaktur, pertanian, energi, dan lainnya. Misalnya, dalam industri manufaktur, \textit{deep learning} digunakan dalam mengoptimalkan proses produksi dan memprediksi kerusakan pada mesin. Di bidang pertanian, \textit{deep learning} digunakan mendeteksi hama dan penyakit tanaman, serta memantau pertumbuhan tanaman secara akurat. Implementasi \textit{deep learning} terus berkembang seiring dengan kemajuan teknologi dan kebutuhan mengatasi tantangan dalam berbagai industri. Penggunaan \textit{deep learning} yang semakin luas memberikan potensi mengubah cara kerja dan memberikan solusi yang lebih efektif dalam berbagai aspek kehidupan manusia.
 
 \subsection{Convolutional Neural Network (CNN)}
-\begin{table}[hbt!]
+\begin{figure}[hbt!]
+  \centering
   % Nama dari file gambar yang diinputkan
   \includegraphics[width=0.8\linewidth]{gambar/bener/Arsitektur_CNN_Umum.png}
   % Keterangan gambar yang diinputkan
   \captionof{figure}{Arsitektur CNN}
   % Label referensi dari gambar yang diinputkan
   \label{fig:Arsitektur Umum Convolutional Neural Network}
-\end{table}
+\end{figure}
 \textit{Convolutional Neural Network (CNN)} adalah sebuah jenis arsitektur model \textit{deep learning} yang khusus dirancang melaksanakan tugas-tugas pengolahan citra dan analisis visual. Inspirasi utama dari \textit{CNN} berasal dari cara otak manusia, khususnya korteks visual, memproses dan memahami informasi visual. Dengan menggunakan lapisan-lapisan konvolusi, \textit{CNN} dapat secara efektif dan efisien mengidentifikasi fitur-fitur penting dalam gambar secara hierarkis. Fungsi utama lapisan konvolusi dalam \textit{CNN} seperti pada \ref{fig:Arsitektur Umum Convolutional Neural Network}
 adalah mendeteksi pola-pola spesifik atau fitur-fitur visual pada data input. Lapisan konvolusi dilengkapi dengan filter atau kernel kecil yang bergeser secara bertahap di seluruh citra agar menghasilkan peta fitur yang mencerminkan kehadiran fitur-fitur tersebut. Misalnya, filter pertama mungkin berfokus pada deteksi tepi dan garis, sementara filter berikutnya dapat mengenali sudut atau bentuk yang lebih kompleks. \cite{wu2017introduction}
 
@@ -91,17 +95,18 @@ Selanjutnya, ada arsitektur \textit{AlexNet} yang dikembangkan oleh Alex Krizhev
 Contoh lainnya adalah arsitektur \textit{GoogLeNet} yaitu \textit{Inception} yang dikembangkan oleh tim dari \textit{Google} pada tahun 2014. \textit{GoogLeNet} memperkenalkan modul \textit{Inception} yang mencakup beberapa operasi konvolusi dalam paralel, mengoptimalkan kompromi antara akurasi dan efisiensi komputasi.Sejak saat itu, muncul berbagai arsitektur CNN lainnya, seperti \textit{ResNet}, \textit{DenseNet}, dan \textit{MobileNet}, yang terus mengalami pengembangan memenuhi kebutuhan beragam dalam berbagai aplikasi dan mendapatkan hasil yang lebih baik dalam analisis visual.
 
 \subsubsection{ResNet50v2}
-\textit{ResNet50V2} adalah salah satu model arsitektur \textit{Convolutional Neural Network (CNN)} yang merupakan variasi dari ResNet50, yang dikembangkan oleh Kaiming He dan timnya pada tahun 2015. ResNet sendiri merupakan singkatan dari \textit{Residual Network} yang merupakan terobosan dalam pengembangan jaringan saraf yang sangat dalam. Masalah utama yang diatasi oleh ResNet adalah pemudaran gradien yang sering terjadi pada jaringan yang dalam, yang menyebabkan kesulitan dalam pelatihan dan pengoptimalan model. \textit{ResNet50V2} menggunakan teknik \textit{Skip Connection} atau \textit{Residual Connections} mengatasi masalah pemudaran gradien ini. \cite{rahimzadeh2020modified} . Cara kerja \textit{ResNet50V2} seperti pada Gambar \ref{fig:Arsitektur ResNet50V2}
+\textit{ResNet50V2} adalah salah satu model arsitektur \textit{Convolutional Neural Network (CNN)} yang merupakan variasi dari ResNet50, yang dikembangkan oleh Kaiming He dan timnya pada tahun 2015. ResNet sendiri merupakan singkatan dari \textit{Residual Network} yang merupakan terobosan dalam pengembangan jaringan saraf yang sangat dalam. Masalah utama yang diatasi oleh ResNet adalah pemudaran gradien yang sering terjadi pada jaringan yang dalam, yang menyebabkan kesulitan dalam pelatihan dan pengoptimalan model. \textit{ResNet50V2} menggunakan teknik \textit{Skip Connection} atau \textit{Residual Connections} mengatasi masalah pemudaran gradien ini. \cite{rahimzadeh2020modified} . Cara kerja \textit{ResNet50V2} seperti pada Gambar \ref{fig:ArsitekturResNet50V2}
 dimulai dengan lapisan konvolusi pertama melakukan ekstraksi fitur dari gambar input. Setelah itu, model menggunakan beberapa blok residual bertingkat agar mempelajari representasi fitur yang semakin kompleks. Blok residual adalah inti dari arsitektur ResNet, yang memungkinkan aliran informasi yang lancar melalui lapisan-lapisan jaringan. \textit{Skip connections} memungkinkan input lompat langsung ke lapisan yang lebih dalam, atau ditambahkan ke output lapisan tersebut, sehingga memungkinkan model mempertahankan informasi asli selama proses pembelajaran.
 
-\begin{center}
+\begin{figure}[!hbt]
+  \centering
   % Nama dari file gambar yang diinputkan
   \includegraphics[width=0.8\linewidth]{gambar/bener/Arsitektur_ModelCNNResNet50V2_Dasar.png}
   % Keterangan gambar yang diinputkan
   \captionof{figure}{Arsitektur CNN ResNet50V2}
   % Label referensi dari gambar yang diinputkan
-  \label{fig:Arsitektur ResNet50V2}
-\end{center}
+  \label{fig:ArsitekturResNet50V2}
+\end{figure}
 
 Dengan menggunakan blok residual dan \textit{skip connections}, \textit{ResNet50V2} dapat mengatasi masalah pemudaran gradien dengan lebih efektif. Gradien adalah indikator bagaimana model merespons perubahan parameter selama proses pelatihan. Pemudaran gradien terjadi ketika nilai gradien menjadi sangat kecil atau bahkan menghilang saat melewati lapisan-lapisan dalam jaringan. Dalam jaringan yang sangat dalam, pemudaran gradien dapat menyebabkan kesulitan dalam mengoptimalkan parameter dan memperlambat proses pelatihan. Namun, dengan adanya \textit{skip connections}, informasi dapat lebih mudah mengalir mundur melalui jaringan, mengurangi pemudaran gradien dan mempercepat pelatihan. \cite{prusty2022resnet50v2} . Selain itu, \textit{ResNet50V2} menggunakan blok \textit{"bottle-neck"} yang terdiri dari tiga lapisan konvolusi dengan ukuran kernel yang berbeda, yaitu 1x1, 3x3, dan 1x1. Penggunaan blok \textit{bottle-neck} ini mengurangi dimensi fitur di tengah blok, mengurangi kompleksitas komputasi dan jumlah parameter yang diperlukan. Dengan demikian, \textit{ResNet50V2} memiliki struktur yang lebih efisien dan dapat menghasilkan representasi fitur yang lebih kuat dengan meminimalkan biaya komputasi.
 
@@ -110,16 +115,18 @@ Selain teknik \textit{skip connections} dan blok \textit{bottle-neck}, \textit{R
 \subsubsection{Xception}
 Arsitektur \textit{Xception} adalah inovasi dalam desain jaringan saraf tiruan yang menawarkan solusi efisiensi komputasi dan kinerja yang tinggi dalam tugas pengolahan citra. Cara kerja arsitektur \textit{Xception} berfokus pada penggunaan konsep konvolusi yang dapat dipisahkan secara mendalam agar mengurangi beban komputasi dan jumlah parameter dalam model. Ini menghasilkan model yang lebih ringkas dan cepat, sehingga lebih mudah dijalankan pada perangkat dengan sumber daya terbatas.
 
-Konsep utama di balik \textit{Xception} adalah menggantikan operasi konvolusi standar dalam modul \textit{Inception} dengan konvolusi yang dapat dipisahkan secara mendalam. Modul \textit{Inception} adalah bagian kunci dari arsitektur jaringan \textit{Inception}, yang menggunakan berbagai ukuran \textit{filter} dalam paralel dalam mengekstraksi fitur dari gambar input. Dengan menggunakan konvolusi yang dapat dipisahkan secara mendalam, \textit{Xception} memisahkan operasi konvolusi menjadi dua tahap: konvolusi \textit{depthwise} dan konvolusi \textit{pointwise}.Pada tahap konvolusi \textit{depthwise}, satu \textit{filter} digunakan setiap lapisan input. Konvolusi ini dilakukan secara terpisah bagi setiap kanal warna (depth) gambar, yang menghasilkan output berukuran tinggi x lebar x kedalaman. Output dari langkah ini akan menjadi input dari tahap konvolusi \textit{pointwise}. Pada tahap konvolusi \textit{pointwise}, \textit{filter} dengan ukuran 1x1xkedalaman digunakan menghasilkan beberapa fitur. Penggunaan konvolusi 1x1 ini memungkinkan model melakukan operasi linier pada data input menghasilkan representasi fitur yang lebih kompleks.
+Konsep utama di balik \textit{Xception} adalah menggantikan operasi konvolusi standar dalam modul \textit{Inception} dengan konvolusi yang dapat dipisahkan secara mendalam seperti pada Gambar \ref{fig:ArsitekturXception}
+. Modul \textit{Inception} adalah bagian kunci dari arsitektur jaringan \textit{Inception}, yang menggunakan berbagai ukuran \textit{filter} dalam paralel dalam mengekstraksi fitur dari gambar input. Dengan menggunakan konvolusi yang dapat dipisahkan secara mendalam, \textit{Xception} memisahkan operasi konvolusi menjadi dua tahap: konvolusi \textit{depthwise} dan konvolusi \textit{pointwise}.Pada tahap konvolusi \textit{depthwise}, satu \textit{filter} digunakan setiap lapisan input. Konvolusi ini dilakukan secara terpisah bagi setiap kanal warna (depth) gambar, yang menghasilkan output berukuran tinggi x lebar x kedalaman. Output dari langkah ini akan menjadi input dari tahap konvolusi \textit{pointwise}. Pada tahap konvolusi \textit{pointwise}, \textit{filter} dengan ukuran 1x1xkedalaman digunakan menghasilkan beberapa fitur. Penggunaan konvolusi 1x1 ini memungkinkan model melakukan operasi linier pada data input menghasilkan representasi fitur yang lebih kompleks.
 
-\begin{center}
+\begin{figure}[!hbt]
+  \centering
   % Nama dari file gambar yang diinputkan
   \includegraphics[width=0.8\linewidth]{gambar/bener/Arsitektur_CNNXception.png}
   % Keterangan gambar yang diinputkan
   \captionof{figure}{Arsitektur CNN Xception}
   % Label referensi dari gambar yang diinputkan
-  \label{fig:Arsitektur Xception}
-\end{center}
+  \label{fig:ArsitekturXception}
+\end{figure}
 Struktur arsitektur \textit{Xception} terdiri dari tiga modul utama: \textit{entry flow}, \textit{middle flow}, dan \textit{exit flow}. \textit{Entry flow} terdiri dari konvolusi normal diikuti oleh konvolusi yang dapat dipisahkan secara mendalam. Modul ini bertanggung jawab menginisialisasi fitur-fitur penting dari gambar input. Selanjutnya, \textit{middle flow} terdiri dari 8 miniblock, setiap miniblock terdiri dari 3 konvolusi yang dapat dipisahkan secara mendalam. Modul ini bertanggung jawab melakukan proses ekstraksi fitur yang lebih mendalam dan kompleks dari gambar. Terakhir, \textit{exit flow} terdiri dari konvolusi yang dapat dipisahkan secara mendalam, feature flattening, dan output. Modul ini bertanggung jawab menghasilkan hasil akhir dari model, seperti prediksi kelas dalam tugas klasifikasi gambar.
 
 Dengan menggunakan teknik konvolusi yang dapat dipisahkan secara mendalam, \textit{Xception} berhasil mengurangi jumlah parameter yang diperlukan dalam model dan meningkatkan efisiensi komputasi. Dalam model yang lebih dalam dan kompleks, jumlah perkalian matriks yang diperlukan melakukan konvolusi dapat sangat besar, menyebabkan model menjadi lebih lambat dan membutuhkan lebih banyak sumber daya komputasi. Dengan menggunakan konsep konvolusi yang dapat dipisahkan secara mendalam, \textit{Xception} mengurangi beban komputasi ini, sehingga model dapat dijalankan dengan lebih cepat dan lebih efisien.

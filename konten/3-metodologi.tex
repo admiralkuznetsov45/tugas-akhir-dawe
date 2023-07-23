@@ -7,29 +7,29 @@ Dalam upaya mencapai tujuan penelitian yang terkait dengan penelitian yang berju
 \section{Block Diagram Penelitian}
 Adapun alur dari penelitian ini dapat dilihat pada Gambar \ref{fig:blokdiagram}.
 \begin{figure}[hbt!]
+	\centering
 	\includegraphics[width=1.0\linewidth]{gambar/metodologi_kerja.png}
 	\captionof{figure}{Blok Diagram Penelitian}
 	\label{fig:blokdiagram}
 \end{figure}
+
 Penjelasan mengenai \textit{Block Diagram} secara rinci dan detail akan disajikan pada sub-sub bab berikutnya. Penyajian informasi dalam bentuk \textit{Block Diagram} menjadi salah satu langkah penting dalam menggambarkan struktur dan alur dari sistem atau proses yang dijelaskan dalam penelitian ini. \textit{Block Diagram} menyediakan gambaran visual yang jelas dan sistematis tentang bagaimana berbagai komponen atau elemen dalam sistem saling berhubungan dan berinteraksi satu sama lain.
 
 \section{Dataset Citra}
-Penelitian ini mengadopsi sebuah dataset citra yang sangat beragam dan informatif, terdiri dari total 26 huruf alfabet serta satu Huruf Akhir yang sering dijumpai dalam berbagai situasi kehidupan sehari-hari seperti pada Gambar \ref{fig:poseAbjadBISINDO}. Dataset yang digunakan ini menjadi pilar utama dalam proses pelatihan dan pengujian model yang sedang dikembangkan dalam konteks penelitian ini. Data citra yang beragam ini akan memberikan informasi yang lebih lengkap dan representatif agar membantu menghasilkan hasil yang lebih kuat dan reliabel dalam pengujian model tersebut.
-\begin{figure}[hbt!]
-	\includegraphics[width=0.7\linewidth]{gambar/bener/kerja-semaphore.jpg}
-	\captionof{figure}{Contoh Pose Semaphore}
-	\label{fig:poseAbjadBISINDO}
-\end{figure}
-Penelitian ini memanfaatkan sebuah dataset citra yang terdiri dari jumlah yang sangat signifikan yaitu 26.000 citra secara keseluruhan. Setiap huruf alfabet, sebanyak 26 huruf, diwakili oleh tak kurang dari 1000 citra yang khusus dipilih mewakili masing-masing huruf tersebut. Dengan total 26.000 citra yang teliti dan cermat ini, dataset menjadi sangat beragam dan mendalam, menyediakan beragai representasi visual setiap huruf. Hal ini bertujuan memberikan kesempatan kepada model yang sedang dikembangkan mengenali dan memprediksi huruf-huruf ini dengan tingkat akurasi yang tinggi. Proses pelatihan dan pengujian model dengan menggunakan dataset sebesar ini diharapkan akan menghasilkan kemampuan model yang lebih canggih dan unggul dalam pengenalan huruf dalam citra.
+Penelitian ini mengadopsi sebuah \textit{dataset} citra yang sangat beragam dan informatif, terdiri dari total 26 huruf alfabet serta satu Huruf Akhir yang sering dijumpai dalam berbagai situasi kehidupan sehari-hari. \textit{Dataset} yang digunakan ini menjadi pilar utama dalam proses pelatihan dan pengujian model yang sedang dikembangkan dalam konteks penelitian ini. Data citra yang beragam ini akan memberikan informasi yang lebih lengkap dan representatif agar membantu menghasilkan hasil yang lebih kuat dan reliabel dalam pengujian model tersebut.
+
+Penelitian ini memanfaatkan sebuah \textit{dataset} citra yang terdiri dari jumlah yang sangat signifikan yaitu 26.000 citra secara keseluruhan. Setiap huruf alfabet, sebanyak 26 huruf, diwakili oleh tak kurang dari 1000 citra yang khusus dipilih mewakili masing-masing huruf tersebut. Dengan total 26.000 citra yang teliti dan cermat ini, \textit{dataset} menjadi sangat beragam dan mendalam, menyediakan beragai representasi visual setiap huruf. Hal ini bertujuan memberikan kesempatan kepada model yang sedang dikembangkan mengenali dan memprediksi huruf-huruf ini dengan tingkat akurasi yang tinggi. Proses pelatihan dan pengujian model dengan menggunakan \textit{dataset} sebesar ini diharapkan akan menghasilkan kemampuan model yang lebih canggih dan unggul dalam pengenalan huruf dalam citra.
 \section{Ekstraksi Pose}
-Proses Ekstraksi Pose merupakan tahap penting dalam pengolahan data pada dataset Gambar 3.2 . Dalam proses ini, digunakan teknologi machine learning bernama \textit{MediaPipe} yang dikembangkan oleh Google menghasilkan skeleton yang merepresentasikan pose tubuh pada setiap gambar. Agar memudahkan pembacaan oleh model, latar belakang gambar diubah menjadi seragam berwarna hitam. \textit{MediaPipe} memungkinkan deteksi gerakan pose dengan efisien. Dalam proses ini, dilakukan ekstraksi fitur dari skeleton pose yang disediakan oleh \textit{MediaPipe}. Namun, dalam pengerjaan ini, hanya beberapa bagian penting dari  pose yang digunakan, sesuai dengan yang ditampilkan pada Gambar \ref{fig:CITRAAWAL1}
+Proses Ekstraksi Pose merupakan tahap penting dalam pengolahan \textit{dataset} . Dalam proses ini, digunakan teknologi machine learning bernama \textit{MediaPipe} yang dikembangkan oleh Google menghasilkan skeleton yang merepresentasikan pose tubuh pada setiap gambar. Agar memudahkan pembacaan oleh model, latar belakang gambar diubah menjadi seragam berwarna hitam. \textit{MediaPipe} memungkinkan deteksi gerakan pose dengan efisien. Dalam proses ini, dilakukan ekstraksi fitur dari skeleton pose yang disediakan oleh \textit{MediaPipe}. Namun, dalam pengerjaan ini, hanya beberapa bagian penting dari  pose yang digunakan, sesuai dengan yang ditampilkan pada Gambar \ref{fig:CITRAAWAL1}
 \begin{figure}[hbt!]
+	\centering
 	\includegraphics[width=0.7\linewidth]{gambar/Gambar3.3.png}
 	\captionof{figure}{Hasil Estimasi Pose dengan MediaPipe}
 	\label{fig:CITRAAWAL1}
 \end{figure}
-Selanjutnya, program yang dikembangkan pada penelitian ini akan mengekstraksi skeleton \textit{MediaPipe} dari Gambar \ref{fig:CITRAAWAL1} dan mengganti semua aspek gambar dataset dengan latar hitam, seperti terlihat pada Gambar \ref{fig:CITRAAKHIR1}.
+Selanjutnya, program yang dikembangkan pada penelitian ini akan mengekstraksi skeleton \textit{MediaPipe} dari Gambar \ref{fig:CITRAAWAL1} dan mengganti semua aspek gambar \textit{dataset} dengan latar hitam, seperti terlihat pada Gambar \ref{fig:CITRAAKHIR1}.
 \begin{figure}[hbt!]
+	\centering
 	\includegraphics[width=0.7\linewidth]{gambar/Gambar3.4.jpg}
 	\captionof{figure}{Hasil Estimasi Pose Siluet: Data Latih Deteksi Gerakan Tubuh}
 	\label{fig:CITRAAKHIR1}
@@ -77,6 +77,7 @@ Pada tahapan ini akan dilakukan proses klasifikasi dari data yang sudah melewati
 \subsection{Metode CNN}
 Model \textit{CNN} sesuai dengan Gambar \ref{fig:layerCNN} menggunakan beberapa lapisan konvolusi dan lapisan \textit{pooling} mengekstraksi fitur-fitur penting dari gambar. Input gambar memiliki dimensi 128x128 dengan 3 saluran warna \textit{(RGB)}. Kemudian, dilakukan konvolusi dengan 32 ,32 , 32 , 16 \textit{filter} berukuran 3x3 dan aktivasi \textit{ReLU}. Lapisan konvolusi ini bertujuan mengekstraksi fitur-fitur visual pada gambar. Setelah itu, dilakukan proses \textit{pooling} dengan menggunakan lapisan \textit{MaxPooling2D} dengan ukuran \textit{filter} 2x2. \textit{Maxpooling} digunakan mereduksi dimensi fitur dan mempertahankan fitur yang paling signifikan.
 \begin{figure}[hbt!]
+	\centering
 	\includegraphics[width=1.0\linewidth]{gambar/bener/Arsitektur_CNN_Revisi.png}
 	\captionof{figure}{Layers dari Model CNN}
 	\label{fig:layerCNN}
@@ -91,6 +92,7 @@ Model \textit{CNN} inilah yang menggunakan beberapa lapisan konvolusi dan lapisa
 Selanjutnya, dilakukan \textit{pooling} dengan menggunakan lapisan \textit{MaxPooling2D} dengan ukuran \textit{filter} $2 \times 2$. Max \textit{pooling} digunakan mereduksi dimensi fitur dan mempertahankan fitur yang paling signifikan.
 
 \begin{figure}[hbt!]
+	\centering
 	\includegraphics[width=1.0\linewidth]{gambar/bener/Arsitektur_CNN2_Revisi.png}
 	\captionof{figure}{Layers dari Model CNN Kedua}
 	\label{fig:layerCNN}
@@ -104,6 +106,7 @@ Terakhir, terdapat lapisan \textit{Dense} dengan jumlah unit sebanyak JumlahKela
 Arsitektur pada Gambar \ref{fig:Xception} adalah sebuah model \textit{Convolutional Neural Network (\textit{CNN})} yang menggunakan arsitektur \textit{Xception} sebagai bagian dasarnya. \textit{Xception} adalah salah satu model \textit{CNN} yang dikembangkan oleh François Chollet sebagai bagian dari library Keras. Pada arsitektur ini, input gambar memiliki dimensi 128x128 dengan 3 saluran warna \textit{(RGB)}. Kemudian, model \textit{Xception} yang telah dilatih sebelumnya pada dataset \textit{ImageNet} digunakan sebagai bagian dasar dari model. Model \textit{Xception} ini diinisialisasi dengan bobot yang telah diatur oleh pelatihan pada \textit{ImageNet}.Selanjutnya, seluruh lapisan di dalam model \textit{Xception} dibekukan \textit{(frozen)} atau tidak akan diperbarui selama pelatihan. Hal ini dilakukan dengan tujuan mempertahankan pengetahuan yang telah dipelajari oleh model \textit{Xception} dari dataset \textit{ImageNet}.
 
 \begin{figure}[hbt!]
+	\centering
 	\includegraphics[width=1.0\linewidth]{gambar/bener//Arsitektur_CNNXception_Modifikasi.png}
 	\captionof{figure}{Layers dari Model CNN  Xception}
 	\label{fig:Xception}
@@ -115,6 +118,7 @@ Selanjutnya, dilanjutkan dengan lapisan \textit{Dense} kedua dengan 16 unit dan 
 \subsection{Metode CNN ResNet50V2}
 Pada Arsitektur \textit{ResNet50V2} sesuai Gambar \ref{fig:textitResNet50V2} , input gambar memiliki dimensi 128x128 dengan 3 saluran warna \textit{(RGB)}. Model \textit{ResNet50V2} yang telah dilatih sebelumnya pada dataset \textit{ImageNet} digunakan sebagai bagian dasar dari model. Model ini diinisialisasi dengan bobot yang telah diatur oleh pelatihan pada dataset tersebut. Selanjutnya, seluruh lapisan di dalam model \textit{ResNet50V2} dibekukan \textit{(frozen)} atau tidak akan diperbarui selama pelatihan. Hal ini dilakukan agar mempertahankan pengetahuan yang telah dipelajari oleh model \textit{ResNet50V2} dari dataset \textit{ImageNet}. Keluaran (output) dari model \textit{ResNet50V2} dihubungkan ke lapisan \textit{GlobalAveragePooling2D}, yang berfungsi merata-ratakan fitur-fitur spasial menjadi satu vektor fitur.
 \begin{figure}[hbt!]
+	\centering
 	\includegraphics[width=1.1\linewidth]{gambar/bener/Arsitektur_ModelCNNResNet50v2_Modifikasi.png}
 	\captionof{figure}{Layers dari Model CNN ResNet50V2}
 	\label{fig:textitResNet50V2}
@@ -126,6 +130,7 @@ Terakhir, terdapat lapisan \textit{Dense} dengan jumlah unit sebanyak JumlahKela
 \section{Hasil Huruf}
 Hasil dari implementasi Model \textit{CNN} selanjutnya dilakukan proses pengujian dan mendapatkan citra hasil huruf . Pada tahap ini terdapat empat aspek yang dihitung yaitu akurasi, presisi, \textit{recall}, dan \emph {F-measure}. Empat aspek tersebut akan digunakan saat melihat performan dari metode yang digunakan. Adapun proses perhitungan keempat askpek tersebut dapat dilihat seperti pada Gambar \ref{fig:MATRIKSKONFUSI}.
 \begin{figure}[hbt!]
+	\centering
 	\includegraphics[width=0.7\linewidth]{gambar/bener/Nilai-Konfusi-Matriks.png}
 	\captionof{figure}{Matriks konfusi}
 	\label{fig:MATRIKSKONFUSI}
