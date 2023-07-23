@@ -14,18 +14,15 @@ Adapun alur dari penelitian ini dapat dilihat pada Gambar \ref{fig:blokdiagram}.
 Penjelasan mengenai \textit{Block Diagram} secara rinci dan detail akan disajikan pada sub-sub bab berikutnya. Penyajian informasi dalam bentuk \textit{Block Diagram} menjadi salah satu langkah penting dalam menggambarkan struktur dan alur dari sistem atau proses yang dijelaskan dalam penelitian ini. \textit{Block Diagram} menyediakan gambaran visual yang jelas dan sistematis tentang bagaimana berbagai komponen atau elemen dalam sistem saling berhubungan dan berinteraksi satu sama lain.
 
 \section{Dataset Citra}
-Penelitian ini menggunakan sebuah dataset citra yang terdiri dari 26 huruf alfabet dan 1 Huruf Akhir yang sering digunakan dalam kehidupan sehari-hari. Dataset ini digunakan ketika melatih dan menguji model yang dikembangkan dalam penelitian ini.
+Penelitian ini mengadopsi sebuah dataset citra yang sangat beragam dan informatif, terdiri dari total 26 huruf alfabet serta satu Huruf Akhir yang sering dijumpai dalam berbagai situasi kehidupan sehari-hari seperti pada Gambar \ref{fig:poseAbjadBISINDO}. Dataset yang digunakan ini menjadi pilar utama dalam proses pelatihan dan pengujian model yang sedang dikembangkan dalam konteks penelitian ini. Data citra yang beragam ini akan memberikan informasi yang lebih lengkap dan representatif agar membantu menghasilkan hasil yang lebih kuat dan reliabel dalam pengujian model tersebut.
 \begin{center}
 	\includegraphics[width=0.7\linewidth]{gambar/bener/kerja-semaphore.jpg}
 	\captionof{figure}{Contoh Pose Semaphore}
 	\label{fig:poseAbjadBISINDO}
 \end{center}
-Setiap huruf diwakili oleh 1000 citra dalam dataset, sehingga secara keseluruhan terdapat 26.000 citra dalam dataset ini. Setiap huruf alfabet memiliki 1000 citra yang mewakilinya. Dataset ini akan digunakan melatih dan menguji model dalam mengenali dan memprediksi huruf-huruf tersebut dalam citra.
-
+Penelitian ini memanfaatkan sebuah dataset citra yang terdiri dari jumlah yang sangat signifikan yaitu 26.000 citra secara keseluruhan. Setiap huruf alfabet, sebanyak 26 huruf, diwakili oleh tak kurang dari 1000 citra yang khusus dipilih mewakili masing-masing huruf tersebut. Dengan total 26.000 citra yang teliti dan cermat ini, dataset menjadi sangat beragam dan mendalam, menyediakan beragai representasi visual setiap huruf. Hal ini bertujuan memberikan kesempatan kepada model yang sedang dikembangkan mengenali dan memprediksi huruf-huruf ini dengan tingkat akurasi yang tinggi. Proses pelatihan dan pengujian model dengan menggunakan dataset sebesar ini diharapkan akan menghasilkan kemampuan model yang lebih canggih dan unggul dalam pengenalan huruf dalam citra.
 \section{Ekstraksi Pose}
-Proses Ekstraksi Pose merupakan tahap penting dalam pengolahan data pada dataset Gambar 3.2 . Dalam proses ini, digunakan teknologi machine learning bernama \textit{MediaPipe} yang dikembangkan oleh Google menghasilkan skeleton yang merepresentasikan pose tubuh pada setiap gambar. Agar memudahkan pembacaan oleh model, latar belakang gambar diubah menjadi seragam berwarna hitam.
-
-\textit{MediaPipe} memungkinkan deteksi gerakan pose dengan efisien. Dalam proses ini, dilakukan ekstraksi fitur dari skeleton pose yang disediakan oleh \textit{MediaPipe}. Namun, dalam pengerjaan ini, hanya beberapa bagian penting dari  pose yang digunakan, sesuai dengan yang ditampilkan pada Gambar 3.4.
+Proses Ekstraksi Pose merupakan tahap penting dalam pengolahan data pada dataset Gambar 3.2 . Dalam proses ini, digunakan teknologi machine learning bernama \textit{MediaPipe} yang dikembangkan oleh Google menghasilkan skeleton yang merepresentasikan pose tubuh pada setiap gambar. Agar memudahkan pembacaan oleh model, latar belakang gambar diubah menjadi seragam berwarna hitam. \textit{MediaPipe} memungkinkan deteksi gerakan pose dengan efisien. Dalam proses ini, dilakukan ekstraksi fitur dari skeleton pose yang disediakan oleh \textit{MediaPipe}. Namun, dalam pengerjaan ini, hanya beberapa bagian penting dari  pose yang digunakan, sesuai dengan yang ditampilkan pada Gambar \ref{fig:CITRAAWAL1}
 \begin{center}
 	\includegraphics[width=0.7\linewidth]{gambar/Gambar3.3.png}
 	\captionof{figure}{Citra Awal}
@@ -37,9 +34,7 @@ Selanjutnya, program yang dikembangkan pada penelitian ini akan mengekstraksi sk
 	\captionof{figure}{Hasil Citra Akhir}
 	\label{fig:CITRAAKHIR1}
 \end{center}
-
 Dengan melakukan ekstraksi pose ini, diharapkan dapat menggambarkan pose tubuh secara akurat pada setiap gambar dalam dataset. Hal ini menjadi dasar penting dalam pengembangan model dan analisis selanjutnya, serta memungkinkan pengenalan pola gerakan yang terkait dengan bagian-bagian penting pada tubuh bagian atas. Berikut ini merupakan tabel dari bagian pose yang digunakan dan dikelompokkan kedalam kelompok \textit{Upper Body Connection}
-
 \begin{center}
 	\begin{table}[hbt!]
 		\captionof{table}{Pose Landmarks}
@@ -76,10 +71,8 @@ Dengan melakukan ekstraksi pose ini, diharapkan dapat menggambarkan pose tubuh s
 		\end{tabular}
 	\end{table}
 	\end{center}
-
 \section{Klasifikasi Pose}
 Pada tahapan ini akan dilakukan proses klasifikasi dari data yang sudah melewati tahap estimasi dan esktrimasi \textit{skeleton} dan \textit{landmarks} yang sudah disediakan dari \textit{\textit{MediaPipe}} . Lalu dalam tahapan ini  diterapkan \textit{Convolutional Neural Network} supaya dilatih dan juga disini bisa didapatkan hasil klasifikasi dari huruf yang sudah diperagakan
-
 
 \subsection{Metode CNN}
 Model \textit{CNN} sesuai dengan Gambar \ref{fig:layerCNN} menggunakan beberapa lapisan konvolusi dan lapisan \textit{pooling} mengekstraksi fitur-fitur penting dari gambar. Input gambar memiliki dimensi 128x128 dengan 3 saluran warna \textit{(RGB)}. Kemudian, dilakukan konvolusi dengan 32 ,32 , 32 , 16 \textit{filter} berukuran 3x3 dan aktivasi \textit{ReLU}. Lapisan konvolusi ini bertujuan mengekstraksi fitur-fitur visual pada gambar. Setelah itu, dilakukan proses \textit{pooling} dengan menggunakan lapisan \textit{MaxPooling2D} dengan ukuran \textit{filter} 2x2. \textit{Maxpooling} digunakan mereduksi dimensi fitur dan mempertahankan fitur yang paling signifikan.
