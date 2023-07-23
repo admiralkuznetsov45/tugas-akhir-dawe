@@ -25,13 +25,13 @@ Penelitian ini memanfaatkan sebuah dataset citra yang terdiri dari jumlah yang s
 Proses Ekstraksi Pose merupakan tahap penting dalam pengolahan data pada dataset Gambar 3.2 . Dalam proses ini, digunakan teknologi machine learning bernama \textit{MediaPipe} yang dikembangkan oleh Google menghasilkan skeleton yang merepresentasikan pose tubuh pada setiap gambar. Agar memudahkan pembacaan oleh model, latar belakang gambar diubah menjadi seragam berwarna hitam. \textit{MediaPipe} memungkinkan deteksi gerakan pose dengan efisien. Dalam proses ini, dilakukan ekstraksi fitur dari skeleton pose yang disediakan oleh \textit{MediaPipe}. Namun, dalam pengerjaan ini, hanya beberapa bagian penting dari  pose yang digunakan, sesuai dengan yang ditampilkan pada Gambar \ref{fig:CITRAAWAL1}
 \begin{center}
 	\includegraphics[width=0.7\linewidth]{gambar/Gambar3.3.png}
-	\captionof{figure}{Citra Awal}
+	\captionof{figure}{Hasil Estimasi Pose dengan MediaPipe}
 	\label{fig:CITRAAWAL1}
 \end{center}
 Selanjutnya, program yang dikembangkan pada penelitian ini akan mengekstraksi skeleton \textit{MediaPipe} dari Gambar \ref{fig:CITRAAWAL1} dan mengganti semua aspek gambar dataset dengan latar hitam, seperti terlihat pada Gambar \ref{fig:CITRAAKHIR1}.
 \begin{center}
 	\includegraphics[width=0.7\linewidth]{gambar/Gambar3.4.jpg}
-	\captionof{figure}{Hasil Citra Akhir}
+	\captionof{figure}{Hasil Estimasi Pose Siluet: Data Latih Deteksi Gerakan Tubuh}
 	\label{fig:CITRAAKHIR1}
 \end{center}
 Dengan melakukan ekstraksi pose ini, diharapkan dapat menggambarkan pose tubuh secara akurat pada setiap gambar dalam dataset. Hal ini menjadi dasar penting dalam pengembangan model dan analisis selanjutnya, serta memungkinkan pengenalan pola gerakan yang terkait dengan bagian-bagian penting pada tubuh bagian atas. Berikut ini merupakan tabel dari bagian pose yang digunakan dan dikelompokkan kedalam kelompok \textit{Upper Body Connection}
@@ -86,7 +86,6 @@ Langkah-langkah konvolusi dan \textit{pooling} ini diulangi beberapa kali mening
 Lapisan \textit{Dropout} dengan tingkat \textit{dropout} 0.2 diterapkan menghindari \textit{overfitting} dengan secara acak "menonaktifkan" sebagian unit dalam lapisan tersebut. Terakhir, terdapat lapisan {\textit{Dense}} dengan jumlah unit sebanyak JumlahKelas, yang sesuai dengan jumlah kelas yang akan diprediksi oleh model. Lapisan ini menggunakan aktivasi \textit{softmax}, yang menghasilkan distribusi probabilitas setiap kelas. Seluruh model ini diinisialisasi menggunakan objek Model dari \textit{Keras}, dengan input gambar sebagai input dan lapisan terakhir sebagai output. Model ini dikompilasi menggunakan \textit{optimizer Adam} dan \textit{loss function} berupa \textit{mean squared error (MSE)}, yang sering digunakan tugas regresi. Metrik akurasi juga digunakan mengukur performa model.
 
 \subsection{Metode CNN Kedua}
-
 Model \textit{CNN} inilah yang menggunakan beberapa lapisan konvolusi dan lapisan \textit{pooling} mengekstraksi fitur-fitur penting dari gambar. Gambar input memiliki dimensi $128 \times 128$ dengan 3 saluran warna \textit{(RGB)}. Kemudian, konvolusi dilakukan menggunakan 32, 16, 16, dan 8 \textit{filter} berukuran $3 \times 3$ dengan aktivasi \textit{ReLU}. Lapisan konvolusi bertujuan mengekstraksi fitur-fitur visual pada gambar.
 
 Selanjutnya, dilakukan \textit{pooling} dengan menggunakan lapisan \textit{MaxPooling2D} dengan ukuran \textit{filter} $2 \times 2$. Max \textit{pooling} digunakan mereduksi dimensi fitur dan mempertahankan fitur yang paling signifikan.
@@ -102,7 +101,6 @@ Proses konvolusi dan \textit{pooling} ini diulangi beberapa kali meningkatkan re
 Terakhir, terdapat lapisan \textit{Dense} dengan jumlah unit sebanyak JumlahKelas, yang sesuai dengan jumlah kelas yang akan diprediksi oleh model. Lapisan ini menggunakan aktivasi \textit{softmax}, yang menghasilkan distribusi probabilitas setiap kelas. Seluruh model ini diinisialisasi menggunakan objek \textit{Model} dari Keras, dengan input gambar sebagai input dan lapisan terakhir sebagai output. Model ini dikompilasi menggunakan optimizer \textit{Adam} dan \textit{loss function} berupa \textit{mean squared error (MSE)}, yang sering digunakan oleh tugas regresi. Metrik akurasi juga digunakan mengukur performa model.
 
 \subsection{Metode CNN Xception}
-
 Arsitektur pada Gambar \ref{fig:Xception} adalah sebuah model \textit{Convolutional Neural Network (\textit{CNN})} yang menggunakan arsitektur \textit{Xception} sebagai bagian dasarnya. \textit{Xception} adalah salah satu model \textit{CNN} yang dikembangkan oleh François Chollet sebagai bagian dari library Keras. Pada arsitektur ini, input gambar memiliki dimensi 128x128 dengan 3 saluran warna \textit{(RGB)}. Kemudian, model \textit{Xception} yang telah dilatih sebelumnya pada dataset \textit{ImageNet} digunakan sebagai bagian dasar dari model. Model \textit{Xception} ini diinisialisasi dengan bobot yang telah diatur oleh pelatihan pada \textit{ImageNet}.Selanjutnya, seluruh lapisan di dalam model \textit{Xception} dibekukan \textit{(frozen)} atau tidak akan diperbarui selama pelatihan. Hal ini dilakukan dengan tujuan mempertahankan pengetahuan yang telah dipelajari oleh model \textit{Xception} dari dataset \textit{ImageNet}.
 
 \begin{center}
