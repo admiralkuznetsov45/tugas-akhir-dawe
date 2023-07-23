@@ -2,7 +2,7 @@
 
 % Ubah konten-konten berikut sesuai dengan isi dari metodologi
 
-Dalam rangka mencapai tujuan penelitian kami yang berkaitan dengan penerapan teknologi Semaphore \textit{Deep Learning} berbasis \textit{MediaPipe}, kami akan mengikuti metode yang telah dirancang sesuai dengan yang tertera di Gambar 3.1. Metode penelitian kami mencakup beberapa tahapan yang akan kami jelaskan secara rinci di bawah ini.
+Dalam upaya mencapai tujuan penelitian yang terkait dengan penelitian yang berjudul Prediksi Semaphore berbasis \textit{Deep Learning }, metode penelitian yang telah direncanakan telah dijabarkan dalam Gambar \ref{fig:blokdiagram}. Rangkaian metode yang sudah disusun ini mencakup beberapa tahapan yang akan diuraikan secara rinci .
 
 \section{Block Diagram Penelitian}
 Adapun alur dari penelitian ini dapat dilihat pada Gambar \ref{fig:blokdiagram}.
@@ -11,22 +11,19 @@ Adapun alur dari penelitian ini dapat dilihat pada Gambar \ref{fig:blokdiagram}.
 	\captionof{figure}{Blok Diagram Penelitian}
 	\label{fig:blokdiagram}
 \end{center}
-
-Penjelasan Block Diagram secara detail akan dijelaskan pada sub-sub bab selanjutnya.
+Penjelasan mengenai \textit{Block Diagram} secara rinci dan detail akan disajikan pada sub-sub bab berikutnya. Penyajian informasi dalam bentuk \textit{Block Diagram} menjadi salah satu langkah penting dalam menggambarkan struktur dan alur dari sistem atau proses yang dijelaskan dalam penelitian ini. \textit{Block Diagram} menyediakan gambaran visual yang jelas dan sistematis tentang bagaimana berbagai komponen atau elemen dalam sistem saling berhubungan dan berinteraksi satu sama lain.
 
 \section{Dataset Citra}
-
-Penelitian ini menggunakan sebuah dataset citra yang terdiri dari 26 huruf alfabet dan 1 Huruf Akhir yang sering digunakan dalam kehidupan sehari-hari. Dataset ini digunakan untuk melatih dan menguji model yang dikembangkan dalam penelitian ini.
+Penelitian ini menggunakan sebuah dataset citra yang terdiri dari 26 huruf alfabet dan 1 Huruf Akhir yang sering digunakan dalam kehidupan sehari-hari. Dataset ini digunakan ketika melatih dan menguji model yang dikembangkan dalam penelitian ini.
 \begin{center}
 	\includegraphics[width=0.7\linewidth]{gambar/bener/kerja-semaphore.jpg}
 	\captionof{figure}{Contoh Pose Semaphore}
 	\label{fig:poseAbjadBISINDO}
 \end{center}
-Setiap huruf diwakili oleh 1000 citra dalam dataset, sehingga secara keseluruhan terdapat 26.000 citra dalam dataset ini. Setiap huruf alfabet memiliki 1000 citra yang mewakilinya. Dataset ini akan digunakan untuk melatih dan menguji model dalam mengenali dan memprediksi huruf-huruf tersebut dalam citra.
-
+Setiap huruf diwakili oleh 1000 citra dalam dataset, sehingga secara keseluruhan terdapat 26.000 citra dalam dataset ini. Setiap huruf alfabet memiliki 1000 citra yang mewakilinya. Dataset ini akan digunakan melatih dan menguji model dalam mengenali dan memprediksi huruf-huruf tersebut dalam citra.
 
 \section{Ekstraksi Pose}
-Proses Ekstraksi Pose merupakan tahap penting dalam pengolahan data pada dataset Gambar 3.2 . Dalam proses ini, digunakan teknologi machine learning bernama \textit{MediaPipe} yang dikembangkan oleh Google untuk menghasilkan skeleton yang merepresentasikan pose tubuh pada setiap gambar. Untuk memudahkan pembacaan oleh model, latar belakang gambar diubah menjadi seragam berwarna hitam.
+Proses Ekstraksi Pose merupakan tahap penting dalam pengolahan data pada dataset Gambar 3.2 . Dalam proses ini, digunakan teknologi machine learning bernama \textit{MediaPipe} yang dikembangkan oleh Google menghasilkan skeleton yang merepresentasikan pose tubuh pada setiap gambar. Agar memudahkan pembacaan oleh model, latar belakang gambar diubah menjadi seragam berwarna hitam.
 
 \textit{MediaPipe} memungkinkan deteksi gerakan pose dengan efisien. Dalam proses ini, dilakukan ekstraksi fitur dari skeleton pose yang disediakan oleh \textit{MediaPipe}. Namun, dalam pengerjaan ini, hanya beberapa bagian penting dari  pose yang digunakan, sesuai dengan yang ditampilkan pada Gambar 3.4.
 \begin{center}
@@ -81,35 +78,25 @@ Dengan melakukan ekstraksi pose ini, diharapkan dapat menggambarkan pose tubuh s
 	\end{center}
 
 \section{Klasifikasi Pose}
-Pada tahapan ini akan dilakukan proses klasifikasi dari data yang sudah melewati tahap estimasi dan esktrimasi \textit{skeleton} dan \textit{landmarks} yang sudah disediakan dari \textit{\textit{MediaPipe}} . Lalu dalam tahapan ini  diterapkan \textit{Convolutional Neural Network} untuk dilatih dan juga disini bisa didapatkan hasil klasifikasi dari huruf yang sudah diperagakan
+Pada tahapan ini akan dilakukan proses klasifikasi dari data yang sudah melewati tahap estimasi dan esktrimasi \textit{skeleton} dan \textit{landmarks} yang sudah disediakan dari \textit{\textit{MediaPipe}} . Lalu dalam tahapan ini  diterapkan \textit{Convolutional Neural Network} supaya dilatih dan juga disini bisa didapatkan hasil klasifikasi dari huruf yang sudah diperagakan
 
 
 \subsection{Metode CNN}
-Model \textit{CNN} ini  menggunakan beberapa lapisan konvolusi dan lapisan \textit{pooling} untuk mengekstraksi fitur-fitur penting dari gambar. Input gambar memiliki dimensi 128x128 dengan 3 saluran warna \textit{(RGB)}. Kemudian, dilakukan konvolusi dengan 32 ,32 , 32 , 16 \textit{filter} berukuran 3x3 dan aktivasi \textit{ReLU}. Lapisan konvolusi ini bertujuan untuk mengekstraksi fitur-fitur visual pada gambar.
-
-Setelah itu, dilakukan proses \textit{pooling} dengan menggunakan lapisan \textit{MaxPooling2D} dengan ukuran \textit{filter} 2x2. \textit{Maxpooling} digunakan untuk mereduksi dimensi fitur dan mempertahankan fitur yang paling signifikan.
-
+Model \textit{CNN} sesuai dengan Gambar \ref{fig:layerCNN} menggunakan beberapa lapisan konvolusi dan lapisan \textit{pooling} mengekstraksi fitur-fitur penting dari gambar. Input gambar memiliki dimensi 128x128 dengan 3 saluran warna \textit{(RGB)}. Kemudian, dilakukan konvolusi dengan 32 ,32 , 32 , 16 \textit{filter} berukuran 3x3 dan aktivasi \textit{ReLU}. Lapisan konvolusi ini bertujuan mengekstraksi fitur-fitur visual pada gambar. Setelah itu, dilakukan proses \textit{pooling} dengan menggunakan lapisan \textit{MaxPooling2D} dengan ukuran \textit{filter} 2x2. \textit{Maxpooling} digunakan mereduksi dimensi fitur dan mempertahankan fitur yang paling signifikan.
 \begin{center}
 	\includegraphics[width=1.0\linewidth]{gambar/bener/Arsitektur_CNN_Revisi.png}
 	\captionof{figure}{Layers dari Model CNN}
 	\label{fig:layerCNN}
 \end{center}
+Langkah-langkah konvolusi dan \textit{pooling} ini diulangi beberapa kali meningkatkan representasi fitur secara bertahap. Setelah serangkaian konvolusi dan \textit{pooling}, terdapat lapisan \textit{Flatten} meratakan fitur-fitur spasial menjadi vektor fitur satu dimensi.Selanjutnya, terdapat dua lapisan \textit{{Dense} (fully connected)} berturut-turut dengan aktivasi \textit{ReLU}. Lapisan ini bertujuan memperkenalkan non-linearitas dan mempelajari hubungan antara fitur-fitur yang diekstraksi.
 
-Langkah-langkah konvolusi dan \textit{pooling} ini diulangi beberapa kali untuk meningkatkan representasi fitur secara bertahap. Setelah serangkaian konvolusi dan \textit{pooling}, terdapat lapisan Flatten untuk meratakan fitur-fitur spasial menjadi vektor fitur satu dimensi.
-
-Selanjutnya, terdapat dua lapisan \textit{{Dense} (fully connected)} berturut-turut dengan aktivasi \textit{ReLU}. Lapisan ini bertujuan untuk memperkenalkan non-linearitas dan mempelajari hubungan antara fitur-fitur yang diekstraksi.
-
-Lapisan \textit{Dropout} dengan tingkat \textit{dropout} 0.2 diterapkan untuk menghindari \textit{overfitting} dengan secara acak "menonaktifkan" sebagian unit dalam lapisan tersebut.
-
-Terakhir, terdapat lapisan {\textit{Dense}} dengan jumlah unit sebanyak JumlahKelas, yang sesuai dengan jumlah kelas yang akan diprediksi oleh model. Lapisan ini menggunakan aktivasi \textit{softmax}, yang menghasilkan distribusi probabilitas untuk setiap kelas.
-
-Seluruh model ini diinisialisasi menggunakan objek Model dari \textit{Keras}, dengan input gambar sebagai input dan lapisan terakhir sebagai output. Model ini dikompilasi menggunakan \textit{optimizer Adam} dan \textit{loss function} berupa \textit{mean squared error (MSE)}, yang sering digunakan untuk tugas regresi. Metrik akurasi juga digunakan untuk mengukur performa model.
+Lapisan \textit{Dropout} dengan tingkat \textit{dropout} 0.2 diterapkan menghindari \textit{overfitting} dengan secara acak "menonaktifkan" sebagian unit dalam lapisan tersebut. Terakhir, terdapat lapisan {\textit{Dense}} dengan jumlah unit sebanyak JumlahKelas, yang sesuai dengan jumlah kelas yang akan diprediksi oleh model. Lapisan ini menggunakan aktivasi \textit{softmax}, yang menghasilkan distribusi probabilitas setiap kelas. Seluruh model ini diinisialisasi menggunakan objek Model dari \textit{Keras}, dengan input gambar sebagai input dan lapisan terakhir sebagai output. Model ini dikompilasi menggunakan \textit{optimizer Adam} dan \textit{loss function} berupa \textit{mean squared error (MSE)}, yang sering digunakan tugas regresi. Metrik akurasi juga digunakan mengukur performa model.
 
 \subsection{Metode CNN Kedua}
 
-Model \textit{CNN} inilah yang menggunakan beberapa lapisan konvolusi dan lapisan \textit{pooling} untuk mengekstraksi fitur-fitur penting dari gambar. Gambar input memiliki dimensi $128 \times 128$ dengan 3 saluran warna \textit{(RGB)}. Kemudian, konvolusi dilakukan menggunakan 32, 16, 16, dan 8 \textit{filter} berukuran $3 \times 3$ dengan aktivasi \textit{ReLU}. Lapisan konvolusi bertujuan untuk mengekstraksi fitur-fitur visual pada gambar.
+Model \textit{CNN} inilah yang menggunakan beberapa lapisan konvolusi dan lapisan \textit{pooling} mengekstraksi fitur-fitur penting dari gambar. Gambar input memiliki dimensi $128 \times 128$ dengan 3 saluran warna \textit{(RGB)}. Kemudian, konvolusi dilakukan menggunakan 32, 16, 16, dan 8 \textit{filter} berukuran $3 \times 3$ dengan aktivasi \textit{ReLU}. Lapisan konvolusi bertujuan mengekstraksi fitur-fitur visual pada gambar.
 
-Selanjutnya, dilakukan \textit{pooling} dengan menggunakan lapisan \textit{MaxPooling2D} dengan ukuran \textit{filter} $2 \times 2$. Max \textit{pooling} digunakan untuk mereduksi dimensi fitur dan mempertahankan fitur yang paling signifikan.
+Selanjutnya, dilakukan \textit{pooling} dengan menggunakan lapisan \textit{MaxPooling2D} dengan ukuran \textit{filter} $2 \times 2$. Max \textit{pooling} digunakan mereduksi dimensi fitur dan mempertahankan fitur yang paling signifikan.
 
 \begin{center}
 	\includegraphics[width=1.0\linewidth]{gambar/bener/Arsitektur_CNN2_Revisi.png}
@@ -117,65 +104,38 @@ Selanjutnya, dilakukan \textit{pooling} dengan menggunakan lapisan \textit{MaxPo
 	\label{fig:layerCNN}
 \end{center}
 
-Proses konvolusi dan \textit{pooling} ini diulangi beberapa kali untuk meningkatkan representasi fitur secara bertahap. Setelah serangkaian konvolusi dan \textit{pooling}, terdapat lapisan \textit{Flatten} untuk meratakan fitur-fitur spasial menjadi vektor fitur satu dimensi.
+Proses konvolusi dan \textit{pooling} ini diulangi beberapa kali meningkatkan representasi fitur secara bertahap. Setelah serangkaian konvolusi dan \textit{pooling}, terdapat lapisan \textit{Flatten} meratakan fitur-fitur spasial menjadi vektor fitur satu dimensi.Selanjutnya, terdapat dua lapisan \textit{Dense} (fully connected) berturut-turut dengan aktivasi \textit{ReLU}. Lapisan ini bertujuan memperkenalkan non-linearitas dan mempelajari hubungan antara fitur-fitur yang diekstraksi. Lapisan \textit{Dropout} dengan tingkat \textit{dropout} 0.2 diterapkan dalam menghindari \textit{overfitting} dengan secara acak "menonaktifkan" sebagian unit dalam lapisan tersebut.
 
-Selanjutnya, terdapat dua lapisan \textit{Dense} (fully connected) berturut-turut dengan aktivasi \textit{ReLU}. Lapisan ini bertujuan untuk memperkenalkan non-linearitas dan mempelajari hubungan antara fitur-fitur yang diekstraksi.
-
-Lapisan \textit{Dropout} dengan tingkat \textit{dropout} 0.2 diterapkan untuk menghindari \textit{overfitting} dengan secara acak "menonaktifkan" sebagian unit dalam lapisan tersebut.
-
-Terakhir, terdapat lapisan \textit{Dense} dengan jumlah unit sebanyak JumlahKelas, yang sesuai dengan jumlah kelas yang akan diprediksi oleh model. Lapisan ini menggunakan aktivasi \textit{softmax}, yang menghasilkan distribusi probabilitas untuk setiap kelas.
-
-Seluruh model ini diinisialisasi menggunakan objek \textit{Model} dari Keras, dengan input gambar sebagai input dan lapisan terakhir sebagai output. Model ini dikompilasi menggunakan optimizer \textit{Adam} dan \textit{loss function} berupa \textit{mean squared error (MSE)}, yang sering digunakan untuk tugas regresi. Metrik akurasi juga digunakan untuk mengukur performa model.
+Terakhir, terdapat lapisan \textit{Dense} dengan jumlah unit sebanyak JumlahKelas, yang sesuai dengan jumlah kelas yang akan diprediksi oleh model. Lapisan ini menggunakan aktivasi \textit{softmax}, yang menghasilkan distribusi probabilitas setiap kelas. Seluruh model ini diinisialisasi menggunakan objek \textit{Model} dari Keras, dengan input gambar sebagai input dan lapisan terakhir sebagai output. Model ini dikompilasi menggunakan optimizer \textit{Adam} dan \textit{loss function} berupa \textit{mean squared error (MSE)}, yang sering digunakan oleh tugas regresi. Metrik akurasi juga digunakan mengukur performa model.
 
 \subsection{Metode CNN Xception}
 
-Arsitektur pada Gambar {fig:\textit{Xception}} adalah sebuah model \textit{Convolutional Neural Network (\textit{CNN})} yang menggunakan arsitektur \textit{Xception} sebagai bagian dasarnya. \textit{Xception} adalah salah satu model \textit{CNN} yang dikembangkan oleh François Chollet sebagai bagian dari library Keras.
-
-Pada arsitektur ini, input gambar memiliki dimensi 128x128 dengan 3 saluran warna \textit{(RGB)}. Kemudian, model \textit{Xception} yang telah dilatih sebelumnya pada dataset \textit{ImageNet} digunakan sebagai bagian dasar dari model. Model \textit{Xception} ini diinisialisasi dengan bobot yang telah diatur oleh pelatihan pada \textit{ImageNet}.
-
-Selanjutnya, seluruh lapisan di dalam model \textit{Xception} dibekukan \textit{(frozen)} atau tidak akan diperbarui selama pelatihan. Hal ini dilakukan dengan tujuan untuk mempertahankan pengetahuan yang telah dipelajari oleh model \textit{Xception} dari dataset \textit{ImageNet}.
+Arsitektur pada Gambar \ref{fig:Xception} adalah sebuah model \textit{Convolutional Neural Network (\textit{CNN})} yang menggunakan arsitektur \textit{Xception} sebagai bagian dasarnya. \textit{Xception} adalah salah satu model \textit{CNN} yang dikembangkan oleh François Chollet sebagai bagian dari library Keras. Pada arsitektur ini, input gambar memiliki dimensi 128x128 dengan 3 saluran warna \textit{(RGB)}. Kemudian, model \textit{Xception} yang telah dilatih sebelumnya pada dataset \textit{ImageNet} digunakan sebagai bagian dasar dari model. Model \textit{Xception} ini diinisialisasi dengan bobot yang telah diatur oleh pelatihan pada \textit{ImageNet}.Selanjutnya, seluruh lapisan di dalam model \textit{Xception} dibekukan \textit{(frozen)} atau tidak akan diperbarui selama pelatihan. Hal ini dilakukan dengan tujuan mempertahankan pengetahuan yang telah dipelajari oleh model \textit{Xception} dari dataset \textit{ImageNet}.
 
 \begin{center}
 	\includegraphics[width=1.0\linewidth]{gambar/bener//Arsitektur_CNNXception_Modifikasi.png}
 	\captionof{figure}{Layers dari Model CNN  Xception}
 	\label{fig:Xception}
 \end{center}
+Setelah itu, keluaran (output) dari model \textit{Xception} dihubungkan ke lapisan Flatten yang berfungsi meratakan fitur-fitur spasial menjadi vektor fitur satu dimensi. Kemudian, terdapat tiga lapisan \textit{Dense (fully connected)} berturut-turut dengan aktivasi \textit{ReLU}.Pada lapisan pertama \textit{Dense} dengan 16 unit, aktivasi \textit{ReLU} digunakan memperkenalkan non-linearitas. Kemudian, diterapkan \textit{Dropout} dengan tingkat \textit{dropout} sebesar 0.2, yang berfungsi menghindari \textit{overfitting} dengan secara acak "menonaktifkan" sebagian unit dalam lapisan tersebut.
 
-
-Setelah itu, keluaran (output) dari model \textit{Xception} dihubungkan ke lapisan Flatten yang berfungsi untuk meratakan fitur-fitur spasial menjadi vektor fitur satu dimensi. Kemudian, terdapat tiga lapisan \textit{Dense (fully connected)} berturut-turut dengan aktivasi \textit{ReLU}.
-
-Pada lapisan pertama \textit{Dense} dengan 16 unit, aktivasi \textit{ReLU} digunakan untuk memperkenalkan non-linearitas. Kemudian, diterapkan \textit{Dropout} dengan tingkat \textit{dropout} sebesar 0.2, yang berfungsi untuk menghindari \textit{overfitting} dengan secara acak "menonaktifkan" sebagian unit dalam lapisan tersebut.
-
-Selanjutnya, dilanjutkan dengan lapisan \textit{Dense} kedua dengan 16 unit dan aktivasi \textit{ReLU}. Lapisan ini juga memiliki tujuan untuk memperkenalkan non-linearitas dan menghasilkan representasi fitur yang lebih kompleks.
-
-Terakhir, terdapat lapisan \textit{Dense} dengan jumlah unit sebanyak JumlahKelas, yang sesuai dengan jumlah kelas yang akan diprediksi oleh model. Lapisan ini menggunakan aktivasi \textit{softmax}, yang menghasilkan distribusi probabilitas untuk setiap kelas.
-
-Seluruh model ini diinisialisasi menggunakan objek Model dari Keras, dengan input gambar sebagai input dan lapisan terakhir sebagai output. Model ini dikompilasi menggunakan \textit{optimizer Adam} dan \textit{loss function} berupa\textit{ mean squared error (MSE)}, yang sering digunakan untuk tugas regresi. Selain itu, metrik akurasi juga digunakan untuk mengukur performa model.
+Selanjutnya, dilanjutkan dengan lapisan \textit{Dense} kedua dengan 16 unit dan aktivasi \textit{ReLU}. Lapisan ini juga memiliki tujuan memperkenalkan non-linearitas dan menghasilkan representasi fitur yang lebih kompleks. Terakhir, terdapat lapisan \textit{Dense} dengan jumlah unit sebanyak JumlahKelas, yang sesuai dengan jumlah kelas yang akan diprediksi oleh model. Lapisan ini menggunakan aktivasi \textit{softmax}, yang menghasilkan distribusi probabilitas setiap kelas. Seluruh model ini diinisialisasi menggunakan objek Model dari Keras, dengan input gambar sebagai input dan lapisan terakhir sebagai output. Model ini dikompilasi menggunakan \textit{optimizer Adam} dan \textit{loss function} berupa\textit{ mean squared error (MSE)}, yang sering digunakan tugas regresi. Selain itu, metrik akurasi juga digunakan mengukur performa model.
 
 \subsection{Metode CNN ResNet50V2}
-
-Pada Arsitektur \textit{ResNet50V2} sesuai Gambar {fig:\textit{ResNet50V2}} , input gambar memiliki dimensi 128x128 dengan 3 saluran warna \textit{(RGB)}. Model \textit{ResNet50V2} yang telah dilatih sebelumnya pada dataset \textit{ImageNet} digunakan sebagai bagian dasar dari model. Model ini diinisialisasi dengan bobot yang telah diatur oleh pelatihan pada dataset tersebut.
-
-Selanjutnya, seluruh lapisan di dalam model \textit{ResNet50V2} dibekukan \textit{(frozen)} atau tidak akan diperbarui selama pelatihan. Hal ini dilakukan untuk mempertahankan pengetahuan yang telah dipelajari oleh model \textit{ResNet50V2} dari dataset \textit{ImageNet}.
-
-Keluaran (output) dari model \textit{ResNet50V2} dihubungkan ke lapisan \textit{GlobalAveragePooling2D}, yang berfungsi untuk merata-ratakan fitur-fitur spasial menjadi satu vektor fitur.
+Pada Arsitektur \textit{ResNet50V2} sesuai Gambar \ref{fig:textitResNet50V2} , input gambar memiliki dimensi 128x128 dengan 3 saluran warna \textit{(RGB)}. Model \textit{ResNet50V2} yang telah dilatih sebelumnya pada dataset \textit{ImageNet} digunakan sebagai bagian dasar dari model. Model ini diinisialisasi dengan bobot yang telah diatur oleh pelatihan pada dataset tersebut. Selanjutnya, seluruh lapisan di dalam model \textit{ResNet50V2} dibekukan \textit{(frozen)} atau tidak akan diperbarui selama pelatihan. Hal ini dilakukan agar mempertahankan pengetahuan yang telah dipelajari oleh model \textit{ResNet50V2} dari dataset \textit{ImageNet}. Keluaran (output) dari model \textit{ResNet50V2} dihubungkan ke lapisan \textit{GlobalAveragePooling2D}, yang berfungsi merata-ratakan fitur-fitur spasial menjadi satu vektor fitur.
 \begin{center}
 	\includegraphics[width=1.1\linewidth]{gambar/bener/Arsitektur_ModelCNNResNet50v2_Modifikasi.png}
 	\captionof{figure}{Layers dari Model CNN ResNet50V2}
 	\label{fig:textitResNet50V2}
 \end{center}
-Kemudian, terdapat tiga lapisan \textit{Dense} (fully connected) berturut-turut dengan aktivasi \textit{ReLU}. Pada lapisan pertama \textit{Dense} dengan 16 unit, aktivasi \textit{ReLU} digunakan untuk memperkenalkan non-linearitas. Lapisan \textit{Dropout} dengan tingkat \textit{dropout} sebesar 0.2 juga diterapkan untuk mencegah \textit{overfitting} dengan secara acak "menonaktifkan" sebagian unit dalam lapisan tersebut.
+Kemudian, terdapat tiga lapisan \textit{Dense} (fully connected) berturut-turut dengan aktivasi \textit{ReLU}. Pada lapisan pertama \textit{Dense} dengan 16 unit, aktivasi \textit{ReLU} digunakan dalam memperkenalkan non-linearitas. Lapisan \textit{Dropout} dengan tingkat \textit{dropout} sebesar 0.2 juga diterapkan mencegah \textit{overfitting} dengan secara acak "menonaktifkan" sebagian unit dalam lapisan tersebut. Lapisan \textit{Dense} kedua juga menggunakan aktivasi \textit{ReLU} dan memiliki regularisasi L2 dengan koefisien 0.01. Regularisasi L2 membantu dalam mencegah \textit{overfitting} dengan mengenakan hukuman pada bobot model yang lebih besar.
 
-Lapisan \textit{Dense} kedua juga menggunakan aktivasi \textit{ReLU} dan memiliki regularisasi L2 dengan koefisien 0.01. Regularisasi L2 membantu dalam mencegah \textit{overfitting} dengan mengenakan hukuman pada bobot model yang lebih besar.
-
-Terakhir, terdapat lapisan \textit{Dense} dengan jumlah unit sebanyak JumlahKelas, yang sesuai dengan jumlah kelas yang akan diprediksi oleh model. Lapisan ini menggunakan aktivasi \textit{softmax}, yang menghasilkan distribusi probabilitas untuk setiap kelas.
-
-Seluruh model ini diinisialisasi menggunakan objek Model dari \textit{Keras}, dengan input gambar sebagai input dan lapisan terakhir sebagai output. Model ini dikompilasi menggunakan \textit{optimizer Adam} dan \textit{loss function} berupa\textit{ mean squared error (MSE)}, yang sering digunakan untuk tugas regresi. Selain itu, metrik akurasi juga digunakan untuk mengukur performa model.
+Terakhir, terdapat lapisan \textit{Dense} dengan jumlah unit sebanyak JumlahKelas, yang sesuai dengan jumlah kelas yang akan diprediksi oleh model. Lapisan ini menggunakan aktivasi \textit{softmax}, yang menghasilkan distribusi probabilitas setiap kelas. Seluruh model ini diinisialisasi menggunakan objek Model dari \textit{Keras}, dengan input gambar sebagai input dan lapisan terakhir sebagai output. Model ini dikompilasi menggunakan \textit{optimizer Adam} dan \textit{loss function} berupa\textit{ mean squared error (MSE)}, yang sering digunakan oleh tugas regresi. Selain itu, metrik akurasi juga digunakan ketika mengukur performa model.
 
 \section{Hasil Huruf}
-Hasil dari implementasi Model \textit{CNN} selanjutnya dilakukan proses pengujian dan mendapatkan citra hasil huruf . Pada tahap ini terdapat empat aspek yang dihitung yaitu akurasi, presisi, \textit{recall}, dan \emph {F-measure}. Empat aspek tersebut akan digunakan untuk melihat performan dari metode yang digunakan. Adapun proses perhitungan keempat askpek tersebut dapat dilihat seperti pada Gambar \ref{fig:MATRIKSKONFUSI}.
+Hasil dari implementasi Model \textit{CNN} selanjutnya dilakukan proses pengujian dan mendapatkan citra hasil huruf . Pada tahap ini terdapat empat aspek yang dihitung yaitu akurasi, presisi, \textit{recall}, dan \emph {F-measure}. Empat aspek tersebut akan digunakan saat melihat performan dari metode yang digunakan. Adapun proses perhitungan keempat askpek tersebut dapat dilihat seperti pada Gambar \ref{fig:MATRIKSKONFUSI}.
 \begin{center}
-	\includegraphics[width=1.0\linewidth]{gambar/bener/Nilai-Konfusi-Matriks.png}
+	\includegraphics[width=0.7\linewidth]{gambar/bener/Nilai-Konfusi-Matriks.png}
 	\captionof{figure}{Matriks konfusi}
 	\label{fig:MATRIKSKONFUSI}
 \end{center}
