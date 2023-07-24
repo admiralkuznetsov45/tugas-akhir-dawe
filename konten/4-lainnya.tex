@@ -2,12 +2,12 @@
 Pada bab ini dibahas mengenai pengujian dari aplikasi yang telah dikembangkan supaya bisa mengetahui performa aplikasi dalam mendeteksi pose semaphore sesuai tujuan dari penelitian ini, sebagai upaya menciptakan aplikasi yang dapat melakukan prediksi pose semaphore berbasis Deep Learning.
 
 \section{Dataset}
-Dalam penelitian ini, dilakukan pengujian terhadap \textit{dataset} citra yang terdiri dari 26 huruf alfabet yang umum digunakan sehari-hari. \textit{Dataset} tersebut digunakan sebagai bahan bagi  model dalam  melatih , menguji dan mengenali huruf-huruf tersebut. Setiap huruf alfabet direpresentasikan oleh 1000 citra dalam \textit{dataset} yang digunakan. Pengujian dilakukan sebagai cara mengukur performa dan keakuratan model dalam mengenali huruf-huruf tersebut.
+Dalam penelitian ini, dilakukan pengujian terhadap \textit{dataset} citra yang terdiri dari 26 huruf alfabet yang umum digunakan sehari-hari . \textit{Dataset} tersebut digunakan sebagai bahan bagi  model dalam  melatih , menguji dan mengenali huruf-huruf tersebut. Setiap huruf alfabet direpresentasikan oleh 1000 citra dalam \textit{dataset} yang digunakan , Contohnya seperti Gambar \ref{fig:Datasetraw}. Pengujian dilakukan sebagai cara mengukur performa dan keakuratan model dalam mengenali huruf-huruf tersebut. Dalam penelitian ini, dilakukan pengujian terhadap \textit{dataset} citra yang terdiri dari 26 huruf alfabet yang umum digunakan sehari-hari . \textit{Dataset} tersebut digunakan sebagai bahan bagi  model dalam  melatih , menguji dan mengenali huruf-huruf tersebut. Setiap huruf alfabet direpresentasikan oleh 1000 citra dalam \textit{dataset} yang digunakan . Pengujian dilakukan sebagai cara mengukur performa dan keakuratan model dalam mengenali huruf-huruf tersebut.
 
 \begin{figure}[!hbt]
 	\centering
-	\includegraphics[width=0.7\linewidth]{gambar/citra_dataset.png}
-	\captionof{figure}{Gambar dengan Dataset}
+	\includegraphics[width=0.6\linewidth]{gambar/bener/gambar_udah.png}
+	\captionof{figure}{Kumpulan Hasil Estimasi Pose dengan MediaPipe}
 	\label{fig:Datasetraw}
 \end{figure}
 
@@ -15,12 +15,12 @@ Dalam penelitian ini, dilakukan pengujian terhadap \textit{dataset} citra yang t
 
 \begin{figure}[!hbt]
 	\centering
-	\includegraphics[width=0.7\linewidth]{gambar/tugas-akhir-dawe.png}
-	\captionof{figure}{Gambar Hasil Ekstraksi Dataset}
+	\includegraphics[width=0.6\linewidth]{gambar/bener/gambar_udah2.png}
+	\captionof{figure}{Kumpulan Hasil Estimasi Pose Siluet: Data Latih}
 	\label{fig:Datasetekstark}
 \end{figure}
 
-\textit{Dataset} yang telah melalui proses ekstraksi tersebut kemudian digunakan sebagai \textit{input}  model-model deep learning yang digunakan dalam penelitian ini. \textit{Dataset} ini digunakan sebagai cara melatih dan memvalidasi model-model deep learning yang akan digunakan dalam tugas klasifikasi huruf pada Semaphore. Dengan menggunakan \textit{dataset} yang telah diekstrak, model-model deep learning dapat belajar dan mempelajari pola-pola penting dalam data, sehingga dapat melakukan prediksi yang akurat pada data yang belum pernah dilihat sebelumnya
+\textit{Dataset} yang telah melalui proses ekstraksi seperti pada Gambar \ref{fig:Datasetekstark} tersebut kemudian digunakan sebagai \textit{input}  model-model deep learning yang digunakan dalam penelitian ini. \textit{Dataset} ini digunakan sebagai cara melatih dan memvalidasi model-model deep learning yang akan digunakan dalam tugas klasifikasi huruf pada Semaphore. Dengan menggunakan \textit{dataset} yang telah diekstrak, model-model deep learning dapat belajar dan mempelajari pola-pola penting dalam data, sehingga dapat melakukan prediksi yang akurat pada data yang belum pernah dilihat sebelumnya
 
 \begin{table}[htbp]
 	\centering
@@ -508,7 +508,7 @@ Setiap koresponden menjadi subjek uji coba dalam eksperimen ini, dan mereka seca
 
 Dalam mengujicoba aplikasi pengenalan pose semaphore menggunakan empat model yang berbeda, Juga diterapkan metode evaluasi berdasarkan \textit{confusion matrix}. \textit{Confusion matrix} digunakan sebagai menganalisis performa setiap model dengan lebih rinci dan mendalam. Dengan \textit{confusion matrix}, Dapat dilihat jumlah\textit{ true positive}, \textit{true negative}, \textit{false positive}, dan \textit{false negative} bagi setiap huruf mulai dari A hingga E yang diuji coba. Hasil pengujian juga memberikan informasi penting tentang generalisasi model pada variasi gerakan setiap huruf. Dalam mengenali pose semaphore dari sembilan koresponden yang berbeda, model-model ini menunjukkan performa yang cukup konsisten dalam menghadapi variasi gerakan.
 
-Keseluruhan pengujian ini memberikan gambaran menyeluruh tentang performa dan potensi pengembangan model-model yang digunakan dalam pengenalan pose semaphore. Dengan demikian, penelitian ini memiliki kontribusi signifikan dalam pengembangan sistem klasifikasi yang lebih handal dan efisien untuk aplikasi pengenalan pose semaphore dalam berbagai konteks dan industri.
+Keseluruhan pengujian ini memberikan gambaran menyeluruh tentang performa dan potensi pengembangan model-model yang digunakan dalam pengenalan pose semaphore. Dengan demikian, penelitian ini memiliki kontribusi signifikan dalam pengembangan sistem klasifikasi yang lebih handal dan efisien bagi aplikasi pengenalan pose semaphore dalam berbagai konteks dan industri.
 
 \section{Hasil Ujicoba Model CNN}
 \textit{Confusion Matrix} pada gambar \ref{fig:HasilUjicobaCNN} menggambarkan hasil deteksi huruf A hingga E oleh suatu model. Melalui analisis, diperoleh pemahaman bahwa model berhasil mendeteksi sebagian besar huruf dengan benar, namun tetap mengalami beberapa kesalahan prediksi. Dalam deteksi huruf A, model telah mengidentifikasi 41 huruf A secara tepat, namun terdapat 2 kesalahan prediksi dimana 2 huruf A salah diprediksi sebagai huruf V dan 2 huruf A salah diprediksi sebagai huruf G.

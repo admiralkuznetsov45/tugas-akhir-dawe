@@ -23,14 +23,14 @@ Penelitian ini memanfaatkan sebuah \textit{dataset} citra yang terdiri dari juml
 Proses Ekstraksi Pose merupakan tahap penting dalam pengolahan \textit{dataset} . Dalam proses ini, digunakan teknologi machine learning bernama \textit{MediaPipe} yang dikembangkan oleh Google menghasilkan skeleton yang merepresentasikan pose tubuh pada setiap gambar. Agar memudahkan pembacaan oleh model, latar belakang gambar diubah menjadi seragam berwarna hitam. \textit{MediaPipe} memungkinkan deteksi gerakan pose dengan efisien. Dalam proses ini, dilakukan ekstraksi fitur dari skeleton pose yang disediakan oleh \textit{MediaPipe}. Namun, dalam pengerjaan ini, hanya beberapa bagian penting dari  pose yang digunakan, sesuai dengan yang ditampilkan pada Gambar \ref{fig:CITRAAWAL1}
 \begin{figure}[hbt!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{gambar/Gambar3.3.png}
+	\includegraphics[width=0.6\linewidth]{gambar/Gambar3.3.png}
 	\captionof{figure}{Hasil Estimasi Pose dengan MediaPipe}
 	\label{fig:CITRAAWAL1}
 \end{figure}
 Selanjutnya, program yang dikembangkan pada penelitian ini akan mengekstraksi skeleton \textit{MediaPipe} dari Gambar \ref{fig:CITRAAWAL1} dan mengganti semua aspek gambar \textit{dataset} dengan latar hitam, seperti terlihat pada Gambar \ref{fig:CITRAAKHIR1}.
 \begin{figure}[hbt!]
 	\centering
-	\includegraphics[width=0.7\linewidth]{gambar/Gambar3.4.jpg}
+	\includegraphics[width=0.6\linewidth]{gambar/Gambar3.4.jpg}
 	\captionof{figure}{Hasil Estimasi Pose Siluet: Data Latih Deteksi Gerakan Tubuh}
 	\label{fig:CITRAAKHIR1}
 \end{figure}
@@ -119,7 +119,7 @@ Selanjutnya, dilanjutkan dengan lapisan \textit{Dense} kedua dengan 16 unit dan 
 Pada Arsitektur \textit{ResNet50V2} sesuai Gambar \ref{fig:textitResNet50V2} , input gambar memiliki dimensi 128x128 dengan 3 saluran warna \textit{(RGB)}. Model \textit{ResNet50V2} yang telah dilatih sebelumnya pada dataset \textit{ImageNet} digunakan sebagai bagian dasar dari model. Model ini diinisialisasi dengan bobot yang telah diatur oleh pelatihan pada dataset tersebut. Selanjutnya, seluruh lapisan di dalam model \textit{ResNet50V2} dibekukan \textit{(frozen)} atau tidak akan diperbarui selama pelatihan. Hal ini dilakukan agar mempertahankan pengetahuan yang telah dipelajari oleh model \textit{ResNet50V2} dari dataset \textit{ImageNet}. Keluaran (output) dari model \textit{ResNet50V2} dihubungkan ke lapisan \textit{GlobalAveragePooling2D}, yang berfungsi merata-ratakan fitur-fitur spasial menjadi satu vektor fitur.
 \begin{figure}[hbt!]
 	\centering
-	\includegraphics[width=1.1\linewidth]{gambar/bener/Arsitektur_ModelCNNResNet50v2_Modifikasi.png}
+	\includegraphics[width=0.8\linewidth]{gambar/bener/Arsitektur_ModelCNNResNet50v2_Modifikasi.png}
 	\captionof{figure}{Layers dari Model CNN ResNet50V2}
 	\label{fig:textitResNet50V2}
 \end{figure}
